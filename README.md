@@ -13,4 +13,4 @@ Este repositorio contiene código y documentación para varios proyectos y prác
 Para utilizar los ejemplos en este repositorio, necesitarás un compilador compatible con PIC, como MPLAB X IDE de Microchip. Clona este repositorio en tu máquina local usando:
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
+git clone https://github.com/xTheGGx/PIC16F877A.git
