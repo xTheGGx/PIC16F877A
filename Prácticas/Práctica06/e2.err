@@ -1,0 +1,6 @@
+Warning[205] C:\USERS\ALEXIS\DESKTOP\FI\MICROCOMPUTADORAS\LAB\P6\E2.ASM 1 : Found directive in column 1. (include)
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPASM SUITE\P16F877.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Message[302] C:\USERS\ALEXIS\DESKTOP\FI\MICROCOMPUTADORAS\LAB\P6\E2.ASM 13 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\ALEXIS\DESKTOP\FI\MICROCOMPUTADORAS\LAB\P6\E2.ASM 14 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[202] C:\USERS\ALEXIS\DESKTOP\FI\MICROCOMPUTADORAS\LAB\P6\E2.ASM 75 : Argument out of range.  Least significant bits used.
+Message[305] C:\USERS\ALEXIS\DESKTOP\FI\MICROCOMPUTADORAS\LAB\P6\E2.ASM 77 : Using default destination of 1 (file).
