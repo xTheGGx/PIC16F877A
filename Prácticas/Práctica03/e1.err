@@ -1,0 +1,12 @@
+Warning[205] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 1 : Found directive in column 1. (processor)
+Warning[205] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 2 : Found directive in column 1. (include)
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPASM SUITE\P16F877.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Error[113]   C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 5 : Symbol not previously defined (inicio)
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 12 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 14 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 16 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[113]   C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 24 : Symbol not previously defined (CORR_DER)
+Error[113]   C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 25 : Symbol not previously defined (CORR_IZQ)
+Error[113]   C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 26 : Symbol not previously defined (PONG)
+Error[113]   C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 27 : Symbol not previously defined (ON_OFF)
+Error[113]   C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA03\E1.ASM 34 : Symbol not previously defined (FFH)

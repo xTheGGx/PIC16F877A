@@ -1,0 +1,12 @@
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPASM SUITE\P16F877.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 41 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 43 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 45 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 47 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 49 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 683 : Using default destination of 1 (file).
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 685 : Using default destination of 1 (file).
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 687 : Using default destination of 1 (file).
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 701 : Using default destination of 1 (file).
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 703 : Using default destination of 1 (file).
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PROYECTO02\PROYECTO2.ASM 705 : Using default destination of 1 (file).

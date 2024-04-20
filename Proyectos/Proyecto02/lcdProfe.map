@@ -1,0 +1,62 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Tue Apr 16 09:45:39 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000005    program   0x00010c
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x00008a      
+            135 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                  COMANDO   0x000065    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                    DATOS   0x00006c    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                      DOS   0x000082    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+               INICIA_LCD   0x000054    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                   INICIO   0x000005    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                  IN_GAME   0x00001b    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                     LOOP   0x000077    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                    LOOP1   0x000079    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                     MAIN   0x000013    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+           MSG_BIENVENIDA   0x000020    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                MSG_JUEGO   0x000039    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                 RET100MS   0x00007e    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                   RET200   0x000075    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                     TRES   0x000080    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                      UNO   0x000084    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000005    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                     MAIN   0x000013    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                  IN_GAME   0x00001b    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+           MSG_BIENVENIDA   0x000020    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                MSG_JUEGO   0x000039    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+               INICIA_LCD   0x000054    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                  COMANDO   0x000065    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                    DATOS   0x00006c    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                   RET200   0x000075    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                     LOOP   0x000077    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                    LOOP1   0x000079    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                 RET100MS   0x00007e    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                     TRES   0x000080    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                      DOS   0x000082    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+                      UNO   0x000084    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Proyecto02\lcdProfe.asm
+
+

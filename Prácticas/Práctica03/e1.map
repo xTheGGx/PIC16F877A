@@ -1,0 +1,44 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Mon Mar 04 13:15:53 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000005    program   0x000046
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x000027      
+            36 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000005    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                      dos   0x00001f    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                    loop2   0x00000e    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                  retardo   0x00001b    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                     tres   0x00001d    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                      uno   0x000021    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000005    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                    loop2   0x00000e    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                  retardo   0x00001b    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                     tres   0x00001d    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                      dos   0x00001f    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+                      uno   0x000021    program     static C:\Users\USER\Desktop\FI UNAM\MICROCOMPUTADORAS\Práctica03\e1.asm
+
+

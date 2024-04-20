@@ -1,0 +1,5 @@
+Warning[205] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA01\E5.ASM 1 : Found directive in column 1. (PROCESSOR)
+Warning[205] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA01\E5.ASM 2 : Found directive in column 1. (INCLUDE)
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPASM SUITE\P16F877.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA01\E5.ASM 10 : Using default destination of 1 (file).
+Message[305] C:\USERS\USER\DESKTOP\FI UNAM\MICROCOMPUTADORAS\PR·CTICA01\E5.ASM 15 : Using default destination of 1 (file).
