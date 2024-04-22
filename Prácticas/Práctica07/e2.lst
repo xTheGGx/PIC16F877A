@@ -1,4 +1,4 @@
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  1
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -54,94 +54,98 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
                       00026                         ;GOTO   RECIBE                  ;0 no ha recibido un dato
                       00027                         ;MOVF   RCREG,W                 ;1 se ha recibido un dato, transfiere el dato al
                              registro RCREG
-000F   2039           00028                         CALL    RETARDO
+000F   203D           00028                         CALL    RETARDO
 0010   3048           00029                         MOVLW   A'H'
 0011   0099           00030                         MOVWF   TXREG                   ;Se envia a transmisión
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  2
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
 0012   1683           00031                         BSF     STATUS,RP0              ;Cambio de banco
-0013   2046           00032                         CALL    TRANSMITE
+0013   204A           00032                         CALL    TRANSMITE
                       00033                         
 0014   304F           00034                         MOVLW   A'O'
 0015   0099           00035                         MOVWF   TXREG                   ;Se envia a transmisión
 0016   1683           00036                         BSF     STATUS,RP0              ;Cambio de banco
-0017   2046           00037                         CALL    TRANSMITE
+0017   204A           00037                         CALL    TRANSMITE
                       00038                         
 0018   304C           00039                         MOVLW   A'L'
 0019   0099           00040                         MOVWF   TXREG                   ;Se envia a transmisión
 001A   1683           00041                         BSF     STATUS,RP0              ;Cambio de banco
-001B   2046           00042                         CALL    TRANSMITE
+001B   204A           00042                         CALL    TRANSMITE
                       00043                         
 001C   3041           00044                         MOVLW   A'A'
 001D   0099           00045                         MOVWF   TXREG                   ;Se envia a transmisión
 001E   1683           00046                         BSF     STATUS,RP0              ;Cambio de banco
-001F   2046           00047                         CALL    TRANSMITE
+001F   204A           00047                         CALL    TRANSMITE
                       00048                         
 0020   3020           00049                         MOVLW   A' '
 0021   0099           00050                         MOVWF   TXREG                   ;Se envia a transmisión
 0022   1683           00051                         BSF     STATUS,RP0              ;Cambio de banco
-0023   2046           00052                         CALL    TRANSMITE
+0023   204A           00052                         CALL    TRANSMITE
                       00053 
 0024   3055           00054                         MOVLW   A'U'
 0025   0099           00055                         MOVWF   TXREG                   ;Se envia a transmisión
 0026   1683           00056                         BSF     STATUS,RP0              ;Cambio de banco
-0027   2046           00057                         CALL    TRANSMITE
+0027   204A           00057                         CALL    TRANSMITE
 0028   304E           00058                         MOVLW   A'N'
 0029   0099           00059                         MOVWF   TXREG                   ;Se envia a transmisión
 002A   1683           00060                         BSF     STATUS,RP0              ;Cambio de banco
-002B   2046           00061                         CALL    TRANSMITE
+002B   204A           00061                         CALL    TRANSMITE
 002C   3041           00062                         MOVLW   A'A'
 002D   0099           00063                         MOVWF   TXREG                   ;Se envia a transmisión
 002E   1683           00064                         BSF     STATUS,RP0              ;Cambio de banco
-002F   2046           00065                         CALL    TRANSMITE
+002F   204A           00065                         CALL    TRANSMITE
 0030   304D           00066                         MOVLW   A'M'
 0031   0099           00067                         MOVWF   TXREG                   ;Se envia a transmisión
 0032   1683           00068                         BSF     STATUS,RP0              ;Cambio de banco
-0033   2046           00069                         CALL    TRANSMITE
-0034   300F           00070                         MOVLW   d'15'
+0033   204A           00069                         CALL    TRANSMITE
+0034   300A           00070                         MOVLW   0X0A
 0035   0099           00071                         MOVWF   TXREG                   ;Se envia a transmisión
 0036   1683           00072                         BSF     STATUS,RP0              ;Cambio de banco
-0037   2046           00073                         CALL    TRANSMITE
-0038   280F           00074                         GOTO    RECIBE
-0039                  00075 RETARDO:
-0039   3014           00076                         MOVLW   D'20'
-003A   00A2           00077                         MOVWF   VAL3
-003B                  00078 LOOP3:
-003B   30FA           00079                         MOVLW   D'250'
-003C   00A1           00080                         MOVWF   VAL2    
-003D                  00081 LOOP2:
-003D   30FA           00082                         MOVLW   D'250'
-003E   00A0           00083                         MOVWF   VAL
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  3
+0037   204A           00073                         CALL    TRANSMITE
+0038   300D           00074                         MOVLW   0X0D
+0039   0099           00075                         MOVWF   TXREG                   ;Se envia a transmisión
+003A   1683           00076                         BSF     STATUS,RP0              ;Cambio de banco
+003B   204A           00077                         CALL    TRANSMITE
+003C   280F           00078                         GOTO    RECIBE
+003D                  00079 RETARDO:
+003D   3014           00080                         MOVLW   D'20'
+003E   00A2           00081                         MOVWF   VAL3
+003F                  00082 LOOP3:
+003F   30FA           00083                         MOVLW   D'250'
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-003F                  00084 LOOP: 
+0040   00A1           00084                         MOVWF   VAL2    
+0041                  00085 LOOP2:
+0041   30FA           00086                         MOVLW   D'250'
+0042   00A0           00087                         MOVWF   VAL
+0043                  00088 LOOP: 
 Message[305]: Using default destination of 1 (file).
-003F   0BA0           00085                         DECFSZ  VAL
-0040   283F           00086                         GOTO    LOOP
+0043   0BA0           00089                         DECFSZ  VAL
+0044   2843           00090                         GOTO    LOOP
 Message[305]: Using default destination of 1 (file).
-0041   0BA1           00087                         DECFSZ  VAL2
-0042   283D           00088                         GOTO    LOOP2
+0045   0BA1           00091                         DECFSZ  VAL2
+0046   2841           00092                         GOTO    LOOP2
 Message[305]: Using default destination of 1 (file).
-0043   0BA2           00089                         DECFSZ  VAL3
-0044   283B           00090                         GOTO    LOOP3
-0045   0008           00091                         RETURN 
-                      00092                         
+0047   0BA2           00093                         DECFSZ  VAL3
+0048   283F           00094                         GOTO    LOOP3
+0049   0008           00095                         RETURN 
+                      00096                         
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0046   1C98           00093 TRANSMITE:      BTFSS   TXSTA,TRMT              ;Pregunto si ya se recibio el dato
-0047   2846           00094                         GOTO    TRANSMITE               ;0 no se ha recibido el dato
-0048   1283           00095                         BCF     STATUS,RP0              ;1 se ha recibido el dato, cambiamos de banco   
-0049   0008           00096                         RETURN
-                      00097 
-                      00098                         END                                             ;Fin del programa
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  4
+004A   1C98           00097 TRANSMITE:      BTFSS   TXSTA,TRMT              ;Pregunto si ya se recibio el dato
+004B   284A           00098                         GOTO    TRANSMITE               ;0 no se ha recibido el dato
+004C   1283           00099                         BCF     STATUS,RP0              ;1 se ha recibido el dato, cambiamos de banco   
+004D   0008           00100                         RETURN
+                      00101 
+                      00102                         END                                             ;Fin del programa
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  4
 
 
 SYMBOL TABLE
@@ -200,7 +204,7 @@ CSRC                              00000007
 D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  5
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  5
 
 
 SYMBOL TABLE
@@ -238,9 +242,9 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              0000003F
-LOOP2                             0000003D
-LOOP3                             0000003B
+LOOP                              00000043
+LOOP2                             00000041
+LOOP3                             0000003F
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
 NOT_BO                            00000000
@@ -259,7 +263,7 @@ OBF                               00000006
 OERR                              00000001
 OPTION_REG                        00000081
 P                                 00000004
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  6
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  6
 
 
 SYMBOL TABLE
@@ -318,7 +322,7 @@ RC6                               00000006
 RC7                               00000007
 RC8_9                             00000006
 RC9                               00000006
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  7
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  7
 
 
 SYMBOL TABLE
@@ -344,7 +348,7 @@ RE1                               00000001
 RE2                               00000002
 READ_WRITE                        00000002
 RECIBE                            0000000F
-RETARDO                           00000039
+RETARDO                           0000003D
 RP0                               00000005
 RP1                               00000006
 RSEN                              00000001
@@ -377,7 +381,7 @@ T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
 T0SE                              00000004
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  8
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  8
 
 
 SYMBOL TABLE
@@ -410,7 +414,7 @@ TOUTPS0                           00000003
 TOUTPS1                           00000004
 TOUTPS2                           00000005
 TOUTPS3                           00000006
-TRANSMITE                         00000046
+TRANSMITE                         0000004A
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
@@ -436,7 +440,7 @@ TRISC4                            00000004
 TRISC5                            00000005
 TRISC6                            00000006
 TRISC7                            00000007
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE  9
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE  9
 
 
 SYMBOL TABLE
@@ -495,7 +499,7 @@ _FOSC_LP                          00003FFC
 _FOSC_XT                          00003FFD
 _HS_OSC                           00003FFE
 _IDLOC0                           00002000
-MPASM  5.51                            E2.ASM   4-15-2024  12:47:11         PAGE 10
+MPASM  5.51                            E2.ASM   4-21-2024  19:44:14         PAGE 10
 
 
 SYMBOL TABLE
@@ -525,12 +529,12 @@ __16F877A                         00000001
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X----XXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-0040 : XXXXXXXXXX------ ---------------- ---------------- ----------------
+0040 : XXXXXXXXXXXXXX-- ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    70
-Program Memory Words Free:  8122
+Program Memory Words Used:    74
+Program Memory Words Free:  8118
 
 
 Errors   :     0

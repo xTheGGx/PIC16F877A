@@ -18,32 +18,64 @@ INICIO:		;Configuración del puerto serie
 			BCF 	TXSTA,SYNC      ;Indicamos comunicación asíncrona, bit SYNC en 0
 			BSF 	TXSTA,TXEN		;Habilitamos el transmisor del microcontrolador
 			CLRF	TRISB			;portb como salida			;Asincrona (sincronizar la transferencia de información)
+			BCF		TRISC,1
+			BCF		TRISC,2
 			BCF 	STATUS,RP0		;Regresamos a banco 0
 			
 			BSF 	RCSTA,SPEN		;Habilita el puerto serie
 			BSF 	RCSTA,CREN		;Habilitamos la recepción continua (Si la bandera esta en 0, se recibe 1 dato, no un flujo constante de datos para ello la bandera se 'habilita' con 1)
 			CLRF	PORTB			;LIMPIA REGISTRO PORTB
+			BCF		PORTC,1
+			BCF		PORTC,2
 
 REPITE:		;Ahora la acción que queremos realizar
+			CLRF	PORTB
 			CALL	RETARDO
 			CALL	RECIBE
 			MOVWF	AUX				;AUX GUARDA DATO RE1CIBIDO
-			MOVLW	0X30			;W <- 00 ASCII
-			SUBWF	AUX,0			;W <- AUX - 00
-			BTFSS	STATUS,Z		;AUX = 0?
-			GOTO	NOCERO			;NO ES CERO
-			GOTO	ESCERO			;SI, ES CERO
-NOCERO:								;CONTINUA
-			MOVLW	0X31			;W <- 01 ASCII
-			SUBWF	AUX,0			;W <- AUX - 01
-			BTFSS	STATUS,Z		;AUX = 1?
-			GOTO	REPITE			;NO, VUELVE  A RECIBIR EL CARACTER
-			BSF		PORTB,0			;SI, ENCIENDE EL LED
+			;D?
+			MOVLW	0X44			;W <- 44 ASCII
+			SUBWF	AUX,0			;W <- AUX - 44
+			BTFSC	STATUS,Z		;AUX = D?
+			GOTO	DERECHA			;NO ES CERO
+			;d?
+			MOVLW	0X64			;W <- 64 ASCII
+			SUBWF	AUX,0			;W <- AUX - 64
+			BTFSC	STATUS,Z		;AUX = d?
+			GOTO	DERECHA			;NO ES CERO
+			;I?
+			MOVLW	0X49			;W <- 49 ASCII
+			SUBWF	AUX,0			;W <- AUX - 49
+			BTFSC	STATUS,Z		;AUX = I?
+			GOTO	IZQUIERDA		;NO ES CERO
+			;i?
+			MOVLW	0X69			;W <- 69 ASCII
+			SUBWF	AUX,0			;W <- AUX - 69
+			BTFSC	STATUS,Z		;AUX = i?
+			GOTO	IZQUIERDA		;NO ES CERO
+		
 			GOTO	REPITE
-ESCERO:		
-			BCF		PORTB,0			;APAGA EL LED	
+DERECHA:
+			BSF		PORTB,7
+LOOP_D		BCF		STATUS,C
+			CALL	RETARDO
+			RRF		PORTB,1
+			BTFSS	PORTB,0
+			GOTO	LOOP_D
+			CALL	RETARDO
+			RRF		PORTB,1
 			GOTO	REPITE
 
+IZQUIERDA:	
+			BSF		PORTB,0
+LOOP_I		BCF		STATUS,C
+			CALL	RETARDO
+			RLF		PORTB,1
+			BTFSS	PORTB,7
+			GOTO	LOOP_I
+			CALL	RETARDO
+			RLF		PORTB,1
+			GOTO	REPITE
 
 			;MOVLW	A'M'
 			;MOVWF 	TXREG			;Se envia a transmisión
@@ -59,7 +91,7 @@ RECIBE:		BTFSS 	PIR1,RCIF		;Status de la bandera RCIF? 1 cuando le ha llegado un
 			RETURN
 
 RETARDO:
-			MOVLW	D'1'
+			MOVLW	D'20'			;Medio segundo 
 			MOVWF	VAL3
 LOOP3:
 			MOVLW	D'250'

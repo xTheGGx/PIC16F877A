@@ -1,0 +1,64 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Sun Apr 21 19:52:56 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000005    program   0x0000b6
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x00005f      
+            92 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+            CENTENAS_LOOP   0x00004f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                    CICLO   0x000041    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   CONVER   0x00004e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+             DECENAS_LOOP   0x000056    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   ESPERA   0x000019    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   INICIO   0x000005    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                     LOOP   0x000038    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                    LOOP2   0x000036    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                    LOOP3   0x000034    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   RECIBE   0x00004a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   REPITE   0x000012    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                  RETARDO   0x000032    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+               RETARDO_AC   0x00003f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                TRANSMITE   0x000044    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   T_LOOP   0x000046    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+            UNIDADES_LOOP   0x00005d    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000005    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   REPITE   0x000012    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   ESPERA   0x000019    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                  RETARDO   0x000032    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                    LOOP3   0x000034    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                    LOOP2   0x000036    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                     LOOP   0x000038    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+               RETARDO_AC   0x00003f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                    CICLO   0x000041    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                TRANSMITE   0x000044    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   T_LOOP   0x000046    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   RECIBE   0x00004a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+                   CONVER   0x00004e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+            CENTENAS_LOOP   0x00004f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+             DECENAS_LOOP   0x000056    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+            UNIDADES_LOOP   0x00005d    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica07\e7.asm
+
+

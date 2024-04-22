@@ -1,4 +1,4 @@
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  1
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -46,85 +46,122 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 000C   0186           00020                         CLRF    TRISB                   ;portb como salida                      ;Asincro
                             na (sincronizar la transferencia de información)
-000D   1283           00021                         BCF     STATUS,RP0              ;Regresamos a banco 0
-                      00022                         
-000E   1798           00023                         BSF     RCSTA,SPEN              ;Habilita el puerto serie
-000F   1618           00024                         BSF     RCSTA,CREN              ;Habilitamos la recepción continua (Si la bander
-                            a esta en 0, se recibe 1 dato, no un flujo constante de datos para ello la bandera se 'habilita'
-0010   0186           00025                         CLRF    PORTB                   ;LIMPIA REGISTRO PORTB
-                      00026 
-0011                  00027 REPITE:         ;Ahora la acción que queremos realizar
-0011   2029           00028                         CALL    RETARDO
-0012   2025           00029                         CALL    RECIBE
-0013   00A3           00030                         MOVWF   AUX                             ;AUX GUARDA DATO RE1CIBIDO
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  2
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-0014   3030           00031                         MOVLW   0X30                    ;W <- 00 ASCII
-0015   0223           00032                         SUBWF   AUX,0                   ;W <- AUX - 00
-0016   1D03           00033                         BTFSS   STATUS,Z                ;AUX = 0?
-0017   2819           00034                         GOTO    NOCERO                  ;NO ES CERO
-0018   281F           00035                         GOTO    ESCERO                  ;SI, ES CERO
-0019                  00036 NOCERO:                                                         ;CONTINUA
-0019   3031           00037                         MOVLW   0X31                    ;W <- 01 ASCII
-001A   0223           00038                         SUBWF   AUX,0                   ;W <- AUX - 01
-001B   1D03           00039                         BTFSS   STATUS,Z                ;AUX = 1?
-001C   2811           00040                         GOTO    REPITE                  ;NO, VUELVE  A RECIBIR EL CARACTER
-001D   1406           00041                         BSF             PORTB,0                 ;SI, ENCIENDE EL LED
-001E   2811           00042                         GOTO    REPITE
-001F                  00043 ESCERO:         
-001F   1006           00044                         BCF             PORTB,0                 ;APAGA EL LED   
-0020   2811           00045                         GOTO    REPITE
-                      00046 
-                      00047 
-                      00048                         ;MOVLW  A'M'
-                      00049                         ;MOVWF  TXREG                   ;Se envia a transmisión
-                      00050                         ;BSF    STATUS,RP0              ;Cambio de banco
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0021   1C98           00051 TRANSMITE:      BTFSS   TXSTA,TRMT              ;Pregunto si ya se recibio el dato
-0022   2821           00052                         GOTO    TRANSMITE               ;0 no se ha recibido el dato
-0023   1283           00053                         BCF     STATUS,RP0              ;1 se ha recibido el dato, cambiamos de banco   
-0024   0008           00054                         RETURN
-                      00055 
-0025   1E8C           00056 RECIBE:         BTFSS   PIR1,RCIF               ;Status de la bandera RCIF? 1 cuando le ha llegado un da
-                            to
-0026   2825           00057                         GOTO    RECIBE                  ;0 no ha recibido un dato
-0027   081A           00058                         MOVF    RCREG,W                 ;1 se ha recibido un dato, transfiere el dato al
-                             registro RCREG
-0028   0008           00059                         RETURN
-                      00060 
-0029                  00061 RETARDO:
-0029   3001           00062                         MOVLW   D'1'
-002A   00A2           00063                         MOVWF   VAL3
-002B                  00064 LOOP3:
-002B   30FA           00065                         MOVLW   D'250'
-002C   00A1           00066                         MOVWF   VAL2    
-002D                  00067 LOOP2:
-002D   30FA           00068                         MOVLW   D'250'
-002E   00A0           00069                         MOVWF   VAL
-002F                  00070 LOOP: 
-Message[305]: Using default destination of 1 (file).
-002F   0BA0           00071                         DECFSZ  VAL
-0030   282F           00072                         GOTO    LOOP
-Message[305]: Using default destination of 1 (file).
-0031   0BA1           00073                         DECFSZ  VAL2
-0032   282D           00074                         GOTO    LOOP2
-Message[305]: Using default destination of 1 (file).
-0033   0BA2           00075                         DECFSZ  VAL3
-0034   282B           00076                         GOTO    LOOP3
-0035   0008           00077                         RETURN 
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  3
+000D   1087           00021                         BCF             TRISC,1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000E   1107           00022                         BCF             TRISC,2
+000F   1283           00023                         BCF     STATUS,RP0              ;Regresamos a banco 0
+                      00024                         
+0010   1798           00025                         BSF     RCSTA,SPEN              ;Habilita el puerto serie
+0011   1618           00026                         BSF     RCSTA,CREN              ;Habilitamos la recepción continua (Si la bander
+                            a esta en 0, se recibe 1 dato, no un flujo constante de datos para ello la bandera se 'habilita'
+0012   0186           00027                         CLRF    PORTB                   ;LIMPIA REGISTRO PORTB
+0013   1487           00028                         BSF             PORTC,1                 ;ACTIVAMOS AMBOS ENABLES
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00078 
-                      00079                         END                                             ;Fin del programa
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  4
+0014   1507           00029                         BSF             PORTC,2
+                      00030 
+0015                  00031 REPITE:         ;Ahora la acción que queremos realizar
+0015   2043           00032                         CALL    RETARDO
+0016   203F           00033                         CALL    RECIBE
+0017   00A3           00034                         MOVWF   AUX                             ;AUX GUARDA DATO RE1CIBIDO
+                      00035                         ;S?
+0018   3053           00036                         MOVLW   0X53                    ;W <- 53 ASCII
+0019   0223           00037                         SUBWF   AUX,0                   ;W <- AUX - 53
+001A   1903           00038                         BTFSC   STATUS,Z                ;AUX = S?
+001B   282D           00039                         GOTO    UNO                             ;NO ES CERO
+                      00040                         ;A?
+001C   3041           00041                         MOVLW   0X41                    ;W <- 41 ASCII
+001D   0223           00042                         SUBWF   AUX,0                   ;W <- AUX - 41
+001E   1903           00043                         BTFSC   STATUS,Z                ;AUX = A?
+001F   282F           00044                         GOTO    DOS                             ;NO ES CERO
+                      00045                         ;T?
+0020   3054           00046                         MOVLW   0X54                    ;W <- 54 ASCII
+0021   0223           00047                         SUBWF   AUX,0                   ;W <- AUX - 54
+0022   1903           00048                         BTFSC   STATUS,Z                ;AUX = T?
+0023   2832           00049                         GOTO    TRES                    ;NO ES CERO
+                      00050                         ;D?
+0024   3044           00051                         MOVLW   0X44                    ;W <- 44 ASCII
+0025   0223           00052                         SUBWF   AUX,0                   ;W <- AUX - 44
+0026   1903           00053                         BTFSC   STATUS,Z                ;AUX = D?
+0027   2835           00054                         GOTO    CUATRO                  ;NO ES CERO
+                      00055                         ;I?
+0028   3049           00056                         MOVLW   0X49                    ;W <- 49 ASCII
+0029   0223           00057                         SUBWF   AUX,0                   ;W <- AUX - 49
+002A   1903           00058                         BTFSC   STATUS,Z                ;AUX = I?
+002B   2838           00059                         GOTO    CINCO                   ;NO ES CERO
+                      00060                 
+002C   2815           00061                         GOTO    REPITE                  ;NINGUN CASO, VUELVE A RECIBIR
+                      00062 
+002D                  00063 UNO:
+002D   0186           00064                         CLRF    PORTB
+002E   2815           00065                         GOTO    REPITE
+002F                  00066 DOS:
+002F   3005           00067                         MOVLW   0X05
+0030   0086           00068                         MOVWF   PORTB
+0031   2815           00069                         GOTO    REPITE
+0032                  00070 TRES:   
+0032   300A           00071                         MOVLW   0X0A
+0033   0086           00072                         MOVWF   PORTB
+0034   2815           00073                         GOTO    REPITE
+0035                  00074 CUATRO:
+0035   3009           00075                         MOVLW   0X09
+0036   0086           00076                         MOVWF   PORTB
+0037   2815           00077                         GOTO    REPITE
+0038                  00078 CINCO:
+0038   3006           00079                         MOVLW   0X06
+0039   0086           00080                         MOVWF   PORTB
+003A   2815           00081                         GOTO    REPITE
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00082 
+                      00083                         ;MOVLW  A'M'
+                      00084                         ;MOVWF  TXREG                   ;Se envia a transmisión
+                      00085                         ;BSF    STATUS,RP0              ;Cambio de banco
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+003B   1C98           00086 TRANSMITE:      BTFSS   TXSTA,TRMT              ;Pregunto si ya se recibio el dato
+003C   283B           00087                         GOTO    TRANSMITE               ;0 no se ha recibido el dato
+003D   1283           00088                         BCF     STATUS,RP0              ;1 se ha recibido el dato, cambiamos de banco   
+003E   0008           00089                         RETURN
+                      00090 
+003F   1E8C           00091 RECIBE:         BTFSS   PIR1,RCIF               ;Status de la bandera RCIF? 1 cuando le ha llegado un da
+                            to
+0040   283F           00092                         GOTO    RECIBE                  ;0 no ha recibido un dato
+0041   081A           00093                         MOVF    RCREG,W                 ;1 se ha recibido un dato, transfiere el dato al
+                             registro RCREG
+0042   0008           00094                         RETURN
+                      00095 
+0043                  00096 RETARDO:
+0043   3014           00097                         MOVLW   D'20'                   ;Medio segundo 
+0044   00A2           00098                         MOVWF   VAL3
+0045                  00099 LOOP3:
+0045   30FA           00100                         MOVLW   D'250'
+0046   00A1           00101                         MOVWF   VAL2    
+0047                  00102 LOOP2:
+0047   30FA           00103                         MOVLW   D'250'
+0048   00A0           00104                         MOVWF   VAL
+0049                  00105 LOOP: 
+Message[305]: Using default destination of 1 (file).
+0049   0BA0           00106                         DECFSZ  VAL
+004A   2849           00107                         GOTO    LOOP
+Message[305]: Using default destination of 1 (file).
+004B   0BA1           00108                         DECFSZ  VAL2
+004C   2847           00109                         GOTO    LOOP2
+Message[305]: Using default destination of 1 (file).
+004D   0BA2           00110                         DECFSZ  VAL3
+004E   2845           00111                         GOTO    LOOP3
+004F   0008           00112                         RETURN 
+                      00113 
+                      00114                         END                                             ;Fin del programa
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  4
 
 
 SYMBOL TABLE
@@ -177,19 +214,22 @@ CCPR2L                            0000001B
 CHS0                              00000003
 CHS1                              00000004
 CHS2                              00000005
+CINCO                             00000038
 CKE                               00000006
 CKP                               00000004
 CREN                              00000004
 CSRC                              00000007
-D                                 00000005
-DATA_ADDRESS                      00000005
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  5
+CUATRO                            00000035
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+D                                 00000005
+DATA_ADDRESS                      00000005
 DC                                00000001
+DOS                               0000002F
 D_A                               00000005
 D_NOT_A                           00000005
 EEADR                             0000010D
@@ -201,7 +241,6 @@ EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
 EEPGD                             00000007
-ESCERO                            0000001F
 F                                 00000001
 FERR                              00000002
 FSR                               00000004
@@ -223,10 +262,9 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              0000002F
-LOOP2                             0000002D
-LOOP3                             0000002B
-NOCERO                            00000019
+LOOP                              00000049
+LOOP2                             00000047
+LOOP3                             00000045
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
 NOT_BO                            00000000
@@ -241,13 +279,13 @@ NOT_TO                            00000004
 NOT_TX8                           00000006
 NOT_W                             00000002
 NOT_WRITE                         00000002
-OBF                               00000006
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  6
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  6
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+OBF                               00000006
 OERR                              00000001
 OPTION_REG                        00000081
 P                                 00000004
@@ -300,13 +338,13 @@ RC2                               00000002
 RC3                               00000003
 RC4                               00000004
 RC5                               00000005
-RC6                               00000006
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  7
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  7
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RC6                               00000006
 RC7                               00000007
 RC8_9                             00000006
 RC9                               00000006
@@ -329,9 +367,9 @@ RE0                               00000000
 RE1                               00000001
 RE2                               00000002
 READ_WRITE                        00000002
-RECIBE                            00000025
-REPITE                            00000011
-RETARDO                           00000029
+RECIBE                            0000003F
+REPITE                            00000015
+RETARDO                           00000043
 RP0                               00000005
 RP1                               00000006
 RSEN                              00000001
@@ -359,13 +397,13 @@ SSPM3                             00000003
 SSPOV                             00000006
 SSPSTAT                           00000094
 STATUS                            00000003
-SYNC                              00000004
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  8
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  8
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+SYNC                              00000004
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
@@ -397,7 +435,8 @@ TOUTPS0                           00000003
 TOUTPS1                           00000004
 TOUTPS2                           00000005
 TOUTPS3                           00000006
-TRANSMITE                         00000021
+TRANSMITE                         0000003B
+TRES                              00000032
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
@@ -417,14 +456,14 @@ TRISB7                            00000007
 TRISC                             00000087
 TRISC0                            00000000
 TRISC1                            00000001
-TRISC2                            00000002
-TRISC3                            00000003
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE  9
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE  9
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TRISC2                            00000002
+TRISC3                            00000003
 TRISC4                            00000004
 TRISC5                            00000005
 TRISC6                            00000006
@@ -453,6 +492,7 @@ TXIF                              00000004
 TXREG                             00000019
 TXSTA                             00000098
 UA                                00000001
+UNO                               0000002D
 VAL                               00000020
 VAL2                              00000021
 VAL3                              00000022
@@ -475,15 +515,15 @@ _CP_OFF                           00003FFF
 _CP_UPPER_256                     00002FEF
 _DEBUG_OFF                        00003FFF
 _DEBUG_ON                         000037FF
-_DEVID1                           00002006
-_FOSC_EXTRC                       00003FFF
-_FOSC_HS                          00003FFE
-MPASM  5.51                            E3.ASM   4-21-2024  19:46:58         PAGE 10
+MPASM  5.51                            E6.ASM   4-21-2024  19:50:39         PAGE 10
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
 _FOSC_LP                          00003FFC
 _FOSC_XT                          00003FFD
 _HS_OSC                           00003FFE
@@ -511,16 +551,17 @@ __16F877A                         00000001
 
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
-0000 : X----XXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXX----------
+0000 : X----XXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX ---------------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    50
-Program Memory Words Free:  8142
+Program Memory Words Used:    76
+Program Memory Words Free:  8116
 
 
 Errors   :     0
 Warnings :     6 reported,     0 suppressed
-Messages :    10 reported,     0 suppressed
+Messages :    12 reported,     0 suppressed
 
 

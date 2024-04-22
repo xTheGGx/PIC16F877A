@@ -67,7 +67,11 @@ RECIBE:		;BTFSS 	PIR1,RCIF		;Status de la bandera RCIF? 1 cuando le ha llegado u
 			MOVWF 	TXREG			;Se envia a transmisión
 			BSF 	STATUS,RP0		;Cambio de banco
 			CALL 	TRANSMITE
-			MOVLW	d'15'
+			MOVLW	0X0A
+			MOVWF 	TXREG			;Se envia a transmisión
+			BSF 	STATUS,RP0		;Cambio de banco
+			CALL 	TRANSMITE
+			MOVLW	0X0D
 			MOVWF 	TXREG			;Se envia a transmisión
 			BSF 	STATUS,RP0		;Cambio de banco
 			CALL 	TRANSMITE
