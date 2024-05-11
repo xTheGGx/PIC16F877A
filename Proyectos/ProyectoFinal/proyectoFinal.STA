@@ -1,0 +1,90 @@
+
+ROM used:   5235/8192 (64%)
+            6145/8192 (75%) including unused fragments
+
+            4.0 Average locations per line
+            25.7 Average locations per statement
+
+RAM used:   33/368 (9%) at main() level
+            89/368 (24%) worst case
+
+Stack used: 9 worst case (4 in main + 5 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  196   120  59  proyectoFinal.c
+  671     0   0  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h
+  456    84  41  ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\lcd.c
+----- -----
+ 1323   204 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     20   0    1             @delay_ms1
+ Inline         3   596  5.9  lcd_read_byte
+ Inline         0    59  4.2  lcd_read_nibble
+ Inline         1   179  3.3  lcd_send_nibble
+ Inline         3   460  4.7  lcd_send_byte
+1    219   4    6   814  7.2  lcd_init
+ Inline         4   208  6.3  lcd_gotoxy
+0    591  11    1   354  4.7  lcd_putc
+3      1   0    0     5  1.0  loader16F877
+1    763  15    0   497  1.9  inicioLCD
+0      6   0    0             @const670
+0     86   2    4             @PSTRINGC7_650
+0      9   0    0             @const672
+0      9   0    0             @const673
+0      9   0    0             @const674
+0      9   0    0             @const676
+0   1063  20    0   759  4.3  imprimeMenu
+0      8   0    0             @const678
+0      8   0    0             @const679
+0      8   0    0             @const680
+0      8   0    0             @const681
+0      8   0    0             @const682
+0      8   0    0             @const683
+0      8   0    0             @const684
+0      8   0    0             @const685
+2   1573  30    4  1023  5.7  imprimeLectura
+ Inline         2             @ITOF
+1    117   2   13             @MULFF
+ Inline        14             @DIVFF
+0      9   0    0             @const695
+0      8   0    0             @const696
+ Inline         5             @FTOSD
+ Inline        13             @DIV3232
+1    386   7   13             @PRINTF_L32D_650FPFPF
+ Inline         5             @PSTRINGCN7_650
+0      9   0    0             @const707
+0      9   0    0             @const708
+0      9   0    0             @const709
+0      9   0    0             @const710
+1     86   2    4   803  6.6  port_rb
+1     92   2    0   362  3.3  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               13
+    Statements              204
+    Comments                259
+    Volume (V)              9862
+    Difficulty (D)          53.7
+    Effort to implement (E) 529479
+    Time to implement (T)   8 hours, 10 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   31
+    Maintainability (MI)    121
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-0004E    75  0  
+0004F-007FF  1919  50  
+00800-00FFF  1663  385  
+01000-017FF  1573  475  
+01800-01EFF     0  1792  
+01F00-01FFF     1  255  
+
+
+
