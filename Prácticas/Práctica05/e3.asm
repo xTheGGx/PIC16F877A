@@ -20,7 +20,7 @@ INICIO: 		CLRF 	PORTA 		;se limpia el contenido del puerto PORTA
 				MOVLW 	3FH 		;Configura el puerto A como entrada
 				MOVWF 	TRISA		
 							 		;Se coloca un 0 en el registro W
-				CLRF 	TRISB 		; Se configura al puerto PORTB como puerto de salida
+				CLRF 	TRISC 		; Se configura al puerto PORTB como puerto de salida
 				BCF 	STATUS,RP0 	;Regresa al banco cero
 LOOP:			;Modo de direccionamiento indexado
 				MOVF 	PORTA,W		; W <- (PORTA)
@@ -37,37 +37,37 @@ LOOP:			;Modo de direccionamiento indexado
 
 
 CERO:			
-				CLRF	PORTB
+				CLRF	PORTC
 				GOTO 	LOOP
 UNO:
 				MOVLW B'00000001'
-				MOVWF PORTB
+				MOVWF PORTC
 				MOVLW	D'5'
 				MOVWF	CTE2
 				CALL  RETARDO
-				CLRF  PORTB
+				CLRF  PORTC
 				MOVLW	D'100'
 				MOVWF	CTE2
 				CALL  RETARDO
 				GOTO LOOP
 DOS:
 				MOVLW B'00000001'
-				MOVWF PORTB
+				MOVWF PORTC
 				MOVLW	D'7'
 				MOVWF	CTE2
 				CALL  RETARDO
-				CLRF  PORTB
+				CLRF  PORTC
 				MOVLW	D'100'
 				MOVWF	CTE2
 				CALL  RETARDO
 				GOTO LOOP
 TRES:
 				MOVLW B'00000001'
-				MOVWF PORTB
+				MOVWF PORTC
 				MOVLW	D'10'
 				MOVWF	CTE2
 				CALL  RETARDO
-				CLRF  PORTB
+				CLRF  PORTC
 				MOVLW	D'100'
 				MOVWF	CTE2
 				CALL  RETARDO

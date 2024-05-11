@@ -1,0 +1,20 @@
+[PROJECT]
+Target=ejemplo.hex
+Processor_Text=PIC16F877
+CCSVersion=5.015
+Compiler=PCM
+[Target Data]
+FileList=ejemplo.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;C:\Program Files (x86)\PICC\DriversC:\Program Files (x86)\PICC\Devices\
+[ejemplo.c]
+Type=4
+[mru-list]
+1=ejemplo.c
+[Opened Files]
+1=ejemplo.c
+2=..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16f877.h
+3=
+[Units]
+Count=1
+1=ejemplo (main)

@@ -1,0 +1,244 @@
+CCS PCM C Compiler, Version 5.015, 5967               06-may.-24 12:00
+
+               Filename:   C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica08\e4.lst
+
+               ROM used:   198 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           9 (2%) worst case
+               Stack used: 2 locations (1 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   08D
+0003:  NOP
+.................... #include <16f877.h> 
+.................... //////////// Standard Header file for the PIC16F877 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877 
+0004:  DATA 20,2A
+0005:  DATA 6F,32
+0006:  DATA EF,39
+0007:  DATA 20,36
+0008:  DATA EF,39
+0009:  DATA 20,31
+000A:  DATA 69,3A
+000B:  DATA 73,10
+000C:  DATA 65,37
+000D:  DATA E3,32
+000E:  DATA 6E,32
+000F:  DATA 69,32
+0010:  DATA EF,39
+0011:  DATA 20,05
+0012:  DATA 0D,00
+0013:  DATA 20,2A
+0014:  DATA 6F,32
+0015:  DATA EF,39
+0016:  DATA 20,36
+0017:  DATA EF,39
+0018:  DATA 20,36
+0019:  DATA 65,32
+001A:  DATA 73,10
+001B:  DATA 61,38
+001C:  DATA E1,33
+001D:  DATA 61,32
+001E:  DATA EF,39
+001F:  DATA 20,05
+0020:  DATA 0D,00
+0021:  MOVF   0B,W
+0022:  MOVWF  21
+0023:  BCF    0B.7
+0024:  BSF    03.5
+0025:  BSF    03.6
+0026:  BSF    0C.7
+0027:  BSF    0C.0
+0028:  NOP
+0029:  NOP
+002A:  BCF    03.5
+002B:  BCF    03.6
+002C:  BTFSC  21.7
+002D:  BSF    0B.7
+002E:  BSF    03.6
+002F:  MOVF   0C,W
+0030:  ANDLW  7F
+0031:  BTFSC  03.2
+0032:  GOTO   077
+0033:  BCF    03.6
+0034:  MOVWF  21
+0035:  BSF    03.6
+0036:  MOVF   0D,W
+0037:  BCF    03.6
+0038:  MOVWF  22
+0039:  BSF    03.6
+003A:  MOVF   0F,W
+003B:  BCF    03.6
+003C:  MOVWF  23
+003D:  MOVF   21,W
+003E:  BTFSS  0C.4
+003F:  GOTO   03E
+0040:  MOVWF  19
+0041:  MOVF   22,W
+0042:  BSF    03.6
+0043:  MOVWF  0D
+0044:  BCF    03.6
+0045:  MOVF   23,W
+0046:  BSF    03.6
+0047:  MOVWF  0F
+0048:  BCF    03.6
+0049:  MOVF   0B,W
+004A:  MOVWF  24
+004B:  BCF    0B.7
+004C:  BSF    03.5
+004D:  BSF    03.6
+004E:  BSF    0C.7
+004F:  BSF    0C.0
+0050:  NOP
+0051:  NOP
+0052:  BCF    03.5
+0053:  BCF    03.6
+0054:  BTFSC  24.7
+0055:  BSF    0B.7
+0056:  BSF    03.6
+0057:  RLF    0C,W
+0058:  RLF    0E,W
+0059:  ANDLW  7F
+005A:  BTFSC  03.2
+005B:  GOTO   077
+005C:  BCF    03.6
+005D:  MOVWF  21
+005E:  BSF    03.6
+005F:  MOVF   0D,W
+0060:  BCF    03.6
+0061:  MOVWF  22
+0062:  BSF    03.6
+0063:  MOVF   0F,W
+0064:  BCF    03.6
+0065:  MOVWF  23
+0066:  MOVF   21,W
+0067:  BTFSS  0C.4
+0068:  GOTO   067
+0069:  MOVWF  19
+006A:  MOVF   22,W
+006B:  BSF    03.6
+006C:  MOVWF  0D
+006D:  BCF    03.6
+006E:  MOVF   23,W
+006F:  BSF    03.6
+0070:  MOVWF  0F
+0071:  INCF   0D,F
+0072:  BTFSC  03.2
+0073:  INCF   0F,F
+0074:  BCF    03.6
+0075:  GOTO   021
+0076:  BSF    03.6
+0077:  BCF    03.6
+0078:  RETURN
+....................  
+.................... #list 
+....................  
+.................... #fuses HS,NOPROTECT, 
+.................... #use delay(clock=20000000) 
+0079:  MOVLW  22
+007A:  MOVWF  04
+007B:  BCF    03.7
+007C:  MOVF   00,W
+007D:  BTFSC  03.2
+007E:  GOTO   08C
+007F:  MOVLW  06
+0080:  MOVWF  78
+0081:  CLRF   77
+0082:  DECFSZ 77,F
+0083:  GOTO   082
+0084:  DECFSZ 78,F
+0085:  GOTO   081
+0086:  MOVLW  7B
+0087:  MOVWF  77
+0088:  DECFSZ 77,F
+0089:  GOTO   088
+008A:  DECFSZ 00,F
+008B:  GOTO   07F
+008C:  RETURN
+.................... #use rs232(baud=9600, xmit=PIN_C6, rcv=PIN_C7) 
+.................... #org 0x1F00, 0x1FFF void loader16F877(void) {} 
+*
+1F00:  RETURN
+.................... void main(){ 
+*
+008D:  MOVF   03,W
+008E:  ANDLW  1F
+008F:  MOVWF  03
+0090:  MOVLW  81
+0091:  BSF    03.5
+0092:  MOVWF  19
+0093:  MOVLW  A6
+0094:  MOVWF  18
+0095:  MOVLW  90
+0096:  BCF    03.5
+0097:  MOVWF  18
+0098:  BSF    03.5
+0099:  BSF    1F.0
+009A:  BSF    1F.1
+009B:  BSF    1F.2
+009C:  BCF    1F.3
+009D:  BCF    03.7
+....................  while(1){ 
+....................  output_b(0xff); // 
+009E:  CLRF   06
+009F:  MOVLW  FF
+00A0:  BCF    03.5
+00A1:  MOVWF  06
+....................  printf(" Todos los bits encendidos \n\r"); 
+00A2:  MOVLW  04
+00A3:  BSF    03.6
+00A4:  MOVWF  0D
+00A5:  MOVLW  00
+00A6:  MOVWF  0F
+00A7:  BCF    03.6
+00A8:  CALL   021
+....................  delay_ms(1000); 
+00A9:  MOVLW  04
+00AA:  MOVWF  21
+00AB:  MOVLW  FA
+00AC:  MOVWF  22
+00AD:  CALL   079
+00AE:  DECFSZ 21,F
+00AF:  GOTO   0AB
+....................  output_b(0x00); 
+00B0:  BSF    03.5
+00B1:  CLRF   06
+00B2:  BCF    03.5
+00B3:  CLRF   06
+....................  printf(" Todos los leds apagados \n\r"); 
+00B4:  MOVLW  13
+00B5:  BSF    03.6
+00B6:  MOVWF  0D
+00B7:  MOVLW  00
+00B8:  MOVWF  0F
+00B9:  BCF    03.6
+00BA:  CALL   021
+....................  delay_ms(1000); 
+00BB:  MOVLW  04
+00BC:  MOVWF  21
+00BD:  MOVLW  FA
+00BE:  MOVWF  22
+00BF:  CALL   079
+00C0:  DECFSZ 21,F
+00C1:  GOTO   0BD
+00C2:  BSF    03.5
+00C3:  GOTO   09E
+....................  }//while 
+....................  }//main 
+00C4:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,5 +1,5 @@
 MPLINK 4.49, Linker
-Linker Map File - Created Sun Apr 07 22:04:24 2024
+Linker Map File - Created Mon May 06 13:23:42 2024
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -22,29 +22,29 @@ Linker Map File - Created Sun Apr 07 22:04:24 2024
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                   BUCLE1   0x00003b    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                   BUCLE2   0x000039    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                     CERO   0x000019    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                      DOS   0x000025    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                   INICIO   0x000005    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                     LOOP   0x00000e    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                  RETARDO   0x000039    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                     TRES   0x00002f    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                      UNO   0x00001b    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
+                   BUCLE1   0x00003b    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                   BUCLE2   0x000039    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                     CERO   0x000019    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                      DOS   0x000025    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                   INICIO   0x000005    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                     LOOP   0x00000e    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                  RETARDO   0x000039    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                     TRES   0x00002f    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                      UNO   0x00001b    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                   INICIO   0x000005    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                     LOOP   0x00000e    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                     CERO   0x000019    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                      UNO   0x00001b    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                      DOS   0x000025    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                     TRES   0x00002f    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                   BUCLE2   0x000039    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                  RETARDO   0x000039    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
-                   BUCLE1   0x00003b    program     static C:\Users\Alexis\Desktop\FI\Microcomputadoras\Lab\P5\e3.asm
+                   INICIO   0x000005    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                     LOOP   0x00000e    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                     CERO   0x000019    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                      UNO   0x00001b    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                      DOS   0x000025    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                     TRES   0x00002f    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                   BUCLE2   0x000039    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                  RETARDO   0x000039    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
+                   BUCLE1   0x00003b    program     static C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica05\e3.asm
 
 

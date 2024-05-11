@@ -4,7 +4,7 @@ include<p16f877.inc>
 valor1 equ h'21'
 valor2 equ h'22'
 valor3 equ h'23'
-cte1 equ 11h
+cte1 equ 03h
 cte2 equ 50h
 cte3 equ 60h
 org 0h
@@ -49,16 +49,16 @@ UNO:
 				MOVWF contadorEdo1
 LOOP_ESTADO_1
 				CALL retardo
-				MOVLW b'00001000'
+				MOVLW b'10000000'
 				MOVWF PORTB
 				CALL retardo
-				MOVLW b'00000100'
+				MOVLW b'01000000'
 				MOVWF PORTB
 				CALL retardo
-				MOVLW b'00000010'
+				MOVLW b'00100000'
 				MOVWF PORTB
 				CALL retardo
-				MOVLW b'00000001'
+				MOVLW b'00010000'
 				MOVWF PORTB
 				CALL retardo
 				DECFSZ contadorEdo1
@@ -69,16 +69,16 @@ DOS:
 				MOVWF contadorEdo2
 LOOP_ESTADO_2
 				CALL retardo
-				MOVLW b'00000001'
+				MOVLW b'00010000'
 				MOVWF PORTB
 				CALL retardo
-				MOVLW b'00000010'
+				MOVLW b'00100000'
 				MOVWF PORTB
 				CALL retardo
-				MOVLW b'00000100'
+				MOVLW b'01000000'
 				MOVWF PORTB
 				CALL retardo
-				MOVLW b'00001000'
+				MOVLW b'10000000'
 				MOVWF PORTB
 				CALL retardo
 				DECFSZ contadorEdo2

@@ -1,0 +1,69 @@
+CCS PCM C Compiler, Version 5.015, 5967               06-may.-24 11:59
+
+               Filename:   C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica08\e3.lst
+
+               ROM used:   27 words (0%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           6 (2%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include <16f877.h> 
+.................... //////////// Standard Header file for the PIC16F877 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877 
+....................  
+.................... #list 
+....................  
+.................... #fuses HS,NOPROTECT, 
+.................... #use delay(clock=20000000) 
+.................... #org 0x1F00, 0x1FFF void loader16F877(void) {} 
+*
+1F00:  RETURN
+.................... int var1; 
+.................... void main(){ 
+*
+0004:  MOVF   03,W
+0005:  ANDLW  1F
+0006:  MOVWF  03
+0007:  BSF    03.5
+0008:  BSF    1F.0
+0009:  BSF    1F.1
+000A:  BSF    1F.2
+000B:  BCF    1F.3
+000C:  BCF    03.7
+....................  while(1){ 
+....................  var1=input_a(); 
+000D:  MOVLW  FF
+000E:  MOVWF  05
+000F:  BCF    03.5
+0010:  MOVF   05,W
+0011:  MOVWF  20
+....................  output_b(var1); 
+0012:  BSF    03.5
+0013:  CLRF   06
+0014:  BCF    03.5
+0015:  MOVF   20,W
+0016:  MOVWF  06
+0017:  BSF    03.5
+0018:  GOTO   00D
+....................  }//while 
+....................  }//main 
+0019:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

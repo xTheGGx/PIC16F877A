@@ -1,0 +1,64 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+021     MAIN.@SCRATCH1
+021     @PSTRINGC7_9600_62_63.@SCRATCH1
+022     @delay_ms1.P1
+022     @PSTRINGC7_9600_62_63.@SCRATCH2
+023     @PSTRINGC7_9600_62_63.@SCRATCH3
+024     @PSTRINGC7_9600_62_63.@SCRATCH4
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @const621.call
+000013  @const623.call
+000021  @PSTRINGC7_9600_62_63
+000079  @delay_ms1
+00008D  @cinit1
+00008D  MAIN
+00009D  @cinit2
+001F00  loader16F877
+
+Project Directory:
+    C:\Users\USER\Documents\GitHub\PIC16F877A\Prácticas\Práctica08\
+
+Project Files:
+    e4.c                                                    [06-may.-24 12:00  CRC=5BC2252D]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16f877.h [12-nov.-13 14:35  CRC=ADB5114D]
+
+Source signature=B72C47C7
+
+Units:
+    e4 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   e4.xsym
+    Errors:      e4.err
+    Ext Symbols: e4.esym
+    INHX8:       e4.hex
+    Symbols:     e4.sym
+    List:        e4.lst
+    Debug/COFF:  e4.cof
+    Project:     e4.ccspjt
+    Call Tree:   e4.tre
+    Statistics:  e4.STA
