@@ -1,4 +1,4 @@
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  1
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,138 +57,139 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
                       00032 
 0010   1798           00033                         BSF     RCSTA,SPEN              ;Habilita el puerto serie
 0011   1618           00034                         BSF     RCSTA,CREN              ;Habilitamos la recepción continua (Si la bander
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  2
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
                             a esta en 0, se recibe 1 dato, no un flujo constante de datos para ello la bandera se 'habilita'
-                      00035 ;COMPUTER CAMBIA LA TEMPERATURA AMBIENTE Y MUESTRALA EN LA TERMINAL PORFAVOR
-0012                  00036 REPITE:         ;Ahora la acción que queremos realizar
-0012   01A6           00037                         CLRF    UNIDADES
-0013   01A7           00038                         CLRF    DECENAS
-0014   01A8           00039                         CLRF    CENTENAS
-0015   30E9           00040                         MOVLW   B'11101001'
-0016   009F           00041                         MOVWF   ADCON0
-0017   151F           00042                         BSF             ADCON0,2                ;ACTIVAMOS      GO/DONE
-0018   203F           00043                         CALL    RETARDO_AC              ;RETARDO DE 200 MICROSEGUNDOS
-0019   191F           00044 ESPERA:         BTFSC   ADCON0,2
-001A   2819           00045                         GOTO    ESPERA                  ;ESPERA A CONCLUYA EL PROCESO DE CONVERSION
-001B   081E           00046                         MOVFW   ADRESH                  ;LEEMOS RESULTADO DE REGISTRO ADRESH Y LO GUARDA
+0012   0186           00035                         CLRF    PORTB
+                      00036 ;COMPUTER CAMBIA LA TEMPERATURA AMBIENTE Y MUESTRALA EN LA TERMINAL PORFAVOR
+0013                  00037 REPITE:         ;Ahora la acción que queremos realizar
+0013   01A6           00038                         CLRF    UNIDADES
+0014   01A7           00039                         CLRF    DECENAS
+0015   01A8           00040                         CLRF    CENTENAS
+0016   30E9           00041                         MOVLW   B'11101001'
+0017   009F           00042                         MOVWF   ADCON0
+0018   151F           00043                         BSF             ADCON0,2                ;ACTIVAMOS      GO/DONE
+0019   2040           00044                         CALL    RETARDO_AC              ;RETARDO DE 200 MICROSEGUNDOS
+001A   191F           00045 ESPERA:         BTFSC   ADCON0,2
+001B   281A           00046                         GOTO    ESPERA                  ;ESPERA A CONCLUYA EL PROCESO DE CONVERSION
+001C   081E           00047                         MOVFW   ADRESH                  ;LEEMOS RESULTADO DE REGISTRO ADRESH Y LO GUARDA
                             MOS EL W                
-001C   00A5           00047                         MOVWF   TEMP                    ;ALMACENAMOS EL RESULTADO EN VARIBALE TEMP
-                      00048                         ;OPERAR ENTRADA
-001D   0725           00049                         ADDWF   TEMP,W
-001E   204E           00050                         CALL    CONVER
-                      00051                         ;TRANSMITIR 
-001F   0828           00052                         MOVFW   CENTENAS
-0020   3E30           00053                         ADDLW   0X30
-0021   2044           00054                         CALL    TRANSMITE
-0022   0827           00055                         MOVFW   DECENAS
-0023   3E30           00056                         ADDLW   0X30
-0024   2044           00057                         CALL    TRANSMITE
-0025   0826           00058                         MOVFW   UNIDADES
-0026   3E30           00059                         ADDLW   0X30
-0027   2044           00060                         CALL    TRANSMITE
-0028   3043           00061                         MOVLW   A'C'
-0029   2044           00062                         CALL    TRANSMITE
-002A   30F8           00063                         MOVLW   0XF8
-002B   2044           00064                         CALL    TRANSMITE
-002C   300A           00065                         MOVLW   0X0A                    ;SALTO DE LINEA
-002D   2044           00066                         CALL    TRANSMITE
-002E   300D           00067                         MOVLW   0X0D                    ;RETORNO DE CARRO
-002F   2044           00068                         CALL    TRANSMITE
-0030   2032           00069                         CALL    RETARDO
-0031   2812           00070                         GOTO    REPITE
-                      00071 
-                      00072         
-                      00073 
+001D   00A5           00048                         MOVWF   TEMP                    ;ALMACENAMOS EL RESULTADO EN VARIBALE TEMP
+                      00049                         ;OPERAR ENTRADA
+001E   0725           00050                         ADDWF   TEMP,W
+001F   204F           00051                         CALL    CONVER
+                      00052                         ;TRANSMITIR 
+0020   0828           00053                         MOVFW   CENTENAS
+0021   3E30           00054                         ADDLW   0X30
+0022   2045           00055                         CALL    TRANSMITE
+0023   0827           00056                         MOVFW   DECENAS
+0024   3E30           00057                         ADDLW   0X30
+0025   2045           00058                         CALL    TRANSMITE
+0026   0826           00059                         MOVFW   UNIDADES
+0027   3E30           00060                         ADDLW   0X30
+0028   2045           00061                         CALL    TRANSMITE
+0029   3043           00062                         MOVLW   A'C'
+002A   2045           00063                         CALL    TRANSMITE
+002B   30F8           00064                         MOVLW   0XF8
+002C   2045           00065                         CALL    TRANSMITE
+002D   300A           00066                         MOVLW   0X0A                    ;SALTO DE LINEA
+002E   2045           00067                         CALL    TRANSMITE
+002F   300D           00068                         MOVLW   0X0D                    ;RETORNO DE CARRO
+0030   2045           00069                         CALL    TRANSMITE
+0031   2033           00070                         CALL    RETARDO
+0032   2813           00071                         GOTO    REPITE
+                      00072 
+                      00073         
                       00074 
-0032                  00075 RETARDO:
-0032   3014           00076                         MOVLW   D'20'
-0033   00A2           00077                         MOVWF   VAL3
-0034                  00078 LOOP3:
-0034   30FA           00079                         MOVLW   D'250'
-0035   00A1           00080                         MOVWF   VAL2    
-0036                  00081 LOOP2:
-0036   30FA           00082                         MOVLW   D'250'
-0037   00A0           00083                         MOVWF   VAL
-0038                  00084 LOOP: 
-Message[305]: Using default destination of 1 (file).
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  3
+                      00075 
+0033                  00076 RETARDO:
+0033   3014           00077                         MOVLW   D'20'
+0034   00A2           00078                         MOVWF   VAL3
+0035                  00079 LOOP3:
+0035   30FA           00080                         MOVLW   D'250'
+0036   00A1           00081                         MOVWF   VAL2    
+0037                  00082 LOOP2:
+0037   30FA           00083                         MOVLW   D'250'
+0038   00A0           00084                         MOVWF   VAL
+0039                  00085 LOOP: 
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0038   0BA0           00085                         DECFSZ  VAL
-0039   2838           00086                         GOTO    LOOP
 Message[305]: Using default destination of 1 (file).
-003A   0BA1           00087                         DECFSZ  VAL2
-003B   2836           00088                         GOTO    LOOP2
+0039   0BA0           00086                         DECFSZ  VAL
+003A   2839           00087                         GOTO    LOOP
 Message[305]: Using default destination of 1 (file).
-003C   0BA2           00089                         DECFSZ  VAL3
-003D   2834           00090                         GOTO    LOOP3
-003E   0008           00091                         RETURN 
-                      00092 
-003F                  00093 RETARDO_AC:
-003F   30FF           00094                         MOVLW   D'255'
-0040   00A4           00095                         MOVWF   VALUE
+003B   0BA1           00088                         DECFSZ  VAL2
+003C   2837           00089                         GOTO    LOOP2
 Message[305]: Using default destination of 1 (file).
-0041   0BA4           00096 CICLO           DECFSZ  VALUE
-0042   2841           00097                         GOTO    CICLO   
-0043   0008           00098                         RETURN
-                      00099 
-                      00100                         ;Entra contenido de registro W
-0044   0099           00101 TRANSMITE:      MOVWF   TXREG                   ;Se envia a transmisión
-0045   1683           00102                         BSF     STATUS,RP0              ;Cambio de banco
+003D   0BA2           00090                         DECFSZ  VAL3
+003E   2835           00091                         GOTO    LOOP3
+003F   0008           00092                         RETURN 
+                      00093 
+0040                  00094 RETARDO_AC:
+0040   30FF           00095                         MOVLW   D'255'
+0041   00A4           00096                         MOVWF   VALUE
+Message[305]: Using default destination of 1 (file).
+0042   0BA4           00097 CICLO           DECFSZ  VALUE
+0043   2842           00098                         GOTO    CICLO   
+0044   0008           00099                         RETURN
+                      00100 
+                      00101                         ;Entra contenido de registro W
+0045   0099           00102 TRANSMITE:      MOVWF   TXREG                   ;Se envia a transmisión
+0046   1683           00103                         BSF     STATUS,RP0              ;Cambio de banco
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0046   1C98           00103 T_LOOP          BTFSS   TXSTA,TRMT              ;Pregunto si ya se recibio el dato
-0047   2846           00104                         GOTO    T_LOOP                  ;0 no se ha recibido el dato
-0048   1283           00105                         BCF     STATUS,RP0              ;1 se ha recibido el dato, cambiamos de banco   
-0049   0008           00106                         RETURN
-                      00107                         ;Sale dato recibido en registro W
-004A   1E8C           00108 RECIBE:         BTFSS   PIR1,RCIF               ;Status de la bandera RCIF? 1 cuando le ha llegado un da
+0047   1C98           00104 T_LOOP          BTFSS   TXSTA,TRMT              ;Pregunto si ya se recibio el dato
+0048   2847           00105                         GOTO    T_LOOP                  ;0 no se ha recibido el dato
+0049   1283           00106                         BCF     STATUS,RP0              ;1 se ha recibido el dato, cambiamos de banco   
+004A   0008           00107                         RETURN
+                      00108                         ;Sale dato recibido en registro W
+004B   1E8C           00109 RECIBE:         BTFSS   PIR1,RCIF               ;Status de la bandera RCIF? 1 cuando le ha llegado un da
                             to
-004B   284A           00109                         GOTO    RECIBE                  ;0 no ha recibido un dato
-004C   081A           00110                         MOVF    RCREG,W                 ;1 se ha recibido un dato, transfiere el dato al
+004C   284B           00110                         GOTO    RECIBE                  ;0 no ha recibido un dato
+004D   081A           00111                         MOVF    RCREG,W                 ;1 se ha recibido un dato, transfiere el dato al
                              registro RCREG
-004D   0008           00111                         RETURN
-004E                  00112 CONVER:
-004E   00A3           00113                         MOVWF   AUX
-004F                  00114 CENTENAS_LOOP:
-004F   3064           00115                 MOVLW   .100            ; Valor para restar (100 decimal)
-0050   0223           00116                 SUBWF   AUX, W         ; Intenta restar 100
-0051   1C03           00117                 BTFSS   STATUS, C       ; Si hay carry, el resultado es negativo, salta
-0052   2856           00118                         GOTO    DECENAS_LOOP    ; Procede a convertir decenas si no se puede restar m?s 
+004E   0008           00112                         RETURN
+004F                  00113 CONVER:
+004F   00A3           00114                         MOVWF   AUX
+0050                  00115 CENTENAS_LOOP:
+0050   3064           00116                 MOVLW   .100            ; Valor para restar (100 decimal)
+0051   0223           00117                 SUBWF   AUX, W         ; Intenta restar 100
+0052   1C03           00118                 BTFSS   STATUS, C       ; Si hay carry, el resultado es negativo, salta
+0053   2857           00119                         GOTO    DECENAS_LOOP    ; Procede a convertir decenas si no se puede restar m?s 
                             centenas
-0053   0AA8           00119                 INCF    CENTENAS, F     ; Incrementa las centenas
-0054   00A3           00120                 MOVWF   AUX            ; Actualiza TEMP con el nuevo valor
-0055   284F           00121                 GOTO    CENTENAS_LOOP   ; Intenta restar 100 nuevamente
-                      00122 ; Convertir a Decenas
-0056                  00123 DECENAS_LOOP:
-0056   300A           00124                 MOVLW   .10             ; Valor para restar (10 decimal)
-0057   0223           00125                 SUBWF   AUX, W         ; Intenta restar 10
-0058   1C03           00126                 BTFSS   STATUS, C       ; Si hay carry, el resultado es negativo, salta
-0059   285D           00127                 GOTO    UNIDADES_LOOP   ; Procede a convertir unidades si no se puede restar m?s decenas
-005A   0AA7           00128                 INCF    DECENAS, F      ; Incrementa las decenas
-005B   00A3           00129                 MOVWF   AUX            ; Actualiza TEMP con el nuevo valor
-005C   2856           00130                 GOTO    DECENAS_LOOP    ; Intenta restar 10 nuevamente
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  4
+0054   0AA8           00120                 INCF    CENTENAS, F     ; Incrementa las centenas
+0055   00A3           00121                 MOVWF   AUX            ; Actualiza TEMP con el nuevo valor
+0056   2850           00122                 GOTO    CENTENAS_LOOP   ; Intenta restar 100 nuevamente
+                      00123 ; Convertir a Decenas
+0057                  00124 DECENAS_LOOP:
+0057   300A           00125                 MOVLW   .10             ; Valor para restar (10 decimal)
+0058   0223           00126                 SUBWF   AUX, W         ; Intenta restar 10
+0059   1C03           00127                 BTFSS   STATUS, C       ; Si hay carry, el resultado es negativo, salta
+005A   285E           00128                 GOTO    UNIDADES_LOOP   ; Procede a convertir unidades si no se puede restar m?s decenas
+005B   0AA7           00129                 INCF    DECENAS, F      ; Incrementa las decenas
+005C   00A3           00130                 MOVWF   AUX            ; Actualiza TEMP con el nuevo valor
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00131 ; Ajuste de Unidades
-005D                  00132 UNIDADES_LOOP:
-005D   0823           00133                 MOVF    AUX, W         ; Mueve el valor restante a W
-005E   00A6           00134                 MOVWF   UNIDADES        ; Almacena el valor final como unidades
-                      00135 
-005F   0008           00136                  RETURN
-                      00137                         END                                             ;Fin del programa
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  5
+005D   2857           00131                 GOTO    DECENAS_LOOP    ; Intenta restar 10 nuevamente
+                      00132 ; Ajuste de Unidades
+005E                  00133 UNIDADES_LOOP:
+005E   0823           00134                 MOVF    AUX, W         ; Mueve el valor restante a W
+005F   00A6           00135                 MOVWF   UNIDADES        ; Almacena el valor final como unidades
+                      00136 
+0060   0008           00137                  RETURN
+                      00138                         END                                             ;Fin del programa
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  5
 
 
 SYMBOL TABLE
@@ -239,15 +240,15 @@ CCPR2                             0000001B
 CCPR2H                            0000001C
 CCPR2L                            0000001B
 CENTENAS                          00000028
-CENTENAS_LOOP                     0000004F
+CENTENAS_LOOP                     00000050
 CHS0                              00000003
 CHS1                              00000004
 CHS2                              00000005
-CICLO                             00000041
+CICLO                             00000042
 CKE                               00000006
 CKP                               00000004
-CONVER                            0000004E
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  6
+CONVER                            0000004F
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  6
 
 
 SYMBOL TABLE
@@ -259,7 +260,7 @@ D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
 DECENAS                           00000027
-DECENAS_LOOP                      00000056
+DECENAS_LOOP                      00000057
 D_A                               00000005
 D_NOT_A                           00000005
 EEADR                             0000010D
@@ -271,7 +272,7 @@ EEDATH                            0000010E
 EEIE                              00000004
 EEIF                              00000004
 EEPGD                             00000007
-ESPERA                            00000019
+ESPERA                            0000001A
 F                                 00000001
 FERR                              00000002
 FSR                               00000004
@@ -293,9 +294,9 @@ INTE                              00000004
 INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
-LOOP                              00000038
-LOOP2                             00000036
-LOOP3                             00000034
+LOOP                              00000039
+LOOP2                             00000037
+LOOP3                             00000035
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
 NOT_BO                            00000000
@@ -306,7 +307,7 @@ NOT_POR                           00000001
 NOT_RBPU                          00000007
 NOT_RC8                           00000006
 NOT_T1SYNC                        00000002
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  7
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  7
 
 
 SYMBOL TABLE
@@ -365,7 +366,7 @@ RBIE                              00000003
 RBIF                              00000000
 RC0                               00000000
 RC1                               00000001
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  8
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  8
 
 
 SYMBOL TABLE
@@ -398,10 +399,10 @@ RE0                               00000000
 RE1                               00000001
 RE2                               00000002
 READ_WRITE                        00000002
-RECIBE                            0000004A
-REPITE                            00000012
-RETARDO                           00000032
-RETARDO_AC                        0000003F
+RECIBE                            0000004B
+REPITE                            00000013
+RETARDO                           00000033
+RETARDO_AC                        00000040
 RP0                               00000005
 RP1                               00000006
 RSEN                              00000001
@@ -424,7 +425,7 @@ SSPIE                             00000003
 SSPIF                             00000003
 SSPM0                             00000000
 SSPM1                             00000001
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE  9
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE  9
 
 
 SYMBOL TABLE
@@ -468,7 +469,7 @@ TOUTPS0                           00000003
 TOUTPS1                           00000004
 TOUTPS2                           00000005
 TOUTPS3                           00000006
-TRANSMITE                         00000044
+TRANSMITE                         00000045
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
@@ -483,7 +484,7 @@ TRISB2                            00000002
 TRISB3                            00000003
 TRISB4                            00000004
 TRISB5                            00000005
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE 10
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE 10
 
 
 SYMBOL TABLE
@@ -523,10 +524,10 @@ TXIE                              00000004
 TXIF                              00000004
 TXREG                             00000019
 TXSTA                             00000098
-T_LOOP                            00000046
+T_LOOP                            00000047
 UA                                00000001
 UNIDADES                          00000026
-UNIDADES_LOOP                     0000005D
+UNIDADES_LOOP                     0000005E
 VAL                               00000020
 VAL2                              00000021
 VAL3                              00000022
@@ -542,7 +543,7 @@ _BODEN_ON                         00003FFF
 _BOREN_OFF                        00003FBF
 _BOREN_ON                         00003FFF
 _CONFIG                           00002007
-MPASM  5.51                            E7.ASM   4-21-2024  19:52:56         PAGE 11
+MPASM  5.51                            E7.ASM   5-12-2024  13:39:10         PAGE 11
 
 
 SYMBOL TABLE
@@ -587,12 +588,12 @@ __16F877A                         00000001
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X----XXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX ---------------- ----------------
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX X--------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    92
-Program Memory Words Free:  8100
+Program Memory Words Used:    93
+Program Memory Words Free:  8099
 
 
 Errors   :     0

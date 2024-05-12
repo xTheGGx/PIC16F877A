@@ -31,7 +31,8 @@ INICIO:		;Configuración del puerto serie
 			BCF 	STATUS,RP0		;Regresamos a banco 0
 
 			BSF 	RCSTA,SPEN		;Habilita el puerto serie
-			BSF 	RCSTA,CREN		;Habilitamos la recepción continua (Si la bandera esta en 0, se recibe 1 dato, no un flujo constante de datos para ello la bandera se 'habilita' con 1)			
+			BSF 	RCSTA,CREN		;Habilitamos la recepción continua (Si la bandera esta en 0, se recibe 1 dato, no un flujo constante de datos para ello la bandera se 'habilita' con 1)			CLRF	PORTC
+			CLRF	PORTB
 ;COMPUTER CAMBIA LA TEMPERATURA AMBIENTE Y MUESTRALA EN LA TERMINAL PORFAVOR
 REPITE:		;Ahora la acción que queremos realizar
 			CLRF	UNIDADES

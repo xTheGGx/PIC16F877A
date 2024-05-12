@@ -7,8 +7,8 @@ Message[302] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7
 Message[302] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 28 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 29 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[302] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 30 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 85 : Using default destination of 1 (file).
-Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 87 : Using default destination of 1 (file).
-Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 89 : Using default destination of 1 (file).
-Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 96 : Using default destination of 1 (file).
-Message[302] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 103 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 86 : Using default destination of 1 (file).
+Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 88 : Using default destination of 1 (file).
+Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 90 : Using default destination of 1 (file).
+Message[305] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 97 : Using default destination of 1 (file).
+Message[302] C:\USERS\ALEXIS\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA07\E7.ASM 104 : Register in operand not in bank 0.  Ensure that bank bits are correct.
