@@ -11,6 +11,18 @@ Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers
 Type=4
 [mru-list]
 1=proyectoFinal.c
+[Documentation]
+1=C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\ProyectoFinal\proyectoFinal Notes.txt
+1T=proyectoFinal Notes.txt
+1E=
+1W=0
+Count=1
+[Opened Files]
+1=proyectoFinal.c
+2=..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\LCD.C
+3=..\..\Prácticas\Práctica08\e6.c
+4=proyectoFinal Notes.txt
+5=
 [Units]
 Count=1
 1=proyectoFinal (main)

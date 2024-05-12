@@ -1,8 +1,8 @@
-C L "MAIN" 0 21 1 "FUNCTION"
-D G "__PCM__" 0 197 ""5.015""
-D G "__DEVICE__" 0 197 "877"
-D G "__DATE__" 0 197 ""11-may.-24""
-D G "__TIME__" 0 197 ""17:42:35"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "lcd_rw_tris" 2 126 "()   lcdtris.rw=0"
+D G "__PCM__" 2 137 ""5.015""
+D G "__DEVICE__" 2 137 "877"
+D G "__DATE__" 2 137 ""11-may.-24""
+D G "__TIME__" 2 137 ""18:54:00"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 37 "int8" `54 
 f B "set_tris_a" 1 37 "void(int8 value)" `53 
@@ -810,7 +810,7 @@ F G "lcd_send_nibble" 2 257 "void(int8 n)" `638
 V L "address" 2 274 "int8" `641 
 V L "n" 2 274 "int8" `642 
 F G "lcd_send_byte" 2 275 "void(int8 address,int8 n)" `640 
-F G "lcd_init" 2 300 "void()" `643 
+F G "lcd_init" 2 300 "void(float ,float )" `643 
 V L "i" 2 301 "int8" `644 
 V L "LCD_INIT_STRING" 2 302 "int8[4]" `645 
 C L "lcd_init" 2 2 2 "FUNCTION"

@@ -6,7 +6,7 @@
 void main(){ //MAIN
   char c; //DECLARAMOS LA VARIABLE QUE LEERÁ EL INPUT DEL TECLADO
   int dato, i; //DECLARAMOS DATO (SALIDA DE LOS LEDS) E I (CONTADOR DE LOS FOR)
-  set_tris_b(0x00);
+  
   while(1){ //CICLO
     printf(" Introduzca una opcion: \n\r"); //se envia el mensaje en la hiperterminal
     //printf(" 0. Todos los bits apagados\n\r"); //se envia el mensaje en la hiperterminal
