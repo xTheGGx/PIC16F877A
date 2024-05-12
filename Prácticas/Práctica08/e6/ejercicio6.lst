@@ -1,0 +1,553 @@
+CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:47
+
+               Filename:   C:\Users\Alexis\Documents\GitHub\PIC16F877A\Prácticas\Práctica08\e6\ejercicio6.lst
+
+               ROM used:   442 words (5%)
+                           Largest free fragment is 2048
+               RAM used:   9 (2%) at main() level
+                           13 (4%) worst case
+               Stack used: 2 locations (1 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0C3
+0003:  NOP
+.................... #include <16f877.h> //Librería del controlador PIC16f877 
+.................... //////////// Standard Header file for the PIC16F877 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877 
+0004:  DATA 49,37
+0005:  DATA E4,34
+0006:  DATA E3,30
+0007:  DATA A0,32
+0008:  DATA 6C,10
+0009:  DATA E4,30
+000A:  DATA F4,37
+000B:  DATA 0A,00
+000C:  DATA 8A,04
+000D:  DATA CC,32
+000E:  DATA E4,39
+000F:  DATA A0,30
+0010:  DATA F0,30
+0011:  DATA E7,30
+0012:  DATA E4,37
+0013:  DATA 73,00
+0014:  DATA 8A,04
+0015:  DATA CC,32
+0016:  DATA E4,39
+0017:  DATA A0,32
+0018:  DATA EE,31
+0019:  DATA 65,37
+001A:  DATA E4,34
+001B:  DATA E4,37
+001C:  DATA 73,00
+001D:  DATA 8A,04
+001E:  DATA C3,37
+001F:  DATA 72,39
+0020:  DATA E9,36
+0021:  DATA E9,32
+0022:  DATA 6E,3A
+0023:  DATA 6F,10
+0024:  DATA 61,10
+0025:  DATA EC,30
+0026:  DATA 20,32
+0027:  DATA 65,39
+0028:  DATA E5,31
+0029:  DATA E8,30
+002A:  DATA 00,01
+002B:  DATA 8A,04
+002C:  DATA C3,37
+002D:  DATA 72,39
+002E:  DATA E9,36
+002F:  DATA E9,32
+0030:  DATA 6E,3A
+0031:  DATA 6F,10
+0032:  DATA 61,10
+0033:  DATA EC,30
+0034:  DATA A0,34
+0035:  DATA FA,38
+0036:  DATA F5,34
+0037:  DATA 65,39
+0038:  DATA E4,30
+0039:  DATA 00,01
+003A:  DATA 8A,04
+003B:  DATA C3,37
+003C:  DATA 72,39
+003D:  DATA E9,36
+003E:  DATA E9,32
+003F:  DATA 6E,3A
+0040:  DATA 6F,10
+0041:  DATA 61,10
+0042:  DATA EC,30
+0043:  DATA 20,32
+0044:  DATA 65,39
+0045:  DATA E5,31
+0046:  DATA E8,30
+0047:  DATA 00,01
+0048:  DATA 8A,04
+0049:  DATA C3,37
+004A:  DATA 72,39
+004B:  DATA E9,36
+004C:  DATA E9,32
+004D:  DATA 6E,3A
+004E:  DATA 6F,10
+004F:  DATA 61,10
+0050:  DATA EC,30
+0051:  DATA A0,34
+0052:  DATA FA,38
+0053:  DATA F5,34
+0054:  DATA 65,39
+0055:  DATA E4,30
+0056:  DATA 00,00
+0057:  MOVF   0B,W
+0058:  MOVWF  25
+0059:  BCF    0B.7
+005A:  BSF    03.5
+005B:  BSF    03.6
+005C:  BSF    0C.7
+005D:  BSF    0C.0
+005E:  NOP
+005F:  NOP
+0060:  BCF    03.5
+0061:  BCF    03.6
+0062:  BTFSC  25.7
+0063:  BSF    0B.7
+0064:  BSF    03.6
+0065:  MOVF   0C,W
+0066:  ANDLW  7F
+0067:  BTFSC  03.2
+0068:  GOTO   0AD
+0069:  BCF    03.6
+006A:  MOVWF  25
+006B:  BSF    03.6
+006C:  MOVF   0D,W
+006D:  BCF    03.6
+006E:  MOVWF  26
+006F:  BSF    03.6
+0070:  MOVF   0F,W
+0071:  BCF    03.6
+0072:  MOVWF  27
+0073:  MOVF   25,W
+0074:  BTFSS  0C.4
+0075:  GOTO   074
+0076:  MOVWF  19
+0077:  MOVF   26,W
+0078:  BSF    03.6
+0079:  MOVWF  0D
+007A:  BCF    03.6
+007B:  MOVF   27,W
+007C:  BSF    03.6
+007D:  MOVWF  0F
+007E:  BCF    03.6
+007F:  MOVF   0B,W
+0080:  MOVWF  28
+0081:  BCF    0B.7
+0082:  BSF    03.5
+0083:  BSF    03.6
+0084:  BSF    0C.7
+0085:  BSF    0C.0
+0086:  NOP
+0087:  NOP
+0088:  BCF    03.5
+0089:  BCF    03.6
+008A:  BTFSC  28.7
+008B:  BSF    0B.7
+008C:  BSF    03.6
+008D:  RLF    0C,W
+008E:  RLF    0E,W
+008F:  ANDLW  7F
+0090:  BTFSC  03.2
+0091:  GOTO   0AD
+0092:  BCF    03.6
+0093:  MOVWF  25
+0094:  BSF    03.6
+0095:  MOVF   0D,W
+0096:  BCF    03.6
+0097:  MOVWF  26
+0098:  BSF    03.6
+0099:  MOVF   0F,W
+009A:  BCF    03.6
+009B:  MOVWF  27
+009C:  MOVF   25,W
+009D:  BTFSS  0C.4
+009E:  GOTO   09D
+009F:  MOVWF  19
+00A0:  MOVF   26,W
+00A1:  BSF    03.6
+00A2:  MOVWF  0D
+00A3:  BCF    03.6
+00A4:  MOVF   27,W
+00A5:  BSF    03.6
+00A6:  MOVWF  0F
+00A7:  INCF   0D,F
+00A8:  BTFSC  03.2
+00A9:  INCF   0F,F
+00AA:  BCF    03.6
+00AB:  GOTO   057
+00AC:  BSF    03.6
+00AD:  BCF    03.6
+00AE:  RETURN
+....................  
+.................... #list 
+....................  
+.................... #fuses HS,NOPROTECT, //Directivas de ADCON1 
+.................... #use delay(clock=20000000) //Velocidad del reloj de la tarjeta 
+00AF:  MOVLW  26
+00B0:  MOVWF  04
+00B1:  BCF    03.7
+00B2:  MOVF   00,W
+00B3:  BTFSC  03.2
+00B4:  GOTO   0C2
+00B5:  MOVLW  06
+00B6:  MOVWF  78
+00B7:  CLRF   77
+00B8:  DECFSZ 77,F
+00B9:  GOTO   0B8
+00BA:  DECFSZ 78,F
+00BB:  GOTO   0B7
+00BC:  MOVLW  7B
+00BD:  MOVWF  77
+00BE:  DECFSZ 77,F
+00BF:  GOTO   0BE
+00C0:  DECFSZ 00,F
+00C1:  GOTO   0B5
+00C2:  RETURN
+.................... #use rs232(baud=9600, xmit=PIN_C6, rcv=PIN_C7) //Directivas para poder trabajar con el puerto serie, baud rate de 38,400, PIN 6 para la transmisión de datos y PIN 7 para la recepción de datos  
+.................... #org 0x1F00, 0x1FFF void loader16F877(void) {} //for the 8k 16F876/7 
+*
+1F00:  RETURN
+....................  
+....................  
+.................... void main() { 
+*
+00C3:  MOVF   03,W
+00C4:  ANDLW  1F
+00C5:  MOVWF  03
+00C6:  MOVLW  81
+00C7:  BSF    03.5
+00C8:  MOVWF  19
+00C9:  MOVLW  A6
+00CA:  MOVWF  18
+00CB:  MOVLW  90
+00CC:  BCF    03.5
+00CD:  MOVWF  18
+00CE:  BSF    03.5
+00CF:  BSF    1F.0
+00D0:  BSF    1F.1
+00D1:  BSF    1F.2
+00D2:  BCF    1F.3
+00D3:  BCF    03.7
+....................    char c; //variable para leer el caractér de antrada 
+....................    int dato,i; //variable con el dato de salida y para el contador de los ciclos para los retardos 
+....................    //delay_ms(500); // Retardo inicial de 500 ms 
+....................     
+....................    while(1) { 
+....................    printf("Indica el dato\n"); //Pedimos el dato al usuario para que este seleccione la acción a realizar 
+00D4:  MOVLW  04
+00D5:  BCF    03.5
+00D6:  BSF    03.6
+00D7:  MOVWF  0D
+00D8:  MOVLW  00
+00D9:  MOVWF  0F
+00DA:  BCF    03.6
+00DB:  CALL   057
+....................    c=getch(); //Se obtiene el caractér del teclado con la función getchar() 
+00DC:  BTFSS  0C.5
+00DD:  GOTO   0DC
+00DE:  MOVF   1A,W
+00DF:  MOVWF  21
+....................    putc(c); //Se envía el caractér al flujo de datos 
+00E0:  MOVF   21,W
+00E1:  BTFSS  0C.4
+00E2:  GOTO   0E1
+00E3:  MOVWF  19
+....................      switch(c) { //switch case con el valor de c 
+00E4:  MOVF   21,W
+00E5:  XORLW  30
+00E6:  BTFSC  03.2
+00E7:  GOTO   0F8
+00E8:  XORLW  01
+00E9:  BTFSC  03.2
+00EA:  GOTO   10B
+00EB:  XORLW  03
+00EC:  BTFSC  03.2
+00ED:  GOTO   11F
+00EE:  XORLW  01
+00EF:  BTFSC  03.2
+00F0:  GOTO   13E
+00F1:  XORLW  07
+00F2:  BTFSC  03.2
+00F3:  GOTO   15D
+00F4:  XORLW  01
+00F5:  BTFSC  03.2
+00F6:  GOTO   19A
+00F7:  GOTO   1B6
+....................       case '0': //c = 0 
+....................          printf("\n\tLeds apagados"); //Se apagan los LEDs del puerto de salida 
+00F8:  MOVLW  0C
+00F9:  BSF    03.6
+00FA:  MOVWF  0D
+00FB:  MOVLW  00
+00FC:  MOVWF  0F
+00FD:  BCF    03.6
+00FE:  CALL   057
+....................          output_b(0x00); // Todos los bits apagados 
+00FF:  BSF    03.5
+0100:  CLRF   06
+0101:  BCF    03.5
+0102:  CLRF   06
+....................          delay_ms(500); //retardo de medio segundo 
+0103:  MOVLW  02
+0104:  MOVWF  25
+0105:  MOVLW  FA
+0106:  MOVWF  26
+0107:  CALL   0AF
+0108:  DECFSZ 25,F
+0109:  GOTO   105
+....................          break; 
+010A:  GOTO   1B6
+....................       case '1': //c = 1 
+....................          printf("\n\tLeds encendidos"); //Se prenden los LEDs del puerto de salida 
+010B:  MOVLW  14
+010C:  BSF    03.6
+010D:  MOVWF  0D
+010E:  MOVLW  00
+010F:  MOVWF  0F
+0110:  BCF    03.6
+0111:  CALL   057
+....................          output_b(0xff); //// Todos los bits encendidos 
+0112:  BSF    03.5
+0113:  CLRF   06
+0114:  MOVLW  FF
+0115:  BCF    03.5
+0116:  MOVWF  06
+....................          delay_ms(500); //retardo de medio segundo 
+0117:  MOVLW  02
+0118:  MOVWF  25
+0119:  MOVLW  FA
+011A:  MOVWF  26
+011B:  CALL   0AF
+011C:  DECFSZ 25,F
+011D:  GOTO   119
+....................          break; 
+011E:  GOTO   1B6
+....................       case '2': //c = 2 
+....................           printf("\n\tCorrimiento a la derecha"); //Se indica en pantalla que se hace un corrimiento a la derecha 
+011F:  MOVLW  1D
+0120:  BSF    03.6
+0121:  MOVWF  0D
+0122:  MOVLW  00
+0123:  MOVWF  0F
+0124:  BCF    03.6
+0125:  CALL   057
+....................           dato=0x80; //dato=80h 
+0126:  MOVLW  80
+0127:  MOVWF  22
+....................          for(int i=0;i<=7;i++) 
+0128:  CLRF   24
+0129:  MOVF   24,W
+012A:  SUBLW  07
+012B:  BTFSS  03.0
+012C:  GOTO   13D
+....................             { 
+....................                output_b(dato); //se manda a la salida dato 
+012D:  BSF    03.5
+012E:  CLRF   06
+012F:  BCF    03.5
+0130:  MOVF   22,W
+0131:  MOVWF  06
+....................                delay_ms(500); //retardo de medio segundo 
+0132:  MOVLW  02
+0133:  MOVWF  25
+0134:  MOVLW  FA
+0135:  MOVWF  26
+0136:  CALL   0AF
+0137:  DECFSZ 25,F
+0138:  GOTO   134
+....................                dato=dato>>1; //corrimiento a la derecha de un bit 
+0139:  BCF    03.0
+013A:  RRF    22,F
+013B:  INCF   24,F
+013C:  GOTO   129
+....................             } 
+....................           break; 
+013D:  GOTO   1B6
+....................       case '3': //c = 3 
+....................          printf("\n\tCorrimiento a la izquierda"); //Se indica en pantalla que se hace un corrimiento a la izquierda 
+013E:  MOVLW  2B
+013F:  BSF    03.6
+0140:  MOVWF  0D
+0141:  MOVLW  00
+0142:  MOVWF  0F
+0143:  BCF    03.6
+0144:  CALL   057
+....................          dato=0x01; //dato=01h 
+0145:  MOVLW  01
+0146:  MOVWF  22
+....................          for(i=0;i<=7;i++) 
+0147:  CLRF   24
+0148:  MOVF   24,W
+0149:  SUBLW  07
+014A:  BTFSS  03.0
+014B:  GOTO   15C
+....................             { 
+....................                output_b(dato); //se manda a la salida dato 
+014C:  BSF    03.5
+014D:  CLRF   06
+014E:  BCF    03.5
+014F:  MOVF   22,W
+0150:  MOVWF  06
+....................                delay_ms(500); //retardo de medio segundo 
+0151:  MOVLW  02
+0152:  MOVWF  25
+0153:  MOVLW  FA
+0154:  MOVWF  26
+0155:  CALL   0AF
+0156:  DECFSZ 25,F
+0157:  GOTO   153
+....................                dato=dato<<1; //corrimiento a la izquierda de un bit 
+0158:  BCF    03.0
+0159:  RLF    22,F
+015A:  INCF   24,F
+015B:  GOTO   148
+....................             } 
+....................          break; 
+015C:  GOTO   1B6
+....................       case '4': //c = 4 
+....................          printf("\n\tCorrimiento a la derecha"); //Se indica en pantalla que se hace un corrimiento a la derecha 
+015D:  MOVLW  3A
+015E:  BSF    03.6
+015F:  MOVWF  0D
+0160:  MOVLW  00
+0161:  MOVWF  0F
+0162:  BCF    03.6
+0163:  CALL   057
+....................          dato=0x80; 
+0164:  MOVLW  80
+0165:  MOVWF  22
+....................          for(i=0;i<=7;i++) 
+0166:  CLRF   24
+0167:  MOVF   24,W
+0168:  SUBLW  07
+0169:  BTFSS  03.0
+016A:  GOTO   17B
+....................             { 
+....................                output_b(dato); //se manda a la salida dato 
+016B:  BSF    03.5
+016C:  CLRF   06
+016D:  BCF    03.5
+016E:  MOVF   22,W
+016F:  MOVWF  06
+....................                delay_ms(500); //retardo de medio segundo 
+0170:  MOVLW  02
+0171:  MOVWF  25
+0172:  MOVLW  FA
+0173:  MOVWF  26
+0174:  CALL   0AF
+0175:  DECFSZ 25,F
+0176:  GOTO   172
+....................                dato=dato>>1; //corrimiento a la derecha de un bit 
+0177:  BCF    03.0
+0178:  RRF    22,F
+0179:  INCF   24,F
+017A:  GOTO   167
+....................             } 
+....................             printf("\n\tCorrimiento a la izquierda"); //Se indica en pantalla que se hace un corrimiento a la izquierda 
+017B:  MOVLW  48
+017C:  BSF    03.6
+017D:  MOVWF  0D
+017E:  MOVLW  00
+017F:  MOVWF  0F
+0180:  BCF    03.6
+0181:  CALL   057
+....................          dato=0x01; 
+0182:  MOVLW  01
+0183:  MOVWF  22
+....................          for(i=0;i<=7;i++) 
+0184:  CLRF   24
+0185:  MOVF   24,W
+0186:  SUBLW  07
+0187:  BTFSS  03.0
+0188:  GOTO   199
+....................             { 
+....................                output_b(dato); //se manda a la salida dato 
+0189:  BSF    03.5
+018A:  CLRF   06
+018B:  BCF    03.5
+018C:  MOVF   22,W
+018D:  MOVWF  06
+....................                delay_ms(500); //retardo de medio segundo 
+018E:  MOVLW  02
+018F:  MOVWF  25
+0190:  MOVLW  FA
+0191:  MOVWF  26
+0192:  CALL   0AF
+0193:  DECFSZ 25,F
+0194:  GOTO   190
+....................                dato=dato<<1; //corrimiento a la izquierda de un bit 
+0195:  BCF    03.0
+0196:  RLF    22,F
+0197:  INCF   24,F
+0198:  GOTO   185
+....................             } 
+....................          break; 
+0199:  GOTO   1B6
+....................       case '5': //c = 5 
+....................          output_b(0x00); // Apagar todos los bits 
+019A:  BSF    03.5
+019B:  CLRF   06
+019C:  BCF    03.5
+019D:  CLRF   06
+....................          delay_ms(500); // Retardo de 500 ms 
+019E:  MOVLW  02
+019F:  MOVWF  25
+01A0:  MOVLW  FA
+01A1:  MOVWF  26
+01A2:  CALL   0AF
+01A3:  DECFSZ 25,F
+01A4:  GOTO   1A0
+....................          output_b(0xff); // Encender todos los bits 
+01A5:  BSF    03.5
+01A6:  CLRF   06
+01A7:  MOVLW  FF
+01A8:  BCF    03.5
+01A9:  MOVWF  06
+....................          delay_ms(500); // Retardo de 500 ms 
+01AA:  MOVLW  02
+01AB:  MOVWF  25
+01AC:  MOVLW  FA
+01AD:  MOVWF  26
+01AE:  CALL   0AF
+01AF:  DECFSZ 25,F
+01B0:  GOTO   1AC
+....................          output_b(0x00); 
+01B1:  BSF    03.5
+01B2:  CLRF   06
+01B3:  BCF    03.5
+01B4:  CLRF   06
+....................          break; 
+01B5:  GOTO   1B6
+....................       default: 
+....................          // Accion por defecto en caso de comando no reconocido 
+....................          break; 
+....................       } 
+01B6:  BSF    03.5
+01B7:  GOTO   0D4
+....................        
+....................    } 
+.................... } 
+....................  
+01B8:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

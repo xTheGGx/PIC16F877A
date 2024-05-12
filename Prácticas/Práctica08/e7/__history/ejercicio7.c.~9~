@@ -1,0 +1,28 @@
+#include <16F877.h>
+#fuses HS,NOWDT,NOPROTECT,NOLVP
+#use delay(clock=20000000)
+#include <lcd.c>
+int counter;
+
+void main() {
+  
+    lcd_init();      //Inicializamos el LCD
+      
+    while( TRUE ) {
+    counter = readButton();
+    lcd_gotoxy(5,1);
+    printf(lcd_putc,"%0.2i   ", counter);
+    lcd_gotoxy(5,2);
+    printf(lcd_putc,"%0.2i   ", counter);
+    delay_ms(300);
+    }
+ }
+
+int readButton () {
+   int var = input_a();    
+   if(var != 0){
+      counter++;
+      delay_ms(500);
+   }
+   return counter;
+}

@@ -68,6 +68,7 @@ void main() {
          delay_ms(500); // Retardo de 500 ms
          output_b(0xff); // Encender todos los bits
          delay_ms(500); // Retardo de 500 ms
+         output_b(0x00);
          break;
       default:
          // Accion por defecto en caso de comando no reconocido

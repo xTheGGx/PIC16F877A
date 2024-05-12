@@ -1,0 +1,26 @@
+[PROJECT]
+Target=ejercicio7.hex
+Processor_Text=PIC16F877
+CCSVersion=5.015
+Compiler=PCM
+[Target Data]
+FileList=ejercicio7.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\
+[ejercicio7.c]
+Type=4
+[mru-list]
+1=ejercicio7.c
+[Opened Files]
+1=ejercicio7.c
+2=..\..\..\Proyectos\ProyectoFinal\proyectoFinal.c
+3=..\E2.C
+4=..\e3.c
+5=..\e4.c
+6=..\e5.c
+7=..\ejemplo.c
+8=..\e6\ejercicio6.c
+9=
+[Units]
+Count=1
+1=ejercicio7 (main)

@@ -64,10 +64,12 @@ void main() {
             }
          break;
       case '5': //c = 5
+         printf("\n\t Apagado y encendido de LEDS"); //Se apagan y encienden los bits
          output_b(0x00); // Apagar todos los bits
          delay_ms(500); // Retardo de 500 ms
          output_b(0xff); // Encender todos los bits
          delay_ms(500); // Retardo de 500 ms
+         output_b(0x00);
          break;
       default:
          // Accion por defecto en caso de comando no reconocido

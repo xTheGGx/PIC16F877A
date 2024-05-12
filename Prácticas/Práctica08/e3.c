@@ -5,7 +5,8 @@
 int var1;
 void main(){
  while(1){
- var1=input_a();
- output_b(var1);
+ var1=input_a();  //Guardamos los 8 bits del puerto portA en una variable de tipo entero
+ output_b(var1);  //Mandamos el valor de la variable como salida en el puerto B
  }//while
- }//main
+ }//main
+

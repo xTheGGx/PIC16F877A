@@ -1,8 +1,0 @@
->>> Warning 216 "proyectoFinal.c" Line 194(1,2): Interrupts disabled during call to prevent re-entrancy:  (@delay_ms1)
->>> Warning 216 "proyectoFinal.c" Line 194(1,2): Interrupts disabled during call to prevent re-entrancy:  (@PSTRINGC7_650)
->>> Warning 216 "proyectoFinal.c" Line 194(1,2): Interrupts disabled during call to prevent re-entrancy:  (lcd_putc)
->>> Warning 216 "proyectoFinal.c" Line 194(1,2): Interrupts disabled during call to prevent re-entrancy:  (imprimeMenu)
->>> Warning 216 "proyectoFinal.c" Line 194(1,2): Interrupts disabled during call to prevent re-entrancy:  (imprimeLectura)
-      Memory usage:   ROM=64%      RAM=9% - 24%
-      0 Errors,  5 Warnings.
-Build Successful.
