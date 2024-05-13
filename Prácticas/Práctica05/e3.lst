@@ -1,4 +1,4 @@
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  1
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 0014   282F           00032                                 GOTO    TRES            ;PC + 3
 0015   2819           00033                                 GOTO    CERO            ;PC + 4
 0016   2819           00034                                 GOTO    CERO            ;PC + 5
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  2
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -73,7 +73,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 001B                  00042 UNO:
 001B   3001           00043                                 MOVLW B'00000001'
 001C   0087           00044                                 MOVWF PORTC
-001D   3005           00045                                 MOVLW   D'5'
+001D   3004           00045                                 MOVLW   D'4'
 001E   00A1           00046                                 MOVWF   CTE2
 001F   2039           00047                                 CALL  RETARDO
 0020   0187           00048                                 CLRF  PORTC
@@ -104,26 +104,30 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0037   2039           00073                                 CALL  RETARDO
 0038   280E           00074                                 GOTO LOOP
                       00075 
-0039                  00076 RETARDO:
-                      00077                 
-0039   30FA           00078 BUCLE2:                 MOVLW   D'250'          ;1cy
-003A   00A0           00079                                 MOVWF   CTE1            ;1cy
-003B   0000           00080 BUCLE1:                 NOP                                     ;1cy
-003C   0BA0           00081                                 DECFSZ  CTE1,F          ;1cy
-003D   283B           00082                                 GOTO    BUCLE1          
-003E   0BA1           00083                                 DECFSZ  CTE2,F
-003F   2839           00084                                 GOTO    BUCLE2
-0040   0008           00085                                 RETURN
-                      00086 
-Warning[205]: Found directive in column 1. (END)
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  3
+                      00076 ;20 ms -> CT2 = 100
+                      00077 ;2 ms ->        CT2 = 10
+                      00078 ;1.5 ms  -> CTE2 = 7
+                      00079 ;1 ms  -> CTE = 5
+0039                  00080 RETARDO:
+                      00081                 
+0039   30FA           00082 BUCLE2:                 MOVLW   D'250'          ;1cy
+003A   00A0           00083                                 MOVWF   CTE1            ;1cy
+003B   0000           00084 BUCLE1:                 NOP                                     ;1cy
+003C   0BA0           00085                                 DECFSZ  CTE1,F          ;1cy
+003D   283B           00086                                 GOTO    BUCLE1          
+003E   0BA1           00087                                 DECFSZ  CTE2,F
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00087 END
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  4
+003F   2839           00088                                 GOTO    BUCLE2
+0040   0008           00089                                 RETURN
+                      00090 
+Warning[205]: Found directive in column 1. (END)
+                      00091 END
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  4
 
 
 SYMBOL TABLE
@@ -182,7 +186,7 @@ CKE                               00000006
 CKP                               00000004
 CREN                              00000004
 CSRC                              00000007
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  5
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  5
 
 
 SYMBOL TABLE
@@ -241,7 +245,7 @@ NOT_RBPU                          00000007
 NOT_RC8                           00000006
 NOT_T1SYNC                        00000002
 NOT_TO                            00000004
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  6
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  6
 
 
 SYMBOL TABLE
@@ -300,7 +304,7 @@ RBIF                              00000000
 RC0                               00000000
 RC1                               00000001
 RC2                               00000002
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  7
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  7
 
 
 SYMBOL TABLE
@@ -359,7 +363,7 @@ SSPM2                             00000002
 SSPM3                             00000003
 SSPOV                             00000006
 SSPSTAT                           00000094
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  8
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  8
 
 
 SYMBOL TABLE
@@ -418,7 +422,7 @@ TRISB7                            00000007
 TRISC                             00000087
 TRISC0                            00000000
 TRISC1                            00000001
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE  9
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE  9
 
 
 SYMBOL TABLE
@@ -477,7 +481,7 @@ _DEBUG_ON                         000037FF
 _DEVID1                           00002006
 _FOSC_EXTRC                       00003FFF
 _FOSC_HS                          00003FFE
-MPASM  5.51                            E3.ASM   5-6-2024  13:23:41         PAGE 10
+MPASM  5.51                            E3.ASM   5-13-2024  0:04:49         PAGE 10
 
 
 SYMBOL TABLE

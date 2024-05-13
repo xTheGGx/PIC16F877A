@@ -3,12 +3,13 @@
  <FRAME activewindow="0">
   <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff8300000009000000d3040000cf020000</PLACEMENT>
   <WINDOW type="default" module="ISIS">
-   <editor metric="0" gridmajor="2540000" mode="00000000" zoom="0" scale="166" flipped="0" gridminor="254000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="127000">
+   <editor metric="0" gridmajor="2540000" mode="00000000" zoom="0" scale="123" flipped="0" gridminor="254000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="127000">
     <world y1="-8890000" x1="-12700000" y2="8890000" x2="12700000"/>
-    <centre x="11094007" y="-4537730"/>
+    <centre x="6775400" y="-2157969"/>
     <origin x="0" y="0"/>
    </editor>
   </WINDOW>
+  <WINDOW type="default" module="DXP"/>
  </FRAME>
  <MODULE name="ARES">
   <editor metric="0" gridmajor="0" mode="00000000" zoom="10" scale="10" flipped="0" gridminor="0" gridmode="32" snapidx="3" snap="0" xcursor="0" orgmode="0" snaprange="0">
@@ -18,9 +19,9 @@
   </editor>
  </MODULE>
  <MODULE name="ISIS">
-  <editor metric="0" gridmajor="2540000" mode="00000000" zoom="0" scale="166" flipped="0" gridminor="254000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="127000">
+  <editor metric="0" gridmajor="2540000" mode="00000000" zoom="0" scale="123" flipped="0" gridminor="254000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="127000">
    <world y1="-8890000" x1="-12700000" y2="8890000" x2="12700000"/>
-   <centre x="11094007" y="-4537730"/>
+   <centre x="6775400" y="-2157969"/>
    <origin x="0" y="0"/>
   </editor>
  </MODULE>
@@ -28,7 +29,7 @@
   <PWI>
    <POPUP w="800" x="68" flags="00000002" y="129" h="200" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">663</ITEM>
+     <ITEM name="Message Column Width">542</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>
@@ -91,7 +92,7 @@
    <POPUP w="14" x="208" flags="00000008" y="269" h="8" pid="7" iid="1">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="228" flags="80000002" y="289" h="8" pid="8" iid="1">
+   <POPUP w="8" x="228" flags="00000002" y="289" h="8" pid="8" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -137,7 +138,7 @@
    <POPUP w="14" x="328" flags="00000008" y="389" h="8" pid="7" iid="21">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="348" flags="80000002" y="409" h="8" pid="8" iid="21">
+   <POPUP w="8" x="348" flags="00000002" y="409" h="8" pid="8" iid="21">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -183,7 +184,7 @@
    <POPUP w="14" x="448" flags="00000008" y="509" h="8" pid="7" iid="31">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="8" x="468" flags="80000002" y="529" h="8" pid="8" iid="31">
+   <POPUP w="8" x="468" flags="00000002" y="529" h="8" pid="8" iid="31">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>

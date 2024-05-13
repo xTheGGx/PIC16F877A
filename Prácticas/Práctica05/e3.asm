@@ -42,7 +42,7 @@ CERO:
 UNO:
 				MOVLW B'00000001'
 				MOVWF PORTC
-				MOVLW	D'5'
+				MOVLW	D'4'
 				MOVWF	CTE2
 				CALL  RETARDO
 				CLRF  PORTC
@@ -73,6 +73,10 @@ TRES:
 				CALL  RETARDO
 				GOTO LOOP
 
+;20 ms -> CT2 = 100
+;2 ms ->	CT2 = 10
+;1.5 ms  -> CTE2 = 7
+;1 ms  -> CTE = 5
 RETARDO:
 		
 BUCLE2:			MOVLW	D'250'		;1cy

@@ -1,4 +1,4 @@
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  1
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -22,9 +22,9 @@ Message[301]: MESSAGE: (Processor-header file mismatch.  Verify selected process
   00000021            00004 valor1 equ h'21'
   00000022            00005 valor2 equ h'22'
   00000023            00006 valor3 equ h'23'
-  00000003            00007 cte1 equ 03h
-  00000050            00008 cte2 equ 50h
-  00000060            00009 cte3 equ 60h
+  00000024            00007 CTE1    EQU 0X24
+  00000025            00008 CTE2    EQU 0X25
+  00000026            00009 CTE3    EQU     0X26
 Warning[205]: Found directive in column 1. (org)
 0000                  00010 org 0h
 Warning[203]: Found opcode in column 1. (goto)
@@ -52,114 +52,118 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
                       00028                                 
                       00029 
 000F                  00030 LOOP:                   
-000F   1606           00031                                 BSF             PORTB,4
-0010   0805           00032                                 MOVF    PORTA,W         ; W <- (PORTA)
-0011   3907           00033                                 ANDLW   0x07            ; 
-0012   0782           00034                                 ADDWF   PCL,F
-0013   281B           00035                                 GOTO    CERO            ;PC + 0
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  2
+000F   0805           00031                                 MOVF    PORTA,W         ; W <- (PORTA)
+0010   3907           00032                                 ANDLW   0x07            ; 
+0011   0782           00033                                 ADDWF   PCL,F
+0012   281A           00034                                 GOTO    CERO            ;PC + 0
+0013   281D           00035                                 GOTO    UNO                     ;PC * 1
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0014   281E           00036                                 GOTO    UNO                     ;PC * 1
-0015   2830           00037                                 GOTO    DOS                     ;PC * 2
-0016   2842           00038                                 GOTO    TRES            ;PC + 3
-0017   2845           00039                                 GOTO    CUATRO          ;PC + 4
-0018   281B           00040                                 GOTO    CERO            ;PC + 5
-0019   281B           00041                                 GOTO    CERO            ;PC + 6
-001A   281B           00042                                 GOTO    CERO            ;PC + 7
-                      00043 
-001B                  00044 CERO:
-001B   3000           00045                                 MOVLW   0X00
-001C   0086           00046                                 MOVWF   PORTB
-001D   280F           00047                                 GOTO    LOOP
-001E                  00048 UNO:
-001E   3001           00049                                 MOVLW   0X01
-001F   00A4           00050                                 MOVWF   contadorEdo1
-0020                  00051 LOOP_ESTADO_1
-0020   2048           00052                                 CALL    retardo
-0021   3080           00053                                 MOVLW   b'10000000'
-0022   0086           00054                                 MOVWF   PORTB
-0023   2048           00055                                 CALL    retardo
-0024   3040           00056                                 MOVLW   b'01000000'
-0025   0086           00057                                 MOVWF   PORTB
-0026   2048           00058                                 CALL    retardo
-0027   3010           00059                                 MOVLW   b'00010000'
-0028   0086           00060                                 MOVWF   PORTB
-0029   2048           00061                                 CALL    retardo
-002A   3010           00062                                 MOVLW   b'00010000'
-002B   0086           00063                                 MOVWF   PORTB
-002C   2048           00064                                 CALL    retardo
+0014   2830           00036                                 GOTO    DOS                     ;PC * 2
+0015   2843           00037                                 GOTO    TRES            ;PC + 3
+0016   2846           00038                                 GOTO    CUATRO          ;PC + 4
+0017   281A           00039                                 GOTO    CERO            ;PC + 5
+0018   281A           00040                                 GOTO    CERO            ;PC + 6
+0019   281A           00041                                 GOTO    CERO            ;PC + 7
+                      00042 
+001A                  00043 CERO:
+001A   3000           00044                                 MOVLW   0X00
+001B   0086           00045                                 MOVWF   PORTB
+001C   280F           00046                                 GOTO    LOOP
+001D                  00047 UNO:
+001D   3001           00048                                 MOVLW   0X01
+001E   00A4           00049                                 MOVWF   contadorEdo1
+001F                  00050 LOOP_ESTADO_1
+001F   2049           00051                                 CALL    RETARDO
+0020   3080           00052                                 MOVLW   b'10000000'
+0021   0086           00053                                 MOVWF   PORTB
+0022   2049           00054                                 CALL    RETARDO
+0023   3040           00055                                 MOVLW   b'01000000'
+0024   0086           00056                                 MOVWF   PORTB
+0025   2049           00057                                 CALL    RETARDO
+0026   3020           00058                                 MOVLW   b'00100000'
+0027   0086           00059                                 MOVWF   PORTB
+0028   2049           00060                                 CALL    RETARDO
+0029   3010           00061                                 MOVLW   b'00010000'
+002A   0086           00062                                 MOVWF   PORTB
+002B   2049           00063                                 CALL    RETARDO
 Message[305]: Using default destination of 1 (file).
-002D   0BA4           00065                                 DECFSZ  contadorEdo1
-002E   2820           00066                                 GOTO    LOOP_ESTADO_1
-002F   0063           00067                                 SLEEP
+002C   0BA4           00064                                 DECFSZ  contadorEdo1
+002D   0186           00065                                 CLRF    PORTB
+002E   281F           00066                                 GOTO    LOOP_ESTADO_1
+002F   2858           00067                                 GOTO    FINAL
 0030                  00068 DOS:
 0030   3001           00069                                 MOVLW 0X01
 0031   00A5           00070                                 MOVWF contadorEdo2
 0032                  00071 LOOP_ESTADO_2
-0032   2048           00072                                 CALL retardo
-0033   3010           00073                                 MOVLW b'00010000'
-0034   0086           00074                                 MOVWF PORTB
-0035   2048           00075                                 CALL retardo
-0036   3020           00076                                 MOVLW b'00100000'
-0037   0086           00077                                 MOVWF PORTB
-0038   2048           00078                                 CALL retardo
-0039   3040           00079                                 MOVLW b'01000000'
-003A   0086           00080                                 MOVWF PORTB
-003B   2048           00081                                 CALL retardo
-003C   3080           00082                                 MOVLW b'10000000'
-003D   0086           00083                                 MOVWF PORTB
-003E   2048           00084                                 CALL retardo
+0032   2049           00072                                 CALL    RETARDO
+0033   3090           00073                                 MOVLW   b'10010000'
+0034   0086           00074                                 MOVWF   PORTB
+0035   2049           00075                                 CALL    RETARDO
+0036   3030           00076                                 MOVLW   b'00110000'
+0037   0086           00077                                 MOVWF   PORTB
+0038   2049           00078                                 CALL    RETARDO
+0039   3060           00079                                 MOVLW   b'01100000'
+003A   0086           00080                                 MOVWF   PORTB
+003B   2049           00081                                 CALL    RETARDO
+003C   30C0           00082                                 MOVLW   b'11000000'
+003D   0086           00083                                 MOVWF   PORTB
+003E   2049           00084                                 CALL    RETARDO
 Message[305]: Using default destination of 1 (file).
-003F   0BA5           00085                                 DECFSZ contadorEdo2
-0040   2832           00086                                 GOTO LOOP_ESTADO_2
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  3
+003F   0BA5           00085                                 DECFSZ  contadorEdo2
+0040   2832           00086                                 GOTO    LOOP_ESTADO_2
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0041   0063           00087                                 SLEEP
-0042                  00088 TRES:
-0042   3005           00089                                 MOVLW 0X05;
-0043   00A4           00090                                 MOVWF contadorEdo1
-0044   2820           00091                                 GOTO LOOP_ESTADO_1
-0045                  00092 CUATRO:
-0045   300A           00093                                 MOVLW 0X0A
-0046   00A5           00094                                 MOVWF contadorEdo2
-0047   2832           00095                                 GOTO LOOP_ESTADO_2
-                      00096 
-0048   3003           00097 retardo movlw cte1 ;Rutina que genera un DELAY
-Warning[203]: Found opcode in column 1. (movwf)
-0049   00A1           00098 movwf valor1
-004A   00D0           00099 tres movwf cte2
-Warning[203]: Found opcode in column 1. (movwf)
-004B   00A2           00100 movwf valor2
-004C   3060           00101 dos movlw cte3
-Warning[203]: Found opcode in column 1. (movwf)
-004D   00A3           00102 movwf valor3
-Message[305]: Using default destination of 1 (file).
-004E   0BA3           00103 uno decfsz valor3
-Warning[203]: Found opcode in column 1. (goto)
-004F   284E           00104 goto uno
-Warning[203]: Found opcode in column 1. (decfsz)
-Message[305]: Using default destination of 1 (file).
-0050   0BA2           00105 decfsz valor2
-Warning[203]: Found opcode in column 1. (goto)
-0051   284C           00106 goto dos
-Warning[203]: Found opcode in column 1. (decfsz)
-Message[305]: Using default destination of 1 (file).
-0052   0BA1           00107 decfsz valor1
-Warning[203]: Found opcode in column 1. (goto)
-0053   284A           00108 goto tres
-Warning[203]: Found opcode in column 1. (return)
-0054   0008           00109 return
-Warning[205]: Found directive in column 1. (end)
-                      00110 end
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  4
+0041   0186           00087                                 CLRF    PORTB
+0042   2858           00088                                 GOTO    FINAL
+0043                  00089 TRES:
+0043   3005           00090                                 MOVLW 0X05;
+0044   00A4           00091                                 MOVWF contadorEdo1
+0045   281F           00092                                 GOTO LOOP_ESTADO_1
+0046                  00093 CUATRO:
+0046   300A           00094                                 MOVLW 0X0A
+0047   00A5           00095                                 MOVWF contadorEdo2
+0048   2832           00096                                 GOTO LOOP_ESTADO_2
+                      00097 
+                      00098 
+                      00099 ;50ms -> cte3 = 250
+                      00100 ;20 ms -> CT2 = 100
+                      00101 ;2 ms ->        CT2 = 10
+                      00102 ;1.5 ms  -> CTE2 = 7
+                      00103 ;1 ms  -> CTE = 5
+0049                  00104 RETARDO:                
+0049   3002           00105                                 MOVLW   D'2'
+004A   00A6           00106                                 MOVWF   CTE3
+004B                  00107 BUCLE3:
+004B   30FA           00108                                 MOVLW   D'250'
+004C   00A5           00109                                 MOVWF   CTE2
+004D   0000           00110 BUCLE2:                 NOP     
+004E   30FA           00111                                 MOVLW   D'250'          ;1cy
+004F   00A4           00112                                 MOVWF   CTE1            ;1cy
+0050   0000           00113 BUCLE1:                 NOP                                     ;1cy
+0051   0BA4           00114                                 DECFSZ  CTE1,F          ;1cy
+0052   2850           00115                                 GOTO    BUCLE1          
+0053   0BA5           00116                                 DECFSZ  CTE2,F
+0054   284D           00117                                 GOTO    BUCLE2
+0055   0BA6           00118                                 DECFSZ  CTE3,F
+0056   284B           00119                                 GOTO    BUCLE3
+0057   0008           00120                                 RETURN
+                      00121 
+0058                  00122 FINAL:                  
+0058   0063           00123                                 SLEEP
+                      00124                                 
+                      00125 
+Warning[205]: Found directive in column 1. (END)
+                      00126 END
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  4
 
 
 SYMBOL TABLE
@@ -183,6 +187,9 @@ BCLIE                             00000003
 BCLIF                             00000003
 BF                                00000000
 BRGH                              00000002
+BUCLE1                            00000050
+BUCLE2                            0000004D
+BUCLE3                            0000004B
 C                                 00000000
 CCP1CON                           00000017
 CCP1IE                            00000002
@@ -208,22 +215,25 @@ CCPR1L                            00000015
 CCPR2                             0000001B
 CCPR2H                            0000001C
 CCPR2L                            0000001B
-CERO                              0000001B
+CERO                              0000001A
 CHS0                              00000003
 CHS1                              00000004
 CHS2                              00000005
 CKE                               00000006
 CKP                               00000004
 CREN                              00000004
-CSRC                              00000007
-CUATRO                            00000045
-D                                 00000005
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  5
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+CSRC                              00000007
+CTE1                              00000024
+CTE2                              00000025
+CTE3                              00000026
+CUATRO                            00000046
+D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
 DOS                               00000030
@@ -240,6 +250,7 @@ EEIF                              00000004
 EEPGD                             00000007
 F                                 00000001
 FERR                              00000002
+FINAL                             00000058
 FSR                               00000004
 GCEN                              00000007
 GIE                               00000007
@@ -260,7 +271,7 @@ INTEDG                            00000006
 INTF                              00000001
 IRP                               00000007
 LOOP                              0000000F
-LOOP_ESTADO_1                     00000020
+LOOP_ESTADO_1                     0000001F
 LOOP_ESTADO_2                     00000032
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
@@ -270,6 +281,12 @@ NOT_DONE                          00000002
 NOT_PD                            00000003
 NOT_POR                           00000001
 NOT_RBPU                          00000007
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 NOT_RC8                           00000006
 NOT_T1SYNC                        00000002
 NOT_TO                            00000004
@@ -277,12 +294,6 @@ NOT_TX8                           00000006
 NOT_W                             00000002
 NOT_WRITE                         00000002
 OBF                               00000006
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  6
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 OERR                              00000001
 OPTION_REG                        00000081
 P                                 00000004
@@ -329,6 +340,12 @@ RB6                               00000006
 RB7                               00000007
 RBIE                              00000003
 RBIF                              00000000
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 RC0                               00000000
 RC1                               00000001
 RC2                               00000002
@@ -336,12 +353,6 @@ RC3                               00000003
 RC4                               00000004
 RC5                               00000005
 RC6                               00000006
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  7
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 RC7                               00000007
 RC8_9                             00000006
 RC9                               00000006
@@ -364,6 +375,7 @@ RE0                               00000000
 RE1                               00000001
 RE2                               00000002
 READ_WRITE                        00000002
+RETARDO                           00000049
 RP0                               00000005
 RP1                               00000006
 RSEN                              00000001
@@ -387,6 +399,12 @@ SSPIF                             00000003
 SSPM0                             00000000
 SSPM1                             00000001
 SSPM2                             00000002
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 SSPM3                             00000003
 SSPOV                             00000006
 SSPSTAT                           00000094
@@ -395,12 +413,6 @@ SYNC                              00000004
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  8
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 T0SE                              00000004
 T1CKPS0                           00000004
 T1CKPS1                           00000005
@@ -429,7 +441,7 @@ TOUTPS0                           00000003
 TOUTPS1                           00000004
 TOUTPS2                           00000005
 TOUTPS3                           00000006
-TRES                              00000042
+TRES                              00000043
 TRISA                             00000085
 TRISA0                            00000000
 TRISA1                            00000001
@@ -446,6 +458,12 @@ TRISB4                            00000004
 TRISB5                            00000005
 TRISB6                            00000006
 TRISB7                            00000007
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 TRISC                             00000087
 TRISC0                            00000000
 TRISC1                            00000001
@@ -454,12 +472,6 @@ TRISC3                            00000003
 TRISC4                            00000004
 TRISC5                            00000005
 TRISC6                            00000006
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE  9
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 TRISC7                            00000007
 TRISD                             00000088
 TRISD0                            00000000
@@ -485,7 +497,7 @@ TXIF                              00000004
 TXREG                             00000019
 TXSTA                             00000098
 UA                                00000001
-UNO                               0000001E
+UNO                               0000001D
 W                                 00000000
 WCOL                              00000007
 WR                                00000001
@@ -505,6 +517,12 @@ _CP_OFF                           00003FFF
 _CP_UPPER_256                     00002FEF
 _DEBUG_OFF                        00003FFF
 _DEBUG_ON                         000037FF
+MPASM  5.51                            E2.ASM   5-13-2024  0:02:59         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
 _DEVID1                           00002006
 _FOSC_EXTRC                       00003FFF
 _FOSC_HS                          00003FFE
@@ -513,12 +531,6 @@ _FOSC_XT                          00003FFD
 _HS_OSC                           00003FFE
 _IDLOC0                           00002000
 _IDLOC1                           00002001
-MPASM  5.51                            E2.ASM   5-12-2024  14:50:03         PAGE 10
-
-
-SYMBOL TABLE
-  LABEL                             VALUE 
-
 _IDLOC2                           00002002
 _IDLOC3                           00002003
 _LP_OSC                           00003FFC
@@ -539,13 +551,6 @@ _XT_OSC                           00003FFD
 __16F877A                         00000001
 contadorEdo1                      00000024
 contadorEdo2                      00000025
-cte1                              00000003
-cte2                              00000050
-cte3                              00000060
-dos                               0000004C
-retardo                           00000048
-tres                              0000004A
-uno                               0000004E
 valor1                            00000021
 valor2                            00000022
 valor3                            00000023
@@ -554,16 +559,16 @@ valor3                            00000023
 MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 
 0000 : X----XXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-0040 : XXXXXXXXXXXXXXXX XXXXX----------- ---------------- ----------------
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXX------- ---------------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:    81
-Program Memory Words Free:  8111
+Program Memory Words Used:    85
+Program Memory Words Free:  8107
 
 
 Errors   :     0
-Warnings :    15 reported,     0 suppressed
-Messages :     9 reported,     0 suppressed
+Warnings :     6 reported,     0 suppressed
+Messages :     6 reported,     0 suppressed
 
 

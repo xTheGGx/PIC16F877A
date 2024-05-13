@@ -4,9 +4,9 @@ include<p16f877.inc>
 valor1 equ h'21'
 valor2 equ h'22'
 valor3 equ h'23'
-cte1 equ 03h
-cte2 equ 50h
-cte3 equ 60h
+CTE1 	EQU 0X24
+CTE2 	EQU 0X25
+CTE3	EQU	0X26
 org 0h
 goto INICIO
 org 05h
@@ -28,7 +28,6 @@ INICIO:
 				
 
 LOOP:			
-				BSF		PORTB,4
 				MOVF 	PORTA,W		; W <- (PORTA)
 				ANDLW	0x07		; 
 				ADDWF	PCL,F
@@ -49,42 +48,44 @@ UNO:
 				MOVLW 	0X01
 				MOVWF 	contadorEdo1
 LOOP_ESTADO_1
-				CALL 	retardo
+				CALL 	RETARDO
 				MOVLW 	b'10000000'
 				MOVWF 	PORTB
-				CALL 	retardo
+				CALL 	RETARDO
 				MOVLW 	b'01000000'
 				MOVWF 	PORTB
-				CALL 	retardo
+				CALL 	RETARDO
+				MOVLW 	b'00100000'
+				MOVWF 	PORTB
+				CALL 	RETARDO
 				MOVLW 	b'00010000'
 				MOVWF 	PORTB
-				CALL 	retardo
-				MOVLW 	b'00010000'
-				MOVWF 	PORTB
-				CALL 	retardo
+				CALL 	RETARDO
 				DECFSZ 	contadorEdo1
+				CLRF	PORTB
 				GOTO	LOOP_ESTADO_1
-				SLEEP
+				GOTO	FINAL
 DOS:
 				MOVLW 0X01
 				MOVWF contadorEdo2
 LOOP_ESTADO_2
-				CALL retardo
-				MOVLW b'00010000'
-				MOVWF PORTB
-				CALL retardo
-				MOVLW b'00100000'
-				MOVWF PORTB
-				CALL retardo
-				MOVLW b'01000000'
-				MOVWF PORTB
-				CALL retardo
-				MOVLW b'10000000'
-				MOVWF PORTB
-				CALL retardo
-				DECFSZ contadorEdo2
-				GOTO LOOP_ESTADO_2
-				SLEEP
+				CALL 	RETARDO
+				MOVLW 	b'10010000'
+				MOVWF 	PORTB
+				CALL 	RETARDO
+				MOVLW 	b'00110000'
+				MOVWF 	PORTB
+				CALL 	RETARDO
+				MOVLW 	b'01100000'
+				MOVWF 	PORTB
+				CALL 	RETARDO
+				MOVLW 	b'11000000'
+				MOVWF 	PORTB
+				CALL 	RETARDO
+				DECFSZ 	contadorEdo2
+				GOTO 	LOOP_ESTADO_2
+				CLRF	PORTB
+				GOTO	FINAL
 TRES:
 				MOVLW 0X05;
 				MOVWF contadorEdo1
@@ -94,17 +95,32 @@ CUATRO:
 				MOVWF contadorEdo2
 				GOTO LOOP_ESTADO_2
 
-retardo movlw cte1 ;Rutina que genera un DELAY
-movwf valor1
-tres movwf cte2
-movwf valor2
-dos movlw cte3
-movwf valor3
-uno decfsz valor3
-goto uno
-decfsz valor2
-goto dos
-decfsz valor1
-goto tres
-return
-end
+
+;50ms -> cte3 = 250
+;20 ms -> CT2 = 100
+;2 ms ->	CT2 = 10
+;1.5 ms  -> CTE2 = 7
+;1 ms  -> CTE = 5
+RETARDO:		
+				MOVLW	D'2'
+				MOVWF	CTE3
+BUCLE3:
+				MOVLW	D'250'
+				MOVWF	CTE2
+BUCLE2:			NOP	
+				MOVLW	D'250'		;1cy
+				MOVWF	CTE1		;1cy
+BUCLE1:			NOP					;1cy
+				DECFSZ	CTE1,F		;1cy
+				GOTO	BUCLE1		
+				DECFSZ	CTE2,F
+				GOTO	BUCLE2
+				DECFSZ	CTE3,F
+				GOTO	BUCLE3
+				RETURN
+
+FINAL:			
+				SLEEP
+				
+
+END
