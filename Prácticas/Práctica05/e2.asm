@@ -4,9 +4,9 @@ include<p16f877.inc>
 valor1 equ h'21'
 valor2 equ h'22'
 valor3 equ h'23'
-CTE1 	EQU 0X24
-CTE2 	EQU 0X25
-CTE3	EQU	0X26
+CTE1 equ 11h
+CTE2 equ 50h
+CTE3 equ 60h
 org 0h
 goto INICIO
 org 05h
@@ -15,19 +15,19 @@ contadorEdo1 equ 0x24
 contadorEdo2 equ 0x25
 
 INICIO:
-				CLRF 	PORTA
-				BSF 	STATUS,RP0 ;Cambia la banco 1
-				BCF 	STATUS,RP1
-				MOVLW 	0X00
-				MOVWF 	TRISB ;Configura puerto B como salida
-				MOVLW 	06h ;Configura puertos A y E como digitales
-				MOVWF 	ADCON1
-				MOVLW 	3fh ;Configura el puerto A como entrada
-				MOVWF 	TRISA
-				BCF 	STATUS,RP0 ;regresa al banco 0
-				
+				clrf PORTA
+				bsf STATUS,RP0 ;Cambia la banco 1
+				bcf STATUS,RP1
+				movlw h'00'
+				movwf TRISB ;Configura puerto B como salida
+				clrf PORTB
+				movlw 06h ;Configura puertos A y E como digitales
+				movwf ADCON1
+				movlw 3fh ;Configura el puerto A como entrada
+				movwf TRISA
+				bcf STATUS,RP0 ;regresa al banco 0
 
-LOOP:			
+LOOP:
 				MOVF 	PORTA,W		; W <- (PORTA)
 				ANDLW	0x07		; 
 				ADDWF	PCL,F
@@ -41,51 +41,49 @@ LOOP:
 				GOTO	CERO		;PC + 7
 
 CERO:
-				MOVLW	0X00
-				MOVWF	PORTB
-				GOTO 	LOOP
+				MOVLW 0X00
+				MOVWF PORTB
+				GOTO LOOP
 UNO:
-				MOVLW 	0X01
-				MOVWF 	contadorEdo1
+				MOVLW 0X01
+				MOVWF contadorEdo1
 LOOP_ESTADO_1
-				CALL 	RETARDO
-				MOVLW 	b'10000000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				MOVLW 	b'01000000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				MOVLW 	b'00100000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				MOVLW 	b'00010000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				DECFSZ 	contadorEdo1
-				CLRF	PORTB
-				GOTO	LOOP_ESTADO_1
-				GOTO	FINAL
+				CALL RETARDO
+				MOVLW b'10000000'
+				MOVWF PORTB
+				CALL RETARDO
+				MOVLW b'01000000'
+				MOVWF PORTB
+				CALL RETARDO
+				MOVLW b'00100000'
+				MOVWF PORTB
+				CALL RETARDO
+				MOVLW b'00010000'
+				MOVWF PORTB
+				CALL RETARDO
+				DECFSZ contadorEdo1
+				GOTO LOOP_ESTADO_1
+				SLEEP
 DOS:
 				MOVLW 0X01
 				MOVWF contadorEdo2
 LOOP_ESTADO_2
-				CALL 	RETARDO
-				MOVLW 	b'10010000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				MOVLW 	b'00110000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				MOVLW 	b'01100000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				MOVLW 	b'11000000'
-				MOVWF 	PORTB
-				CALL 	RETARDO
-				DECFSZ 	contadorEdo2
-				GOTO 	LOOP_ESTADO_2
-				CLRF	PORTB
-				GOTO	FINAL
+				CALL RETARDO
+				MOVLW b'00010000'
+				MOVWF PORTB
+				CALL RETARDO
+				MOVLW b'00100000'
+				MOVWF PORTB
+				CALL RETARDO
+				MOVLW b'01000000'
+				MOVWF PORTB
+				CALL RETARDO
+				MOVLW b'10000000'
+				MOVWF PORTB
+				CALL RETARDO
+				DECFSZ contadorEdo2
+				GOTO LOOP_ESTADO_2
+				SLEEP
 TRES:
 				MOVLW 0X05;
 				MOVWF contadorEdo1
@@ -102,10 +100,10 @@ CUATRO:
 ;1.5 ms  -> CTE2 = 7
 ;1 ms  -> CTE = 5
 RETARDO:		
-				MOVLW	D'2'
+				MOVLW	D'1'
 				MOVWF	CTE3
 BUCLE3:
-				MOVLW	D'250'
+				MOVLW	D'2'
 				MOVWF	CTE2
 BUCLE2:			NOP	
 				MOVLW	D'250'		;1cy
@@ -118,9 +116,6 @@ BUCLE1:			NOP					;1cy
 				DECFSZ	CTE3,F
 				GOTO	BUCLE3
 				RETURN
-
-FINAL:			
-				SLEEP
-				
+´
 
 END

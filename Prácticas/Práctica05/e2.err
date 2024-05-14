@@ -5,8 +5,8 @@ Warning[205] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.A
 Warning[203] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 11 : Found opcode in column 1. (goto)
 Warning[205] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 12 : Found directive in column 1. (org)
 Message[302] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 22 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 24 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Message[302] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 26 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 25 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 27 : Register in operand not in bank 0.  Ensure that bank bits are correct.
 Message[305] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 64 : Using default destination of 1 (file).
-Message[305] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 85 : Using default destination of 1 (file).
-Warning[205] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 126 : Found directive in column 1. (END)
+Message[305] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 84 : Using default destination of 1 (file).
+Warning[205] C:\USERS\USER\DOCUMENTS\GITHUB\PIC16F877A\PR·CTICAS\PR·CTICA05\E2.ASM 121 : Found directive in column 1. (END)

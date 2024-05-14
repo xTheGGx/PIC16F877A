@@ -1,6 +1,6 @@
-CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:43
+CCS PCM C Compiler, Version 5.015, 5967               13-may.-24 11:27
 
-               Filename:   C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\ProyectoFinal\proyectoFinal.lst
+               Filename:   C:\Users\USER\Documents\GitHub\PIC16F877A\Proyectos\ProyectoFinal\proyectoFinal.lst
 
                ROM used:   5235 words (64%)
                            Largest free fragment is 1792
@@ -5968,8 +5968,8 @@ CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:43
 0BB4:  BTFSC  0B.7
 0BB5:  BSF    2B.7
 0BB6:  BCF    0B.7
-....................    delay_ms(45);      
-0BB7:  MOVLW  2D
+....................    delay_ms(40);      
+0BB7:  MOVLW  28
 0BB8:  MOVWF  68
 0BB9:  BCF    0A.3
 0BBA:  CALL   0EE
@@ -6002,8 +6002,8 @@ CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:43
 0C4A:  BTFSC  0B.7
 0C4B:  BSF    2B.7
 0C4C:  BCF    0B.7
-....................    delay_ms(45); 
-0C4D:  MOVLW  2D
+....................    delay_ms(40); 
+0C4D:  MOVLW  28
 0C4E:  MOVWF  68
 0C4F:  BCF    0A.3
 0C50:  CALL   0EE
@@ -6036,8 +6036,8 @@ CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:43
 0CE0:  BTFSC  0B.7
 0CE1:  BSF    2B.7
 0CE2:  BCF    0B.7
-....................    delay_ms(45); 
-0CE3:  MOVLW  2D
+....................    delay_ms(40); 
+0CE3:  MOVLW  28
 0CE4:  MOVWF  68
 0CE5:  BCF    0A.3
 0CE6:  CALL   0EE
@@ -6070,8 +6070,8 @@ CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:43
 0D76:  BTFSC  0B.7
 0D77:  BSF    2B.7
 0D78:  BCF    0B.7
-....................    delay_ms(45); 
-0D79:  MOVLW  2D
+....................    delay_ms(40); 
+0D79:  MOVLW  28
 0D7A:  MOVWF  68
 0D7B:  BCF    0A.3
 0D7C:  CALL   0EE
@@ -6111,8 +6111,8 @@ CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:43
 0E16:  BTFSC  0B.7
 0E17:  BSF    2B.7
 0E18:  BCF    0B.7
-....................    delay_ms(45); 
-0E19:  MOVLW  2D
+....................    delay_ms(40); 
+0E19:  MOVLW  28
 0E1A:  MOVWF  68
 0E1B:  BCF    0A.3
 0E1C:  CALL   0EE
@@ -6430,9 +6430,9 @@ CCS PCM C Compiler, Version 5.015, 5967               11-may.-24 19:43
 1263:  MOVLW  05
 1264:  BCF    03.6
 1265:  MOVWF  5A
-....................          delay_ms(50); 
+....................          delay_ms(20); 
 *
-12C0:  MOVLW  32
+12C0:  MOVLW  14
 12C1:  MOVWF  68
 12C2:  BCF    0A.4
 12C3:  CALL   0EE

@@ -1,8 +1,8 @@
-C L "MAIN" 0 21 1 "FUNCTION"
+D G "LCD_LINE_LENGTH" 2 187 "20"
 D G "__PCM__" 0 197 ""5.015""
 D G "__DEVICE__" 0 197 "877"
-D G "__DATE__" 0 197 ""11-may.-24""
-D G "__TIME__" 0 197 ""19:43:47"" "Standard Header file for the PIC16F877A device ////////////////"
+D G "__DATE__" 0 197 ""13-may.-24""
+D G "__TIME__" 0 197 ""11:27:26"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 37 "int8" `54 
 f B "set_tris_a" 1 37 "void(int8 value)" `53 

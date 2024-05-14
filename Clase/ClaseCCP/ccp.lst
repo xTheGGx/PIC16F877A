@@ -1,0 +1,71 @@
+MPASM  5.51                           CCP.ASM   5-13-2024  9:49:29         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (processor)
+                      00001 processor 16f877
+Error[105]  : Cannot open file (Include File "16f877.inc" not found)
+                      00002 #include <16f877.inc>
+                      00003 
+Warning[205]: Found directive in column 1. (ORG)
+0000                  00004 ORG     0
+Warning[203]: Found opcode in column 1. (GOTO)
+0000   2805           00005 GOTO    INICIO
+Warning[205]: Found directive in column 1. (ORG)
+0005                  00006 ORG             5
+                      00007 
+Error[113]  : Symbol not previously defined (STATUS)
+0005   1400           00008 INICIO          BSF             STATUS,0
+Error[113]  : Symbol not previously defined (STATUS)
+0006   1080           00009                         BCF             STATUS,1
+                      00010 
+Error[113]  : Symbol not previously defined (TRISC)
+0007   1080           00011                         BCF             TRISC,1
+Error[113]  : Symbol not previously defined (TRISC)
+0008   1100           00012                         BCF             TRISC,2
+                      00013                         
+0009   30FF           00014                         MOVLW   D'255'
+Error[113]  : Symbol not previously defined (PR2)
+000A   0080           00015                         MOVWF   PR2
+Error[113]  : Symbol not previously defined (STATUS)
+Error[113]  : Symbol not previously defined (RP0)
+000B   1000           00016                         BCF             STATUS,RP0
+000C   300C           00017                         MOVLW   B'00001100'
+Error[113]  : Symbol not previously defined (CCP2CON)
+000D   0080           00018                         MOVWF   CCP2CON
+000E   3007           00019                         MOVLW   B'00000111'
+Error[113]  : Symbol not previously defined (T2CON)
+000F   0080           00020                         MOVWF   T2CON
+0010   3078           00021                         MOVLW   D'120'
+Error[113]  : Symbol not previously defined (CCPR2L)
+0011   0080           00022                         MOVWF   CCPR2L
+0012   2812           00023                         GOTO    $
+                      00024 
+                      00025                         END
+MPASM  5.51                           CCP.ASM   5-13-2024  9:49:29         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+INICIO                            00000005
+__16F877A                         00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X----XXXXXXXXXXX XXX------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    15
+Program Memory Words Free:  8177
+
+
+Errors   :    11
+Warnings :     4 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

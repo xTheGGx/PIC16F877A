@@ -22,20 +22,20 @@ int estado;          // estado en el que está el menú
 void inicioLCD() {
    lcd_gotoxy(2,1);  
    printf(lcd_putc," Equipo 2:\n"); 
-   delay_ms(40);     
+   delay_ms(45);     
    lcd_gotoxy(1,2);
    printf(lcd_putc," Alcantar Vianey ");
-   delay_ms(40);
+   delay_ms(45);
    lcd_gotoxy(1,2);
    printf(lcd_putc," Sanchez Alexis ");
-   delay_ms(40);
+   delay_ms(45);
    lcd_gotoxy(1,2);
    printf(lcd_putc," Velazquez Karla ");
-   delay_ms(40);
+   delay_ms(45);
    lcd_gotoxy(1,1);
    printf(lcd_putc,"\f");
    printf(lcd_putc,"Proyecto Final  ");
-   delay_ms(40);
+   delay_ms(45);
 }
 
 // Funcion para mostrar el men� inicial
@@ -82,7 +82,7 @@ void imprimeLectura() {
          printf(lcd_putc," Temperatura:   ");
          lcd_gotoxy(1,2);
          printf(lcd_putc,"   %04.1f C   ", temperatura);
-         delay_ms(20);
+         delay_ms(50);
          break;
       case 1:
       case 2:

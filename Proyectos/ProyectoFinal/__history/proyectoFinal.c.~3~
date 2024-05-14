@@ -22,20 +22,20 @@ int estado;          // estado en el que está el menú
 void inicioLCD() {
    lcd_gotoxy(2,1);  
    printf(lcd_putc," Equipo 2:\n"); 
-   delay_ms(40);     
+   delay_ms(1000);     
    lcd_gotoxy(1,2);
    printf(lcd_putc," Alcantar Vianey ");
-   delay_ms(40);
+   delay_ms(1000);
    lcd_gotoxy(1,2);
    printf(lcd_putc," Sanchez Alexis ");
-   delay_ms(40);
+   delay_ms(1000);
    lcd_gotoxy(1,2);
    printf(lcd_putc," Velazquez Karla ");
-   delay_ms(40);
+   delay_ms(1000);
    lcd_gotoxy(1,1);
    printf(lcd_putc,"\f");
    printf(lcd_putc,"Proyecto Final  ");
-   delay_ms(40);
+   delay_ms(1000);
 }
 
 // Funcion para mostrar el men� inicial
@@ -82,12 +82,12 @@ void imprimeLectura() {
          printf(lcd_putc," Temperatura:   ");
          lcd_gotoxy(1,2);
          printf(lcd_putc,"   %04.1f C   ", temperatura);
-         delay_ms(20);
+         delay_ms(200);
          break;
       case 1:
       case 2:
          set_adc_channel(1);     // Configura el canal 1 para usar
-         delay_us(20);           // Retardo de 20 us
+         delay_us(200);           // Retardo de 20 us
          lectura = read_adc();   // obtiene el resultado de A/D
          voltaje = (lectura *0.0200098913771142) ;  // ecuación lineal voltaje V
          printf(lcd_putc," Voltaje:       "); 
@@ -96,7 +96,7 @@ void imprimeLectura() {
          break;
       case 3:
          set_adc_channel(2);     // Configura el canal 2 para usar
-         delay_us(20);           // Retardo de 20 us
+         delay_us(200);           // Retardo de 20 us
          lectura = read_adc();   // obtiene el resultado de A/D
          corriente = (lectura * 4.898007588791137);   // ecuación lineal corriente mA
          printf(lcd_putc," Corriente:     ");
@@ -187,7 +187,7 @@ int main() {
       if (dentro){
          imprimeLectura();
       }
-      delay_ms(10);
+      delay_ms(100);
    } // end while
    
    return 0;
