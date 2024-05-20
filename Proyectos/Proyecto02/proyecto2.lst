@@ -1,4 +1,4 @@
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  1
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Message[301]: MESSAGE: (Processor-header file mismatch.  Verify selected process
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
 000A   0186           00041         CLRF    TRISB
 000B   3007           00042         MOVLW   0X07
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  2
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ Message[302]: Register in operand not in bank 0.  Ensure that bank bits are corr
 0035   00B0           00089         MOVWF   INDEX                   ;REINICIAMOS INDICE, SETEADO EN 1
                       00090 
 0036   1023           00091         BCF             FLAG1,0                 ;FLAG1 <- 0
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  3
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 005C   00B1           00141     MOVWF   WINNER           ; Establecer WINNER con el puntaje de P1
 005D   3001           00142     MOVLW   0x01
 005E   00B2           00143     MOVWF   WINNER_ID        ; Establecer WINNER_ID a 1
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  4
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0081   3003           00194     MOVLW   0x03
 0082   00B2           00195     MOVWF   WINNER_ID
                       00196     
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  5
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -293,7 +293,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 00A1   21D9           00247         CALL    S_DOS         ; 
                       00248         
 00A2   3003           00249         MOVLW   .3
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  6
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -352,7 +352,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 00C9   3061           00300         MOVLW   A'a'
 00CA   21A2           00301         CALL    DATOS
 00CB   306E           00302         MOVLW   A'n'
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  7
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -411,7 +411,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 00F9   21A2           00353         CALL    DATOS
 00FA   306F           00354         MOVLW   A'o'
 00FB   21A2           00355         CALL    DATOS
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  8
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -470,7 +470,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0128   3078           00406         MOVLW   A'x'
 0129   21A2           00407         CALL    DATOS
 012A   3069           00408         MOVLW   A'i'
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE  9
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -529,7 +529,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 015A   21A2           00459         CALL    DATOS
 015B   3072           00460         MOVLW   A'r'
 015C   21A2           00461         CALL    DATOS
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 10
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -588,7 +588,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 018B   219B           00512         CALL    COMANDO
 018C   21FA           00513         CALL    RET100MS
 018D   3030           00514         MOVLW   0X30
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 11
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -647,7 +647,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 01B5   29AF           00565         GOTO    CENTENAS_LOOP   ; Intenta restar 100 nuevamente
                       00566 
                       00567 ; Convertir a Decenas
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 12
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 12
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -706,7 +706,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 01D5                  00618 S_UNO
 01D5   082B           00619         MOVFW   CONTADOR
 01D6   00AC           00620         MOVWF   P1_CONT
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 13
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 13
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -765,7 +765,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 01F9   0008           00671         RETURN
                       00672 
 01FA                  00673 RET100MS
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 14
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 14
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -813,7 +813,7 @@ Message[305]: Using default destination of 1 (file).
 0213   0008           00707         RETURN
                       00708 
                       00709         END
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 15
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 15
 
 
 SYMBOL TABLE
@@ -872,7 +872,7 @@ CHECK_P4                          00000088
 CHECK_PLAYERS                     000001C0
 CHS0                              00000003
 CHS1                              00000004
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 16
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 16
 
 
 SYMBOL TABLE
@@ -931,7 +931,7 @@ I2C_START                         00000003
 I2C_STOP                          00000004
 IBF                               00000007
 IBOV                              00000005
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 17
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 17
 
 
 SYMBOL TABLE
@@ -990,7 +990,7 @@ PEIE                              00000006
 PEN                               00000002
 PIE1                              0000008C
 PIE2                              0000008D
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 18
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 18
 
 
 SYMBOL TABLE
@@ -1049,7 +1049,7 @@ RD                                00000000
 RD0                               00000000
 RD1                               00000001
 RD2                               00000002
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 19
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 19
 
 
 SYMBOL TABLE
@@ -1108,7 +1108,7 @@ T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
 T0SE                              00000004
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 20
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 20
 
 
 SYMBOL TABLE
@@ -1167,7 +1167,7 @@ TRISC2                            00000002
 TRISC3                            00000003
 TRISC4                            00000004
 TRISC5                            00000005
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 21
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 21
 
 
 SYMBOL TABLE
@@ -1226,7 +1226,7 @@ _CONFIG                           00002007
 _CPD_OFF                          00003FFF
 _CPD_ON                           00003EFF
 _CP_ALL                           00000FCF
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 22
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 22
 
 
 SYMBOL TABLE
@@ -1283,7 +1283,7 @@ Program Memory Words Used:   528
 Program Memory Words Free:  7664
 
 
-MPASM  5.51                     PROYECTO2.ASM   4-17-2024  9:00:38         PAGE 23
+MPASM  5.51                     PROYECTO2.ASM   5-19-2024  10:33:47         PAGE 23
 
 
 

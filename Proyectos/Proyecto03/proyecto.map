@@ -1,0 +1,148 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Mon May 20 07:38:00 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000005    program   0x000468
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000005    0x000238      
+            565 out of 8454 program addresses used, program memory utilization is 6%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           BORRAR_DISPLAY   0x000201    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+            CENTENAS_LOOP   0x000205    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     CERO   0x00002a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      CHA   0x0000b4    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      CHD   0x00006a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                  COMANDO   0x0001f1    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     COMP   0x0000c3    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     CONF   0x000079    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   CONVER   0x000204    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+              CONVERTIDOR   0x00005a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+         CONVERTIDOR_TEMP   0x000063    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    DATOS   0x0001f8    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+             DECENAS_LOOP   0x00020c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      DOS   0x000223    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     DOSA   0x000230    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   ESPERA   0x00005d    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                  ESPERA2   0x000066    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     FIVE   0x000056    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     FOUR   0x000052    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+               INICIA_LCD   0x0001e0    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   INICIO   0x000005    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LETRA   0x0000ce    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     LOOP   0x000218    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP1   0x000072    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   LOOP11   0x00021a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP2   0x00007c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP3   0x000083    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP4   0x00008b    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP5   0x000090    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP6   0x000097    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP7   0x00009f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     MAIN   0x00001c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+             MOSTRAR_BITS   0x000032    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+           MSG_BIENVENIDA   0x000174    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                  MSG_BIN   0x000120    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_DECI   0x0000d1    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_HEXA   0x0000fb    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                MSG_JUEGO   0x0001a9    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_NEXT   0x000159    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_VOLT   0x000134    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+           MULTIPLICACION   0x0000a6    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 NEGATIVO   0x0000b0    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   NUMERO   0x0000cb    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      ONE   0x00003e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     REDO   0x000013    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      REG   0x0000ca    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 REGRESO1   0x000080    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      RET   0x000094    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 RET100MS   0x00021f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   RET200   0x000216    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    RET2S   0x00022c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    THREE   0x00004d    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     TRES   0x000221    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    TRESA   0x00022e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      TWO   0x000048    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+            UNIDADES_LOOP   0x000213    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      UNO   0x000225    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     UNOA   0x000232    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000005    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     REDO   0x000013    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     MAIN   0x00001c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     CERO   0x00002a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+             MOSTRAR_BITS   0x000032    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      ONE   0x00003e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      TWO   0x000048    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    THREE   0x00004d    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     FOUR   0x000052    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     FIVE   0x000056    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+              CONVERTIDOR   0x00005a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   ESPERA   0x00005d    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+         CONVERTIDOR_TEMP   0x000063    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                  ESPERA2   0x000066    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      CHD   0x00006a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP1   0x000072    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     CONF   0x000079    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP2   0x00007c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 REGRESO1   0x000080    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP3   0x000083    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP4   0x00008b    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP5   0x000090    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      RET   0x000094    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP6   0x000097    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LOOP7   0x00009f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+           MULTIPLICACION   0x0000a6    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 NEGATIVO   0x0000b0    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      CHA   0x0000b4    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     COMP   0x0000c3    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      REG   0x0000ca    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   NUMERO   0x0000cb    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    LETRA   0x0000ce    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_DECI   0x0000d1    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_HEXA   0x0000fb    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                  MSG_BIN   0x000120    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_VOLT   0x000134    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 MSG_NEXT   0x000159    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+           MSG_BIENVENIDA   0x000174    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                MSG_JUEGO   0x0001a9    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+               INICIA_LCD   0x0001e0    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                  COMANDO   0x0001f1    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    DATOS   0x0001f8    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+           BORRAR_DISPLAY   0x000201    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   CONVER   0x000204    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+            CENTENAS_LOOP   0x000205    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+             DECENAS_LOOP   0x00020c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+            UNIDADES_LOOP   0x000213    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   RET200   0x000216    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     LOOP   0x000218    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                   LOOP11   0x00021a    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                 RET100MS   0x00021f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     TRES   0x000221    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      DOS   0x000223    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                      UNO   0x000225    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    RET2S   0x00022c    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                    TRESA   0x00022e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     DOSA   0x000230    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+                     UNOA   0x000232    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\Proyecto03\proyecto.asm
+
+
