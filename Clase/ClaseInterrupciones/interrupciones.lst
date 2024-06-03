@@ -1,0 +1,644 @@
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001     PROCESSOR 16F877
+                      00002     #include <p16f877.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F877 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+Message[301]: MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+                      00540         LIST
+                      00003 
+                      00004     ; Definiciones de registros y constantes
+Warning[207]: Found label after column 1. (CONTADOR_T0)
+  00000020            00005     CONTADOR_T0 EQU 0x20
+Warning[207]: Found label after column 1. (CONTADOR_T1)
+  00000021            00006     CONTADOR_T1 EQU 0x21
+Warning[207]: Found label after column 1. (CONTADOR_T2)
+  00000022            00007     CONTADOR_T2 EQU 0x22
+Warning[207]: Found label after column 1. (RESULTADO_AD0)
+  00000023            00008     RESULTADO_AD0 EQU 0x23
+Warning[207]: Found label after column 1. (RESULTADO_AD1)
+  00000024            00009     RESULTADO_AD1 EQU 0x24
+Warning[207]: Found label after column 1. (RESULTADO_AD2)
+  00000025            00010     RESULTADO_AD2 EQU 0x25
+Warning[207]: Found label after column 1. (COUNTER)
+  00000026            00011         COUNTER         EQU     0X26
+                      00012 
+                      00013     ; Vectores de interrupción
+0000                  00014     ORG 0
+0000   2805           00015     GOTO INICIO
+                      00016 
+0004                  00017     ORG 4
+0004   2827           00018     GOTO INTERRUPCIONES
+                      00019 
+                      00020     ; Configuración inicial
+0005                  00021 INICIO:
+                      00022     ; Configuración de puertos y temporizadores
+0005   1683           00023     BSF STATUS, RP0         ; Banco 1
+0006   1303           00024     BCF STATUS, RP1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0007   0186           00025     CLRF TRISB              ; PORTB como salida
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0008   0187           00026     CLRF TRISC              ; PORTC como salida
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0009   0188           00027     CLRF TRISD              ; PORTD como salida
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000A   140C           00028     BSF PIE1, TMR1IE        ; Habilitar interrupciones de TIMER1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000B   148C           00029     BSF PIE1, TMR2IE        ; Habilitar interrupciones de TIMER2
+000C   30FF           00030     MOVLW 0xFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000D   0092           00031     MOVWF PR2               ; Configurar periodo de TIMER2
+000E   3007           00032     MOVLW B'00000111'
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   0081           00033     MOVWF OPTION_REG        ; Configurar prescaler para TIMER0
+0010   1283           00034     BCF STATUS, RP0         ; Banco 0
+0011   3031           00035     MOVLW B'00110001'
+0012   0090           00036     MOVWF T1CON             ; Configurar TIMER1
+0013   307F           00037     MOVLW B'01111111'
+0014   0092           00038     MOVWF T2CON             ; Configurar TIMER2
+0015   168B           00039     BSF INTCON, T0IE        ; Habilitar interrupciones de TIMER0
+0016   170B           00040     BSF INTCON, PEIE        ; Habilitar interrupciones periféricas
+0017   178B           00041     BSF INTCON, GIE         ; Habilitar interrupciones globales
+                      00042 
+                      00043     ; Configuración del A/D
+0018   1683           00044     BSF STATUS, RP0         ; Banco 1
+0019   3000           00045     MOVLW 0x00
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001A   009F           00046     MOVWF ADCON1            ; Configurar todas las entradas AN como analógicas
+001B   1283           00047     BCF STATUS, RP0         ; Banco 0
+                      00048 
+                      00049     ; Inicializar variables y puertos
+001C   0185           00050     CLRF PORTA              ; Limpiar PORTA
+001D   0186           00051     CLRF PORTB
+001E   0187           00052     CLRF PORTC
+001F   0188           00053     CLRF PORTD
+0020   01A0           00054     CLRF CONTADOR_T0
+0021   01A1           00055     CLRF CONTADOR_T1
+0022   01A2           00056     CLRF CONTADOR_T2
+0023   110B           00057     BCF INTCON, T0IF        ; Limpiar bandera de interrupción de TIMER0
+0024   100C           00058     BCF PIR1, TMR1IF        ; Limpiar bandera de interrupción de TIMER1
+0025   108C           00059     BCF PIR1, TMR2IF        ; Limpiar bandera de interrupción de TIMER2
+0026   2826           00060     GOTO $                  ; Bucle infinito
+                      00061 
+                      00062     ; Rutina de interrupciones
+0027                  00063 INTERRUPCIONES:
+0027   1D0B           00064     BTFSS INTCON, T0IF
+0028   2838           00065     GOTO REVISA_TIMER1
+0029   1C0C           00066     BTFSS PIR1, TMR1IF
+002A   2843           00067     GOTO REVISA_TIMER2
+002B   1C8C           00068     BTFSS PIR1, TMR2IF
+002C   284E           00069     GOTO SAL_INT
+                      00070 
+                      00071     ; Manejo de interrupciones para TIMER0
+Message[305]: Using default destination of 1 (file).
+002D   0AA0           00072     INCF CONTADOR_T0
+002E   303C           00073     MOVLW D'60'
+002F   0220           00074     SUBWF CONTADOR_T0, W
+0030   1D03           00075     BTFSS STATUS, Z
+0031   284F           00076     GOTO SAL_INT_T0
+0032   2055           00077     CALL LEER_ADC_AN1
+0033   0823           00078     MOVF RESULTADO_AD0, W
+0034   0086           00079     MOVWF PORTB              ; Desplegar valor de AN1 en PORTB
+0035   01A0           00080     CLRF CONTADOR_T0
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0036   110B           00081     BCF INTCON, T0IF         ; Limpiar bandera de interrupción de TIMER0
+0037   284E           00082     GOTO SAL_INT
+                      00083 
+0038                  00084 REVISA_TIMER1:
+                      00085     ; Manejo de interrupciones para TIMER1
+Message[305]: Using default destination of 1 (file).
+0038   0AA1           00086     INCF CONTADOR_T1
+0039   3078           00087     MOVLW D'120'
+003A   0221           00088     SUBWF CONTADOR_T1, W
+003B   1D03           00089     BTFSS STATUS, Z
+003C   2851           00090     GOTO SAL_INT_T1
+003D   2060           00091     CALL LEER_ADC_AN2
+003E   0824           00092     MOVF RESULTADO_AD1, W
+003F   0087           00093     MOVWF PORTC              ; Desplegar valor de AN2 en PORTC
+0040   01A1           00094     CLRF CONTADOR_T1
+0041   100C           00095     BCF PIR1, TMR1IF         ; Limpiar bandera de interrupción de TIMER1
+0042   284E           00096     GOTO SAL_INT
+                      00097 
+0043                  00098 REVISA_TIMER2:
+                      00099     ; Manejo de interrupciones para TIMER2
+Message[305]: Using default destination of 1 (file).
+0043   0AA2           00100     INCF CONTADOR_T2
+0044   30B4           00101     MOVLW D'180'
+0045   0222           00102     SUBWF CONTADOR_T2, W
+0046   1D03           00103     BTFSS STATUS, Z
+0047   2853           00104     GOTO SAL_INT_T2
+0048   206B           00105     CALL LEER_ADC_AN3
+0049   0825           00106     MOVF RESULTADO_AD2, W
+004A   0088           00107     MOVWF PORTD              ; Desplegar valor de AN3 en PORTD
+004B   01A2           00108     CLRF CONTADOR_T2
+004C   108C           00109     BCF PIR1, TMR2IF         ; Limpiar bandera de interrupción de TIMER2
+004D   284E           00110     GOTO SAL_INT
+                      00111 
+004E                  00112 SAL_INT:
+004E   0009           00113     RETFIE
+                      00114 
+004F                  00115 SAL_INT_T0:
+004F   110B           00116     BCF INTCON, T0IF
+0050   0009           00117     RETFIE
+                      00118 
+0051                  00119 SAL_INT_T1:
+0051   100C           00120     BCF PIR1, TMR1IF
+0052   0009           00121     RETFIE
+                      00122 
+0053                  00123 SAL_INT_T2:
+0053   108C           00124     BCF PIR1, TMR2IF
+0054   0009           00125     RETFIE
+                      00126 
+                      00127     ; Subrutina para leer el valor de ADC del canal AN1
+0055                  00128 LEER_ADC_AN1:
+0055   1683           00129     BSF STATUS, RP0
+0056   30C1           00130     MOVLW B'11000001'       ; Configura canal AN1, ADCS0 y ADON
+0057   009F           00131     MOVWF ADCON0
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0058   1283           00132     BCF STATUS, RP0
+0059   151F           00133     BSF ADCON0, GO          ; Inicia la conversión A/D
+005A   2076           00134     CALL RETARDO_20us
+005B                  00135 ESPERA_ADC_AN1:
+005B   191F           00136     BTFSC ADCON0, GO        ; Espera a que termine la conversión
+005C   285B           00137     GOTO ESPERA_ADC_AN1
+005D   081E           00138     MOVF ADRESH, W
+005E   00A3           00139     MOVWF RESULTADO_AD0     ; Guarda el resultado
+005F   0008           00140     RETURN
+                      00141 
+                      00142     ; Subrutina para leer el valor de ADC del canal AN2
+0060                  00143 LEER_ADC_AN2:
+0060   1683           00144     BSF STATUS, RP0
+0061   30C9           00145     MOVLW B'11001001'       ; Configura canal AN2, ADCS0 y ADON
+0062   009F           00146     MOVWF ADCON0
+0063   1283           00147     BCF STATUS, RP0
+0064   151F           00148     BSF ADCON0, GO          ; Inicia la conversión A/D
+0065   2076           00149     CALL RETARDO_20us
+0066                  00150 ESPERA_ADC_AN2:
+0066   191F           00151     BTFSC ADCON0, GO        ; Espera a que termine la conversión
+0067   2866           00152     GOTO ESPERA_ADC_AN2
+0068   081E           00153     MOVF ADRESH, W
+0069   00A4           00154     MOVWF RESULTADO_AD1     ; Guarda el resultado
+006A   0008           00155     RETURN
+                      00156 
+                      00157     ; Subrutina para leer el valor de ADC del canal AN3
+006B                  00158 LEER_ADC_AN3:
+006B   1683           00159     BSF STATUS, RP0
+006C   30D1           00160     MOVLW B'11010001'       ; Configura canal AN3, ADCS0 y ADON
+006D   009F           00161     MOVWF ADCON0
+006E   1283           00162     BCF STATUS, RP0
+006F   151F           00163     BSF ADCON0, GO          ; Inicia la conversión A/D
+0070   2076           00164     CALL RETARDO_20us
+0071                  00165 ESPERA_ADC_AN3:
+0071   191F           00166     BTFSC ADCON0, GO        ; Espera a que termine la conversión
+0072   2871           00167     GOTO ESPERA_ADC_AN3
+0073   081E           00168     MOVF ADRESH, W
+0074   00A5           00169     MOVWF RESULTADO_AD2     ; Guarda el resultado
+0075   0008           00170     RETURN
+                      00171 
+                      00172     ; Subrutina de retardo de 20 microsegundos
+0076                  00173 RETARDO_20us:
+0076   3028           00174     MOVLW D'40'
+0077   00A6           00175         MOVWF   COUNTER
+0078                  00176 RETARDO_LOOP:
+0078   0000           00177     NOP
+0079   0BA6           00178     DECFSZ COUNTER, F
+007A   2878           00179     GOTO RETARDO_LOOP
+007B   0008           00180     RETURN
+                      00181 
+                      00182     END
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRGH                              00000002
+C                                 00000000
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CKE                               00000006
+CKP                               00000004
+CONTADOR_T0                       00000020
+CONTADOR_T1                       00000021
+CONTADOR_T2                       00000022
+COUNTER                           00000026
+CREN                              00000004
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+CSRC                              00000007
+D                                 00000005
+DATA_ADDRESS                      00000005
+DC                                00000001
+D_A                               00000005
+D_NOT_A                           00000005
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+ESPERA_ADC_AN1                    0000005B
+ESPERA_ADC_AN2                    00000066
+ESPERA_ADC_AN3                    00000071
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INICIO                            00000005
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTERRUPCIONES                    00000027
+INTF                              00000001
+IRP                               00000007
+LEER_ADC_AN1                      00000055
+LEER_ADC_AN2                      00000060
+LEER_ADC_AN3                      0000006B
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+OERR                              00000001
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RESULTADO_AD0                     00000023
+RESULTADO_AD1                     00000024
+RESULTADO_AD2                     00000025
+RETARDO_20us                      00000076
+RETARDO_LOOP                      00000078
+REVISA_TIMER1                     00000038
+REVISA_TIMER2                     00000043
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SAL_INT                           0000004E
+SAL_INT_T0                        0000004F
+SAL_INT_T1                        00000051
+SAL_INT_T2                        00000053
+SEN                               00000000
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+SYNC                              00000004
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+MPASM  5.51                INTERRUPCIONES.ASM   5-21-2024  0:03:41         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP_ALL                           00000FCF
+_CP_HALF                          00001FDF
+_CP_OFF                           00003FFF
+_CP_UPPER_256                     00002FEF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_ENABLE_OFF                   00003DFF
+_WRT_ENABLE_ON                    00003FFF
+_WRT_OFF                          00003DFF
+_WRT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F877A                         00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : X---XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXX----
+
+All other memory blocks unused.
+
+Program Memory Words Used:   121
+Program Memory Words Free:  8071
+
+
+Errors   :     0
+Warnings :     7 reported,     0 suppressed
+Messages :    12 reported,     0 suppressed
+
+

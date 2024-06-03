@@ -1,0 +1,83 @@
+#include <16f877a.h>
+#device adc=10
+#use delay(crystal=20MHz)
+#use rs232(baud=9600, xmit=PIN_C6, rcv=PIN_C7)
+
+// Definición de pines
+#define TEMP_SENSOR_PIN PIN_A0
+#define LIGHT_SENSOR_PIN PIN_A1
+#define HUMIDITY_SENSOR_PIN PIN_A2
+#define FAN_PWM_PIN PIN_C2
+#define HUMIDIFIER_PIN PIN_B0
+#define LAMP_PWM_PIN PIN_C1
+#define LCD_RS PIN_D0
+#define LCD_EN PIN_D1
+#define LCD_D4 PIN_D2
+#define LCD_D5 PIN_D3
+#define LCD_D6 PIN_D4
+#define LCD_D7 PIN_D5
+
+#include <lcd.c>
+
+void main() {
+   int16 temp_value, light_value, humidity_value;
+   float temperature, light_level, humidity;
+   
+   // Configuración inicial
+   setup_adc(ADC_CLOCK_DIV_32);
+   setup_adc_ports(AN0_AN1_AN2);
+   setup_timer_2(T2_DIV_BY_16, 255, 1); // Configuración del PWM
+   setup_ccp1(CCP_PWM);
+   setup_ccp2(CCP_PWM);
+   
+   lcd_init();
+   
+   while(TRUE) {
+      // Leer sensores
+      set_adc_channel(0);
+      delay_us(20);
+      temp_value = read_adc();
+      temperature = (temp_value * 5.0) / 1024.0 * 100; // Convertir a grados Celsius
+      
+      set_adc_channel(1);
+      delay_us(20);
+      light_value = read_adc();
+      light_level = (light_value * 100.0) / 1024.0; // Convertir a porcentaje
+      
+      set_adc_channel(2);
+      delay_us(20);
+      humidity_value = read_adc();
+      humidity = (humidity_value * 100.0) / 1024.0; // Convertir a porcentaje
+      
+      // Controlar dispositivos
+      if (temperature > 30) {
+         set_pwm1_duty(512); // Encender ventilador a media velocidad
+      } else {
+         set_pwm1_duty(0); // Apagar ventilador
+      }
+      
+      if (humidity < 40) {
+         output_high(HUMIDIFIER_PIN); // Encender humidificador
+      } else {
+         output_low(HUMIDIFIER_PIN); // Apagar humidificador
+      }
+      
+      if (light_level < 50) {
+         set_pwm2_duty(512); // Encender lámpara a media intensidad
+      } else {
+         set_pwm2_duty(0); // Apagar lámpara
+      }
+      
+      // Mostrar datos en LCD
+      lcd_gotoxy(1,1);
+      printf(lcd_putc, "Temp: %2.1f C", temperature);
+      lcd_gotoxy(1,2);
+      printf(lcd_putc, "Hum: %2.1f%% L: %2.1f%%", humidity, light_level);
+      
+      // Enviar datos por UART
+      printf("Temp: %2.1f C, Hum: %2.1f%%, Light: %2.1f%%\r\n", temperature, humidity, light_level);
+      
+      delay_ms(1000); // Esperar 1 segundo
+   }
+}
+

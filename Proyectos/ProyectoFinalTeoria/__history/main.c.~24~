@@ -1,0 +1,60 @@
+#include <16f877a.h>
+#fuses HS,NOWDT,NOPROTECT,NOPUT,NOLVP,BROWNOUT 
+#use delay(clock=20M)
+#use standard_io(D)
+
+// Definición de pines para el LCD
+#define LCD_DB4   PIN_D4
+#define LCD_DB5   PIN_D5
+#define LCD_DB6   PIN_D6
+#define LCD_DB7   PIN_D7
+#define LCD_RS    PIN_D2
+#define LCD_E     PIN_D3
+#include <LCD_16X2.c>  // Librería para el manejo de la pantalla LCD
+
+// Definición de pines para el sensor de temperatura y el ventilador
+#define TEMP_SENSOR_PIN PIN_A0
+#define FAN_PIN PIN_B0
+
+char grade[8] = {0x07, 0x05, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00};
+float temperature;
+float temp_adc_value;
+
+void main() {
+   // Inicialización del ADC y el LCD
+   lcd_init();
+   setup_adc(adc_clock_internal);
+   setup_adc_ports(all_analog);
+   CGRAM_position(0);
+   CGRAM_create_char(grade);
+   // Configuración del pin del ventilador como salida
+   set_tris_b(0x00); // Establece RB0 como salida (0) y los demás como entrada (1)
+
+
+   while(true) {
+      // Leer el valor del sensor de temperatura
+      set_adc_channel(0); // Selecciona el canal AN0 (PIN_A0)
+      delay_us(20); // Espera el tiempo de adquisición del ADC
+
+      temp_adc_value = read_adc(); // Lee el valor del ADC
+      // Convertir el valor ADC a temperatura (suponiendo un LM35)
+      temperature = (temp_adc_value * 2024.0) / 1023.0; // Conversión para LM35
+      // Mostrar la temperatura en el LCD
+      lcd_gotoxy(1,1); // Columna 1, Fila 1
+      printf(lcd_putc, "Temp: %0.2f C", temperature);
+      lcd_gotoxy(12,1);
+      CGRAM_putc(0);
+      // Controlar el ventilador basado en la temperatura
+      if (temperature > 30.0) { // Umbral de temperatura (30 grados Celsius)
+         output_high(FAN_PIN); // Enciende el ventilador
+      } else {
+         output_low(FAN_PIN); // Apaga el ventilador
+      }
+
+      delay_ms(150);
+      
+      // Limpia la segunda línea del LCD
+      //lcd_clear();
+   }
+}
+

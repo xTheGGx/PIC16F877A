@@ -1,0 +1,64 @@
+MPLINK 4.49, Linker
+Linker Map File - Created Tue May 21 00:03:42 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000000
+                   .org_1       code   0x000000    program   0x000002
+                   .org_2       code   0x000004    program   0x0000f0
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000000      
+                            0x000004    0x00007b      
+            121 out of 8454 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+           ESPERA_ADC_AN1   0x00005b    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+           ESPERA_ADC_AN2   0x000066    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+           ESPERA_ADC_AN3   0x000071    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+                   INICIO   0x000005    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+           INTERRUPCIONES   0x000027    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             LEER_ADC_AN1   0x000055    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             LEER_ADC_AN2   0x000060    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             LEER_ADC_AN3   0x00006b    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             RETARDO_20us   0x000076    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             RETARDO_LOOP   0x000078    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+            REVISA_TIMER1   0x000038    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+            REVISA_TIMER2   0x000043    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+                  SAL_INT   0x00004e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+               SAL_INT_T0   0x00004f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+               SAL_INT_T1   0x000051    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+               SAL_INT_T2   0x000053    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000005    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+           INTERRUPCIONES   0x000027    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+            REVISA_TIMER1   0x000038    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+            REVISA_TIMER2   0x000043    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+                  SAL_INT   0x00004e    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+               SAL_INT_T0   0x00004f    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+               SAL_INT_T1   0x000051    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+               SAL_INT_T2   0x000053    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             LEER_ADC_AN1   0x000055    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+           ESPERA_ADC_AN1   0x00005b    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             LEER_ADC_AN2   0x000060    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+           ESPERA_ADC_AN2   0x000066    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             LEER_ADC_AN3   0x00006b    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+           ESPERA_ADC_AN3   0x000071    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             RETARDO_20us   0x000076    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+             RETARDO_LOOP   0x000078    program     static C:\Users\Alexis\Documents\GitHub\PIC16F877A\Clase\ClaseInterrupciones\interrupciones.asm
+
+

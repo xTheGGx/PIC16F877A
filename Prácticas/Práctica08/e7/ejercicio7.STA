@@ -32,23 +32,23 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0     79  14    0   383  4.1  MAIN
 0      4   1    0             @const657
 0     21   4    3             @DIV88
-0     89  16    6   102  3.3  @PRINTF_D_640
-0     87  16    5   102  3.3  @PSTRINGCN7_640
-0      4   1    0   102  3.3  @const666
-0     35   6    2   102  3.3  @PRINTF_X_640
- Inline         0   102  3.3  @cinit1
+0     89  16    6             @PRINTF_D_640
+0     87  16    5             @PSTRINGCN7_640
+0      4   1    0             @const666
+0     35   6    2             @PRINTF_X_640
+ Inline         0             @cinit1
 
 Program metrics:
-    Functions               13
+    Functions               8
     Statements              99
     Comments                214
-    Volume (V)              5879
-    Difficulty (D)          58.0
-    Effort to implement (E) 340971
-    Time to implement (T)   5 hours, 16 minutes
-    Est Delivered Bugs (B)  2
-    Cyclomatic Complexity   14
-    Maintainability (MI)    106
+    Volume (V)              4639
+    Difficulty (D)          38.4
+    Effort to implement (E) 178075
+    Time to implement (T)   2 hours, 45 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   9
+    Maintainability (MI)    146
 
  Segment     Used  Free
 -----------  ----  ----

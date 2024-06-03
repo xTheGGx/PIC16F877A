@@ -1,0 +1,168 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020-027 grade
+028-02B temperatura
+02C-02F lectura
+030-033 voltaje
+034-037 conversion
+038     percent
+039-03C @PRINTF_L32D_9600_62_63FPFPF.P1
+039     @PSTRINGCN7_638.P2
+039-03A @ITOF.P3
+039-03A CGRAM_create_char.new_char
+039     lcd_init.i
+039-03C @MULFF.P1
+039-03C @FLT.P2
+039     CGRAM_position.p
+039     @PRINTF_U_638.P1
+039-03C @SFTOI.P2
+039-03C @PRINTF_L32D_638FPFPF.P3
+039-03C @ADDFF.P4
+039     @PSTRINGC7_9600_62_63.@SCRATCH1
+039     lightControl.@SCRATCH1
+03A     @PRINTF_U_638.P1
+03A     lcd_init.@SCRATCH1
+03A     CGRAM_position.@SCRATCH1
+03A     @PSTRINGCN7_638.@SCRATCH1
+03A     @PSTRINGC7_9600_62_63.@SCRATCH2
+03A     lightControl.@SCRATCH2
+03B     @DIV88.P1
+03B     CGRAM_create_char.cg
+03B     @PSTRINGCN7_638.@SCRATCH2
+03B     @PSTRINGC7_9600_62_63.@SCRATCH3
+03B     lightControl.@SCRATCH3
+03C     @DIV88.P1
+03C     CGRAM_create_char.@SCRATCH1
+03C     @PSTRINGCN7_638.@SCRATCH3
+03C     @PSTRINGC7_9600_62_63.@SCRATCH4
+03C     lightControl.@SCRATCH4
+03D     send_byte_data.address_lcd
+03D-040 @MULFF.P1
+03D-040 @FLT.P2
+03D     @PRINTF_L32D_638FPFPF.P3
+03D-040 @DIVFF.P4
+03D     @PRINTF_L32D_9600_62_63FPFPF.P5
+03D-040 @ADDFF.P6
+03D     lcd_putc.c
+03D     @PSTRINGCN7_638.@SCRATCH4
+03D     @DIV88.@SCRATCH1
+03E     send_byte_data.n
+03E     lcd_gotoxy.x
+03E     @delay_ms1.P1
+03F     lcd_gotoxy.y
+03F     send_byte_data.@SCRATCH1
+040     lcd_gotoxy.address
+040     send_D7_D4.address_lcd
+041     send_D7_D4.nibble_lcd
+041-044 @DIVFF.P1
+041     lcd_gotoxy.@SCRATCH1
+041     @MULFF.@SCRATCH1
+041     @FLT.@SCRATCH1
+041     @ADDFF.@SCRATCH1
+042     lcd_send_byte.address
+042     send_D7_D4.@SCRATCH1
+042     @MULFF.@SCRATCH2
+042     @FLT.@SCRATCH2
+042     @ADDFF.@SCRATCH2
+043     lcd_send_byte.n
+043     @MULFF.@SCRATCH3
+043     @ADDFF.@SCRATCH3
+044     lcd_send_byte.@SCRATCH1
+044     @MULFF.@SCRATCH4
+044     @ADDFF.@SCRATCH4
+045     lcd_send_nibble.nibble
+045     @MULFF.@SCRATCH5
+045     @DIVFF.@SCRATCH1
+045     @ADDFF.@SCRATCH5
+046     @DIVFF.@SCRATCH2
+046     @ADDFF.@SCRATCH6
+047     @DIVFF.@SCRATCH3
+047     @ADDFF.@SCRATCH7
+048     @DIVFF.@SCRATCH4
+048     @ADDFF.@SCRATCH8
+049     @DIVFF.@SCRATCH5
+04A     @DIVFF.@SCRATCH6
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  LCD_INIT_STRING.call
+000008  LCD_INIT_STRING.data
+00000C  @const644.call
+00000D  @const680.call
+000014  @const689.call
+000020  @const691.call
+00002A  @const701.call
+000031  @const708.call
+00003B  @const709.call
+000044  @delay_ms1
+000058  lcd_send_nibble
+000086  lcd_send_byte
+0000AD  lcd_init
+0000DC  send_D7_D4
+000134  send_byte_data
+000146  CGRAM_position
+000156  CGRAM_create_char
+00016D  @ITOF
+00018A  @MULFF
+0001FF  lcd_gotoxy
+000211  lcd_putc
+000235  @DIV88
+00024A  @PSTRINGC7_9600_62_63
+0002A2  lightControl
+0002FD  @DIVFF
+0003DD  @ADDFF
+000525  @SFTOI
+000552  @PSTRINGCN7_638
+0005AC  @PRINTF_U_638
+0005F7  @FLT
+000658  @cinit1
+000658  MAIN
+00066A  @cinit2
+
+Project Directory:
+    C:\Users\Alexis\Documents\GitHub\PIC16F877A\Proyectos\ProyectoFinalTeoria\
+
+Project Files:
+    main.c                                                  [03-jun.-24 02:53  CRC=31547DB3]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16f877a.h [12-nov.-13 14:35  CRC=81334808]
+    ..\..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\LCD_16X2.c [19-jun.-20 19:32  CRC=F406DE8D]
+
+Source signature=9A9582D5
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA
