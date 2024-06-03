@@ -1,7 +1,8 @@
-D G "__PCM__" 0 93 ""5.015""
-D G "__DEVICE__" 0 93 "877"
-D G "__DATE__" 0 93 ""03-jun.-24""
-D G "__TIME__" 0 93 ""02:53:27"" "Standard Header file for the PIC16F877A device ////////////////"
+C L "MAIN" 0 17 3 "FUNCTION"
+D G "__PCM__" 0 176 ""5.015""
+D G "__DEVICE__" 0 176 "877"
+D G "__DATE__" 0 176 ""03-jun.-24""
+D G "__TIME__" 0 176 ""10:12:29"" "Standard Header file for the PIC16F877A device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 37 "int8" `54 
 f B "set_tris_a" 1 37 "void(int8 value)" `53 
@@ -296,7 +297,7 @@ v L "mode" 1 364 "int8" `196
 f G "read_adc" 1 364 "int8(int8 mode)" `195 
 f G "read_adc" 1 365 "int16()" `197 
 v L "mode" 1 366 "int8" `199 
-f B "read_adc" 1 366 "int16(int8 mode)" `198 
+f G "read_adc" 1 366 "int16(int8 mode)" `198 
 f B "adc_done" 1 367 "int8()" `200  "Constants used for SETUP_ADC() are:"
 d G "ADC_OFF" 1 369 "0" "ADC Off"
 d G "ADC_CLOCK_DIV_2" 1 370 "0x10000"
@@ -479,7 +480,7 @@ v L "bit" 1 469 "int8" `339
 f G "bit_test" 1 469 "int8(int16 var,int8 bit)" `337 
 v L "var" 1 470 "int32" `335 
 v L "bit" 1 470 "int8" `342 
-f B "bit_test" 1 470 "int8(int32 var,int8 bit)" `340  "#use delay() Prototypes:"
+f G "bit_test" 1 470 "int8(int32 var,int8 bit)" `340  "#use delay() Prototypes:"
 v L "count" 1 473 "int8" `344 
 f B "delay_cycles" 1 473 "void(int8 count)" `343 
 v L "time" 1 474 "int16" `346 
@@ -498,7 +499,7 @@ v L "stream" 1 481 "int8" `358
 f G "puts" 1 481 "void(*int8 string,int8 stream)" `356 
 f B "getch" 1 482 "int8()" `359 
 v L "stream" 1 483 "int8" `361 
-f B "getch" 1 483 "int8(int8 stream)" `360 
+f G "getch" 1 483 "int8(int8 stream)" `360 
 v L "string" 1 484 "*int8" `363 
 f B "gets" 1 484 "void(*int8 string)" `362 
 v L "string" 1 485 "*int8" `365 
@@ -543,7 +544,7 @@ v L "stream" 1 508 "int8" `405
 f G "i2c_start" 1 508 "void(int8 stream)" `404 
 v L "stream" 1 509 "int8" `407 
 v L "restart" 1 509 "int8" `408 
-f B "i2c_start" 1 509 "void(int8 stream,int8 restart)" `406 
+f G "i2c_start" 1 509 "void(int8 stream,int8 restart)" `406 
 f B "i2c_stop" 1 510 "void()" `409 
 v L "stream" 1 511 "int8" `411 
 f G "i2c_stop" 1 511 "void(int8 stream)" `410 
@@ -555,7 +556,7 @@ v L "addr" 1 514 "int8" `417
 f G "i2c_slaveaddr" 1 514 "void(int8 stream,int8 addr)" `415 
 f B "i2c_poll" 1 515 "int8()" `418 
 v L "stream" 1 516 "int8" `420 
-f B "i2c_poll" 1 516 "int8(int8 stream)" `419 
+f G "i2c_poll" 1 516 "int8(int8 stream)" `419 
 v L "baud" 1 517 "int32" `422 
 f B "i2c_init" 1 517 "void(int32 baud)" `421 
 v L "stream" 1 518 "int8" `424 
@@ -600,7 +601,7 @@ v L "baud" 1 535 "int32" `462
 f B "spi_speed" 1 535 "void(int32 baud)" `461 
 v L "stream" 1 536 "int8" `464 
 v L "baud" 1 536 "int32" `465 
-f B "spi_speed" 1 536 "void(int8 stream,int32 baud)" `463 
+f G "spi_speed" 1 536 "void(int8 stream,int32 baud)" `463 
 v L "stream" 1 537 "int8" `467 
 v L "baud" 1 537 "int32" `468 
 v L "clock" 1 537 "int32" `469 
@@ -634,10 +635,10 @@ v L "bits" 1 550 "int8" `496
 f G "spi_xfer_in" 1 550 "int8(int8 stream,int8 bits)" `494 
 v L "stream" 1 551 "int8" `495 
 v L "bits" 1 551 "int8" `499 
-f B "spi_xfer_in" 1 551 "int16(int8 stream,int8 bits)" `497 
+f G "spi_xfer_in" 1 551 "int16(int8 stream,int8 bits)" `497 
 v L "stream" 1 552 "int8" `495 
 v L "bits" 1 552 "int8" `502 
-f B "spi_xfer_in" 1 552 "int32(int8 stream,int8 bits)" `500  "#use rtos() Prototypes:"
+f G "spi_xfer_in" 1 552 "int32(int8 stream,int8 bits)" `500  "#use rtos() Prototypes:"
 f B "rtos_run" 1 555 "void()" `503 
 f B "rtos_yield" 1 556 "void()" `504 
 v L "task" 1 557 "int8" `506 
@@ -663,7 +664,7 @@ v L "stat" 1 567 "*int8" `525
 f B "rtos_stats" 1 567 "void(int8 task,*int8 stat)" `523  "#use timer() Prototypes:"
 f B "get_ticks" 1 570 "int8()" `526 
 f G "get_ticks" 1 571 "int16()" `527 
-f B "get_ticks" 1 572 "int32()" `528 
+f G "get_ticks" 1 572 "int32()" `528 
 v L "stream" 1 573 "int8" `530 
 f G "get_ticks" 1 573 "int8(int8 stream)" `529 
 v L "stream" 1 574 "int8" `532 
@@ -690,7 +691,7 @@ v L "stream" 1 585 "int8" `552
 f G "pwm_on" 1 585 "void(int8 stream)" `551 
 f B "pwm_off" 1 586 "void()" `553 
 v L "stream" 1 587 "int8" `555 
-f B "pwm_off" 1 587 "void(int8 stream)" `554 
+f G "pwm_off" 1 587 "void(int8 stream)" `554 
 v L "duty" 1 588 "int16" `557 
 f B "pwm_set_duty" 1 588 "void(int16 duty)" `556 
 v L "stream" 1 589 "int8" `559 
@@ -708,7 +709,7 @@ v L "frequency" 1 593 "int32" `570
 f G "pwm_set_frequency" 1 593 "void(int8 stream,int32 frequency)" `568  "#use capture() Prototypes:"
 f B "get_capture_time" 1 596 "int16()" `571 
 v L "stream" 1 597 "int8" `573 
-f B "get_capture_time" 1 597 "int16(int8 stream)" `572 
+f G "get_capture_time" 1 597 "int16(int8 stream)" `572 
 f B "get_capture_event" 1 598 "int8()" `574 
 v L "stream" 1 599 "int8" `576 
 f G "get_capture_event" 1 599 "int8(int8 stream)" `575  "Enviroment Prototypes:"
@@ -782,6 +783,7 @@ D G "LCD_DB6" 0 10 "PIN_D6"
 D G "LCD_DB7" 0 11 "PIN_D7"
 D G "LCD_RS" 0 12 "PIN_D2"
 D G "LCD_E" 0 13 "PIN_D3"
+D G "DHT11_PIN" 0 14 "PIN_B2"
 D G "lcd_type" 2 3 "2" "0=5x7, 1=5x10, 2=2 lines"
 D G "lcd_line_two" 2 4 "0x40" "LCD RAM address for the 2nd line"
 V G "LCD_INIT_STRING" 2 7 "[4]" `624 
@@ -822,33 +824,67 @@ F G "CGRAM_position" 2 252 "void(int8 p)" `654
 V L "new_char" 2 256 "*int8" `657 
 F G "CGRAM_create_char" 2 257 "void(*int8 new_char)" `656 
 V L "cg" 2 258 "int8" `658 
-D G "TEMP_SENSOR_PIN" 0 17 "PIN_A0"
-D G "FAN_PIN" 0 18 "PIN_B0"
-D G "LAMP_PIN" 0 19 "PIN_B1"
-V G "grade" 0 21 "int8[8]" `659 
-V G "temperatura" 0 22 "float" `660 
-V G "lectura" 0 23 "float" `661 
-V G "voltaje" 0 24 "float" `662 
-V G "conversion" 0 25 "float" `663 
-V G "percent" 0 26 "int8" `664 
-F G "tempControl" 0 28 "void()" `665  "Leer el valor del sensor de temperatura"
-C L "tempControl" 0 16 1 "FUNCTION"
-C L "tempControl" 0 16 1 "FUNCTION"
-C L "tempControl" 0 16 2 "FUNCTION"
-C L "tempControl" 0 16 2 "FUNCTION"
-C L "tempControl" 0 16 1 "FUNCTION"
-C L "tempControl" 0 16 1 "FUNCTION"
-C L "tempControl" 0 16 1 "FUNCTION"
-C L "tempControl" 0 16 1 "FUNCTION"
-C L "tempControl" 0 16 1 "FUNCTION"
-F G "lightControl" 0 54 "void()" `692 
-C L "lightControl" 0 16 1 "FUNCTION"
-C L "lightControl" 0 16 1 "FUNCTION"
-C L "lightControl" 0 16 1 "FUNCTION"
-F G "MAIN" 0 74 "void()" `710  "Inicialización del ADC y el LCD"
-C L "MAIN" 0 16 1 "FUNCTION"
-C L "MAIN" 0 16 1 "FUNCTION"
-C L "MAIN" 0 16 1 "FUNCTION"
+C L "dht11_init" 3 1 1 "FUNCTION"
+C L "dht11_init" 3 1 1 "*"
+C L "dht11_init" 3 1 1 "*"
+C L "dht11_init" 3 1 1 "*"
+F G "dht11_init" 3 10 "void()" `659 
+V L "h" 3 16 "int8" `661 
+V L "l" 3 16 "int8" `662 
+F G "DHT11_Join_Data" 3 17 "int16(int8 h,int8 l)" `660 
+V L "pow" 3 18 "int16" `663 
+V L "tem" 3 24 "*float" `668 
+V L "hum" 3 24 "*float" `669 
+F G "dht11_read_data" 3 25 "int8(*float tem,*float hum)" `667 
+V L "bits" 3 26 "int8[5]" `670 
+V L "result" 3 27 "int8" `671 
+V L "j" 3 50 "int8" `672 
+V L "i" 3 53 "int8" `673 
+D G "TEMP_SENSOR_PIN" 0 18 "PIN_A0"
+D G "FAN_PIN" 0 19 "PIN_B0"
+D G "LAMP_PIN" 0 20 "PIN_B1"
+V G "grade" 0 22 "int8[8]" `679 
+V G "temperatura" 0 23 "float" `680 
+V G "lectura" 0 24 "float" `681 
+V G "voltaje" 0 25 "float" `682 
+V G "conversion" 0 26 "float" `683 
+V G "percent" 0 27 "int8" `684 
+V G "flag" 0 28 "int8" `685 
+V G "humedad" 0 29 "float" `686 
+V G "data_ok" 0 30 "int8" `687 
+F G "tempControl" 0 34 "void()" `688  "Leer el valor del sensor de temperatura"
+C L "tempControl" 0 17 1 "FUNCTION"
+C L "tempControl" 0 17 1 "FUNCTION"
+C L "tempControl" 0 17 1 "FUNCTION"
+C L "tempControl" 0 17 2 "FUNCTION"
+C L "tempControl" 0 17 2 "FUNCTION"
+C L "tempControl" 0 17 1 "FUNCTION"
+C L "tempControl" 0 17 1 "FUNCTION"
+C L "tempControl" 0 17 1 "FUNCTION"
+C L "tempControl" 0 17 1 "FUNCTION"
+C L "tempControl" 0 17 1 "FUNCTION"
+F G "lightControl" 0 61 "void()" `713 
+C L "lightControl" 0 17 1 "FUNCTION"
+C L "lightControl" 0 17 1 "FUNCTION"
+C L "lightControl" 0 17 1 "FUNCTION"
+F G "rhControl" 0 81 "void()" `728 
+F G "MAIN" 0 97 "void()" `732  "Inicialización del ADC y el LCD"
+C L "MAIN" 0 17 1 "FUNCTION"
+C L "MAIN" 0 17 1 "FUNCTION"
+C L "MAIN" 0 17 1 "FUNCTION"
+C L "MAIN" 0 17 1 "FUNCTION"
+C L "MAIN" 0 17 1 "FUNCTION"
+C L "MAIN" 0 17 1 "FUNCTION"
+V L "c" 0 120 "int8" `738 
+C L "MAIN" 0 17 1 "FUNCTION"
+V L "tpFlag" 0 124 "int8" `739 
+V L "tpAux" 0 125 "int8" `740 
+C L "MAIN" 0 17 1 "FUNCTION"
+V L "lgFlag" 0 136 "int8" `741 
+V L "lgAux" 0 137 "int8" `742 
+C L "MAIN" 0 17 1 "FUNCTION"
+V L "rhFlag" 0 152 "int8" `743 
+V L "rhAux" 0 153 "int8" `744 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

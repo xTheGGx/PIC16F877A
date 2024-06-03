@@ -1,0 +1,188 @@
+#include <16f877a.h>
+#fuses HS,NOWDT,NOPROTECT,NOPUT,NOLVP,BROWNOUT 
+#use delay(clock=20M)
+#use standard_io(D)
+#use rs232(baud=9600, xmit=PIN_C6, rcv=PIN_C7)
+
+// Definición de pines para el LCD
+#define LCD_DB4   PIN_D4
+#define LCD_DB5   PIN_D5
+#define LCD_DB6   PIN_D6
+#define LCD_DB7   PIN_D7
+#define LCD_RS    PIN_D2
+#define LCD_E     PIN_D3
+#include <LCD_16X2.c>  // Librería para el manejo de la pantalla LCD
+
+// Definición de pines para el sensor de temperatura y el ventilador
+#define TEMP_SENSOR_PIN PIN_A0
+#define FAN_PIN PIN_B0
+#define LAMP_PIN PIN_B1
+
+sbit Data at RB1_bit;
+sbit DataDir at TRISB1_bit;
+
+char grade[8] = {0x07, 0x05, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00};
+float lectura;
+float voltaje;
+float conversion;
+int percent;
+
+// Variables para el DHT11
+char message[] = "00.0";
+unsigned short TOUT = 0, CheckSum, i;
+unsigned int humidity, value;
+unsigned int T_Byte1, T_Byte2, RH_Byte1, RH_Byte2;
+
+void StartSignal()
+{
+  DataDir = 0;     // Data port is output
+  Data    = 0;
+  Delay_ms(25);
+  Data    = 1;
+  Delay_us(30);
+  DataDir = 1;     // Data port is input
+}
+
+unsigned short CheckResponse()
+{
+  TOUT = 0;
+  TMR2 = 0;
+  T2CON.TMR2ON = 1;      // start timer
+  while(!Data && !TOUT);
+  if (TOUT) return 0;
+  else
+  {
+     TMR2 = 0;
+     while(Data && !TOUT);
+     if (TOUT) return 0;
+     else
+     {
+        T2CON.TMR2ON = 0;
+        return 1;
+     }
+  }
+}
+
+unsigned short ReadByte()
+{
+  unsigned short num = 0, t;
+  DataDir = 1;
+  for (i=0; i<8; i++)
+  {
+    while(!Data);
+    Delay_us(40);
+    if(Data) num |= 1<<(7-i);
+    while(Data);
+  }
+  return num;
+}
+
+#int_timer2
+void timer2_isr()
+{
+  TOUT = 1;
+  T2CON.TMR2ON = 0; // stop timer
+  PIR1.TMR2IF  = 0; // Clear TMR2 interrupt flag
+}
+
+void readDHT11() {
+    unsigned short check;
+    PIE1.TMR2IE = 1;  // Enable Timer2 interrupt
+    ADCON1 = 0x07; // all digital selected
+    StartSignal();
+    check = CheckResponse();
+    if (!check) {
+        lcd_gotoxy(1, 1);
+        lcd_putc("No response");
+        lcd_gotoxy(2, 1);
+        lcd_putc("from sensor");
+    } else {
+        RH_Byte1 = ReadByte();
+        RH_Byte2 = ReadByte();
+        T_Byte1 = ReadByte();
+        T_Byte2 = ReadByte();
+        CheckSum = ReadByte();
+        // Check for error in Data reception
+        if (CheckSum == ((RH_Byte1 + RH_Byte2 + T_Byte1 + T_Byte2) & 0xFF)) {
+            lcd_gotoxy(1,1);
+            lcd_putc("HUM:");
+            lcd_gotoxy(2,1);
+            lcd_putc("TEMP:");
+          
+            message[0] = RH_Byte1/10 + 48;
+            message[1] = RH_Byte1%10 + 48;
+            message[3] = RH_Byte2%10 + 48;
+            lcd_gotoxy(1, 5);
+            lcd_putc(message);
+            lcd_putc("%");
+          
+            message[0] = T_Byte1/10 + 48;
+            message[1] = T_Byte1%10 + 48;
+            message[3] = T_Byte2%10 + 48;
+            lcd_gotoxy(2, 6);
+            lcd_putc(message);
+            lcd_Chr_CP(223);
+            lcd_putc("C");
+          
+            // Controlar el ventilador basado en la temperatura
+            if (T_Byte1 > 30) { // Umbral de temperatura (30 grados Celsius)
+                output_high(FAN_PIN); // Enciende el ventilador
+            } else {
+                output_low(FAN_PIN); // Apaga el ventilador
+            }
+
+        } else {
+            lcd_gotoxy(1, 1);
+            lcd_putc("Checksum Error");
+            lcd_gotoxy(2, 1);
+            lcd_putc("Trying Again");
+        }
+    }
+    PIE1.TMR2IE = 0;  // disable Timer2 interrupt
+}
+
+void lightControl(){
+   set_adc_channel(1);
+   delay_us(20);
+   lectura = read_adc();
+   voltaje = (lectura * 0.0200098913771142);
+   conversion = (voltaje*100)/4.98;
+   percent = 100 - conversion;
+     
+   lcd_gotoxy(1,1);
+   printf(lcd_putc, "Luz:  %3u%% ", percent);
+   if (percent < 30.0) { // Umbral de LUZ (30 PERCENT)
+      printf("Encendiendo lampara");
+      output_high(LAMP_PIN); // Enciende el ventilador
+   } else {
+      printf("Apagando lampara");
+      output_low(LAMP_PIN); // Apaga el ventilador
+   }
+   delay_ms(500);
+}
+
+void main() {
+   // Inicialización del ADC y el LCD
+   lcd_init();
+   setup_adc(adc_clock_internal);
+   setup_adc_ports(all_analog);
+   CGRAM_position(0);
+   CGRAM_create_char(grade);
+   // Configuración del pin del ventilador como salida
+   set_tris_b(0x00); // Establece RB0 como salida (0) y los demás como entrada (1)
+
+   // Configuración del Timer2
+   INTCON.GIE = 1;    //Enable global interrupt
+   INTCON.PEIE = 1;   //Enable peripheral interrupt
+   PIE1.TMR2IE = 1;  // Enable Timer2 interrupt
+   T2CON = 0;        // Prescaler 1:1, and Timer2 is off initially
+   PIR1.TMR2IF = 0;   // Clear TMR2 INT Flag bit
+   TMR2 = 0;
+
+   while(true) {
+      readDHT11();   // Leer datos del DHT11
+      delay_ms(2000); // Esperar 2 segundos antes de la siguiente lectura
+      //lightControl(); // Leer datos de la luz y controlar lámpara
+   }
+}
+

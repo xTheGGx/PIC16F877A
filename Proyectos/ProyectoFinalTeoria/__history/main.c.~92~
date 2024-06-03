@@ -108,7 +108,7 @@ void main() {
    while(true) {
       
       do{  
-          output_b(0x00);
+          portb = 0x00;
           printf(lcd_putc, "\f");
           flag = 0;
           lcd_gotoxy(1, 1);                           // Go to column 1 row 1

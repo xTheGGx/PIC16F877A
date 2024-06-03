@@ -1,0 +1,119 @@
+#include <16f877a.h>
+#fuses HS,NOWDT,NOPROTECT,NOPUT,NOLVP,BROWNOUT 
+#use delay(clock=20M)
+#use standard_io(D)
+#use rs232(baud=9600, xmit=PIN_C6, rcv=PIN_C7)
+// Definición de pines para el LCD
+#define LCD_DB4   PIN_D4
+#define LCD_DB5   PIN_D5
+#define LCD_DB6   PIN_D6
+#define LCD_DB7   PIN_D7
+#define LCD_RS    PIN_D2
+#define LCD_E     PIN_D3
+#include <LCD_16X2.c>  // Librería para el manejo de la pantalla LCD
+
+// Definición de pines para el sensor de temperatura y el ventilador
+#define TEMP_SENSOR_PIN PIN_A0
+#define FAN_PIN PIN_B0
+#define LAMP_PIN PIN_B1
+
+#define DHT11_PIN PIN_B2
+
+unsigned short TOUT = 0, CheckSum, i;
+unsigned int humidity, temperature;
+unsigned int T_Byte1, T_Byte2, RH_Byte1, RH_Byte2;
+
+void StartSignal()
+{
+  output_low(DHT11_PIN);
+  delay_ms(25);
+  output_high(DHT11_PIN);
+  delay_us(30);
+  output_float(DHT11_PIN); // Set pin to input
+}
+
+unsigned short CheckResponse()
+{
+  TOUT = 0;
+  while(!input(DHT11_PIN) && !TOUT) {
+    delay_us(1);
+    TOUT++;
+    if (TOUT > 100) return 0;
+  }
+
+  TOUT = 0;
+  while(input(DHT11_PIN) && !TOUT) {
+    delay_us(1);
+    TOUT++;
+    if (TOUT > 100) return 0;
+  }
+  
+  return 1;
+}
+
+unsigned short ReadByte()
+{
+  unsigned short num = 0;
+  for (i=0; i<8; i++)
+  {
+    while(!input(DHT11_PIN)); // Wait for the pin to go high
+    delay_us(30);
+    if(input(DHT11_PIN)) num |= 1<<(7-i); // Read the data
+    while(input(DHT11_PIN)); // Wait for the pin to go low
+  }
+  return num;
+}
+
+void readDHT11() {
+    StartSignal();
+    if (!CheckResponse()) {
+        lcd_gotoxy(1, 1);
+        lcd_putc("No response");
+        lcd_gotoxy(2, 1);
+        lcd_putc("from sensor");
+    } else {
+        RH_Byte1 = ReadByte();
+        RH_Byte2 = ReadByte();
+        T_Byte1 = ReadByte();
+        T_Byte2 = ReadByte();
+        CheckSum = ReadByte();
+        // Check for error in Data reception
+        if (CheckSum == ((RH_Byte1 + RH_Byte2 + T_Byte1 + T_Byte2) & 0xFF)) {
+            lcd_gotoxy(1,1);
+            lcd_putc("HUM:");
+            lcd_gotoxy(2,1);
+            lcd_putc("TEMP:");
+          
+            lcd_gotoxy(1, 5);
+            printf(lcd_putc, "%d.%d%%", RH_Byte1, RH_Byte2);
+          
+            lcd_gotoxy(2, 6);
+            printf(lcd_putc, "%d.%dC", T_Byte1, T_Byte2);
+          
+            // Controlar el ventilador basado en la temperatura
+            if (T_Byte1 > 30) { // Umbral de temperatura (30 grados Celsius)
+                output_high(FAN_PIN); // Enciende el ventilador
+            } else {
+                output_low(FAN_PIN); // Apaga el ventilador
+            }
+
+        } else {
+            lcd_gotoxy(1, 1);
+            lcd_putc("Checksum Error");
+            lcd_gotoxy(2, 1);
+            lcd_putc("Trying Again");
+        }
+    }
+}
+
+void main() {
+   // Inicialización del LCD
+   lcd_init();
+   // Configuración del pin del ventilador como salida
+   set_tris_b(0x00); // Establece todos los pines de PORTB como salidas
+
+   while(true) {
+      readDHT11();   // Leer datos del DHT11
+      delay_ms(2000); // Esperar 2 segundos antes de la siguiente lectura
+   }
+}
